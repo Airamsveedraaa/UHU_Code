@@ -1,0 +1,3 @@
+﻿  MergeSortHibrido.cpp
+C:\Users\Airam\Desktop\Proyecto1FAA\Actividades_Mergesort\MergeSortHibrido\MergeSortHibrido\MergeSortHibrido\MergeSortHibrido.cpp(117,53): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+  MergeSortHibrido.vcxproj -> C:\Users\Airam\Desktop\Proyecto1FAA\Actividades_Mergesort\MergeSortHibrido\MergeSortHibrido\x64\Debug\MergeSortHibrido.exe

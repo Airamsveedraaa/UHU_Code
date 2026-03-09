@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Airam\\Desktop\\Proyecto1FAA\\Act_Practica\\Act_Practica\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{342A9071-9CB8-4F56-8F62-E663556C64F0}|Act_Practica\\Act_Practica.vcxproj|C:\\Users\\Airam\\Desktop\\Proyecto1FAA\\Act_Practica\\Act_Practica\\Act_Practica\\Act_Practica.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{342A9071-9CB8-4F56-8F62-E663556C64F0}|Act_Practica\\Act_Practica.vcxproj|solutionrelative:Act_Practica\\Act_Practica.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Act_Practica.cpp",
+              "DocumentMoniker": "C:\\Users\\Airam\\Desktop\\Proyecto1FAA\\Act_Practica\\Act_Practica\\Act_Practica\\Act_Practica.cpp",
+              "RelativeDocumentMoniker": "Act_Practica\\Act_Practica.cpp",
+              "ToolTip": "C:\\Users\\Airam\\Desktop\\Proyecto1FAA\\Act_Practica\\Act_Practica\\Act_Practica\\Act_Practica.cpp",
+              "RelativeToolTip": "Act_Practica\\Act_Practica.cpp",
+              "ViewState": "AgIAADQAAAAAAAAAAAAcwF0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-16T20:09:22.57Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

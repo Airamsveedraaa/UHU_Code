@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Airam\\Desktop\\Proyecto1FAA\\Actividades_Busquedas_Binarias\\ComparacionTodos\\ComparacionTodos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{45627A3C-C380-4C75-8648-C50B8AA72178}|ComparacionTodos\\ComparacionTodos.vcxproj|C:\\Users\\Airam\\Desktop\\Proyecto1FAA\\Actividades_Busquedas_Binarias\\ComparacionTodos\\ComparacionTodos\\ComparacionTodos\\ComparacionTodos.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{45627A3C-C380-4C75-8648-C50B8AA72178}|ComparacionTodos\\ComparacionTodos.vcxproj|solutionrelative:ComparacionTodos\\ComparacionTodos.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ComparacionTodos.cpp",
+              "DocumentMoniker": "C:\\Users\\Airam\\Desktop\\Proyecto1FAA\\Actividades_Busquedas_Binarias\\ComparacionTodos\\ComparacionTodos\\ComparacionTodos\\ComparacionTodos.cpp",
+              "RelativeDocumentMoniker": "ComparacionTodos\\ComparacionTodos.cpp",
+              "ToolTip": "C:\\Users\\Airam\\Desktop\\Proyecto1FAA\\Actividades_Busquedas_Binarias\\ComparacionTodos\\ComparacionTodos\\ComparacionTodos\\ComparacionTodos.cpp",
+              "RelativeToolTip": "ComparacionTodos\\ComparacionTodos.cpp",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAswC0BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-13T18:59:31.456Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

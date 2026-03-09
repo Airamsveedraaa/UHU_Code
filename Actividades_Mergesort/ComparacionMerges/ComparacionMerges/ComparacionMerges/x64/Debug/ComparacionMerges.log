@@ -1,0 +1,4 @@
+﻿  ComparacionMerges.cpp
+C:\Users\Airam\Desktop\Proyecto1FAA\Actividades_Mergesort\ComparacionMerges\ComparacionMerges\ComparacionMerges\ComparacionMerges.cpp(138,56): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Airam\Desktop\Proyecto1FAA\Actividades_Mergesort\ComparacionMerges\ComparacionMerges\ComparacionMerges\ComparacionMerges.cpp(144,56): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ComparacionMerges.vcxproj -> C:\Users\Airam\Desktop\Proyecto1FAA\Actividades_Mergesort\ComparacionMerges\ComparacionMerges\x64\Debug\ComparacionMerges.exe

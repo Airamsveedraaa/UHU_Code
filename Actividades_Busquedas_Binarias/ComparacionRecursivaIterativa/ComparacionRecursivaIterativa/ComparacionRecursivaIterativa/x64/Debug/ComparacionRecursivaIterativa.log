@@ -1,0 +1,3 @@
+﻿  ComparacionRecursivaIterativa.cpp
+C:\Users\Airam\Desktop\Proyecyto1FAA\ComparacionRecursivaIterativa\ComparacionRecursivaIterativa\ComparacionRecursivaIterativa\ComparacionRecursivaIterativa.cpp(227,11): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ComparacionRecursivaIterativa.vcxproj -> C:\Users\Airam\Desktop\Proyecyto1FAA\ComparacionRecursivaIterativa\ComparacionRecursivaIterativa\x64\Debug\ComparacionRecursivaIterativa.exe

@@ -1,0 +1,4 @@
+﻿  Act_Practica.cpp
+C:\Users\Airam\Desktop\Proyecto1FAA\Act_Practica\Act_Practica\Act_Practica\Act_Practica.cpp(47,11): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Airam\Desktop\Proyecto1FAA\Act_Practica\Act_Practica\Act_Practica\Act_Practica.cpp(65,11): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Act_Practica.vcxproj -> C:\Users\Airam\Desktop\Proyecto1FAA\Act_Practica\Act_Practica\x64\Debug\Act_Practica.exe

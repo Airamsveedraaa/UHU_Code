@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Airam\\Desktop\\Proyecyto1FAA\\ComparacionBinaria1_interp_iterav\\ComparacionBinaria1_interp_Iterativ\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{86DCBF33-676B-4E00-8C92-9BD79946EA6A}|ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ.vcxproj|C:\\Users\\Airam\\Desktop\\Proyecyto1FAA\\ComparacionBinaria1_interp_iterav\\ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{86DCBF33-676B-4E00-8C92-9BD79946EA6A}|ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ.vcxproj|solutionrelative:ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ComparacionBinaria1_interp_Iterativ.cpp",
+              "DocumentMoniker": "C:\\Users\\Airam\\Desktop\\Proyecyto1FAA\\ComparacionBinaria1_interp_iterav\\ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ.cpp",
+              "RelativeDocumentMoniker": "ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ.cpp",
+              "ToolTip": "C:\\Users\\Airam\\Desktop\\Proyecyto1FAA\\ComparacionBinaria1_interp_iterav\\ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ.cpp",
+              "RelativeToolTip": "ComparacionBinaria1_interp_Iterativ\\ComparacionBinaria1_interp_Iterativ.cpp",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAcwOIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-15T21:28:11.826Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

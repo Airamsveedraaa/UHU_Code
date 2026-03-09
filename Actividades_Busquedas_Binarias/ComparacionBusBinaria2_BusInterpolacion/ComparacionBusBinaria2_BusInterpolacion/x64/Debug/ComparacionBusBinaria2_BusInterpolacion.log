@@ -1,0 +1,3 @@
+﻿  ComparacionBusBinaria2_BusInterpolacion.cpp
+C:\Users\Airam\Desktop\Proyecyto1FAA\ComparacionBusBinaria2_BusInterpolacion\ComparacionBusBinaria2_BusInterpolacion\ComparacionBusBinaria2_BusInterpolacion.cpp(103,11): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ComparacionBusBinaria2_BusInterpolacion.vcxproj -> C:\Users\Airam\Desktop\Proyecyto1FAA\ComparacionBusBinaria2_BusInterpolacion\x64\Debug\ComparacionBusBinaria2_BusInterpolacion.exe
