@@ -1,0 +1,3 @@
+﻿  ComparacionTodos.cpp
+C:\Users\Airam\Desktop\Proyecyto1FAA\ComparacionTodos\ComparacionTodos\ComparacionTodos\ComparacionTodos.cpp(150,11): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ComparacionTodos.vcxproj -> C:\Users\Airam\Desktop\Proyecyto1FAA\ComparacionTodos\ComparacionTodos\x64\Debug\ComparacionTodos.exe

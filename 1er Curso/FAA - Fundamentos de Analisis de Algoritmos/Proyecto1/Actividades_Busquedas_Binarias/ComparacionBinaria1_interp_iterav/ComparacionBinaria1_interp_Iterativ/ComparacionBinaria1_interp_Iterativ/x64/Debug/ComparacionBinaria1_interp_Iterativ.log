@@ -1,0 +1,3 @@
+﻿  ComparacionBinaria1_interp_Iterativ.cpp
+C:\Users\Airam\Desktop\Proyecyto1FAA\ComparacionBinaria1_interp_iterav\ComparacionBinaria1_interp_Iterativ\ComparacionBinaria1_interp_Iterativ\ComparacionBinaria1_interp_Iterativ.cpp(115,11): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ComparacionBinaria1_interp_Iterativ.vcxproj -> C:\Users\Airam\Desktop\Proyecyto1FAA\ComparacionBinaria1_interp_iterav\ComparacionBinaria1_interp_Iterativ\x64\Debug\ComparacionBinaria1_interp_Iterativ.exe

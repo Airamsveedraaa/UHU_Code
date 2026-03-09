@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Airam\\Desktop\\Proyecyto1FAA\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1456E893-ADA8-43A7-9093-DA444E08D04E}|ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa.vcxproj|C:\\Users\\Airam\\Desktop\\Proyecyto1FAA\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1456E893-ADA8-43A7-9093-DA444E08D04E}|ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa.vcxproj|solutionrelative:ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ComparacionRecursivaIterativa.cpp",
+              "DocumentMoniker": "C:\\Users\\Airam\\Desktop\\Proyecyto1FAA\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa.cpp",
+              "RelativeDocumentMoniker": "ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa.cpp",
+              "ToolTip": "C:\\Users\\Airam\\Desktop\\Proyecyto1FAA\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa.cpp",
+              "RelativeToolTip": "ComparacionRecursivaIterativa\\ComparacionRecursivaIterativa.cpp",
+              "ViewState": "AgIAABUBAAAAAAAAAAAowB4BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-14T18:02:14.789Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
