@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1761772279 source:c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\main.cpp
+	"Fecha.h"
+	"Cliente.h"
+	"Contrato.h"
+	"ContratoTP.h"
+	"ContratoMovil.h"
+	"Comun.h"
+	<windows.h>
+	<cstdlib>
+	<iostream>
+	<iomanip>
+	"Fecha.h"
+	"Cliente.h"
+	"Contrato.h"
+	"ContratoTP.h"
+	"ContratoMovil.h"
+	"Empresa.h"
+
+1762599149 source:c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\src\cliente.cpp
+	"Cliente.h"
+
+1762597782 c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\include\cliente.h
+	"Fecha.h"
+
+1762600572 source:c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\src\fecha.cpp
+	"Fecha.h"
+
+1762599175 c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\include\fecha.h
+	"Comun.h"
+
+1761835564 c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\include\comun.h
+	<cstdlib>
+	<iostream>
+	<cstring>
+	<iomanip>
+	<windows.h>
+	<typeinfo>
+
+1762600719 source:c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\src\contrato.cpp
+	"Contrato.h"
+
+1762599149 c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\include\contrato.h
+	"Comun.h"
+	"Fecha.h"
+
+1762600381 source:c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\src\contratomovil.cpp
+	"ContratoMovil.h"
+
+1762597782 c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\include\contratomovil.h
+	<Contrato.h>
+
+1762600381 source:c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\src\contratotp.cpp
+	"ContratoTP.h"
+
+1762597782 c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\include\contratotp.h
+	<Contrato.h>
+
+1761835564 source:c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\src\empresa.cpp
+	"Empresa.h"
+	<typeinfo>
+
+1761772509 c:\users\airam\desktop\uni\segundo\mp\practicas\p1\practica1\include\empresa.h
+	"Fecha.h"
+	"Cliente.h"
+	"Contrato.h"
+	"ContratoTP.h"
+	"ContratoMovil.h"
+
