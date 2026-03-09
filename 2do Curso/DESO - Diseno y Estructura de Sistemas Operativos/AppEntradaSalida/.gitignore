@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+*.user
+Release_Build/
+*.zip
+*.pdb
+GenerarZip.bat
+Launch_Debug.bat
+release_notes*.md
