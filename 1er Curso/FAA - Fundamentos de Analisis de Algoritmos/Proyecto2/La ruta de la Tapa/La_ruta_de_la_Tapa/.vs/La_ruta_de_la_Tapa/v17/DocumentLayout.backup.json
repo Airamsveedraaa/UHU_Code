@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Airam\\Desktop\\Proyecto2FAA\\La ruta de la Tapa\\La_ruta_de_la_Tapa\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B04406A9-3686-444D-891C-9FF3DE9ACBF2}|La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa.vcxproj|C:\\Users\\Airam\\Desktop\\Proyecto2FAA\\La ruta de la Tapa\\La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B04406A9-3686-444D-891C-9FF3DE9ACBF2}|La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa.vcxproj|solutionrelative:La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "La_ruta_de_la_Tapa.cpp",
+              "DocumentMoniker": "C:\\Users\\Airam\\Desktop\\Proyecto2FAA\\La ruta de la Tapa\\La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa.cpp",
+              "RelativeDocumentMoniker": "La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa.cpp",
+              "ToolTip": "C:\\Users\\Airam\\Desktop\\Proyecto2FAA\\La ruta de la Tapa\\La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa.cpp",
+              "RelativeToolTip": "La_ruta_de_la_Tapa\\La_ruta_de_la_Tapa.cpp",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAcwHQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-04T20:31:25.726Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
