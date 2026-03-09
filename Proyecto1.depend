@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1743600434 source:c:\users\airam\desktop\proyecto1\main.cpp
+	<iostream>
+	<windows.h>
+	<cstdlib>
+	<ctime>
+
