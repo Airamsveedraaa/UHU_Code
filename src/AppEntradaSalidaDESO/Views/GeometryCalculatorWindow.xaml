@@ -1,0 +1,241 @@
+<Window x:Class="AppEntradaSalidaDESO.Views.GeometryCalculatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:AppEntradaSalidaDESO.ViewModels"
+        xmlns:conv="clr-namespace:AppEntradaSalidaDESO.Converters"
+        mc:Ignorable="d"
+        Title="Calculadora de Geometría de Disco" Height="750" Width="750"
+        WindowStartupLocation="CenterScreen">
+    
+    <Window.DataContext>
+        <vm:GeometryCalculatorViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <conv:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVis"/>
+        <conv:InverseBooleanConverter x:Key="InverseBool"/>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,5,0,2"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Header -->
+            <RowDefinition Height="Auto"/> <!-- Disk Size Input (Optional) -->
+            <RowDefinition Height="Auto"/> <!-- Specs Inputs -->
+            <RowDefinition Height="Auto"/> <!-- Results -->
+            <RowDefinition Height="*"/>    <!-- Converter -->
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Calculadora de Geometría de Disco" FontSize="18" FontWeight="Bold" Foreground="#007ACC" Margin="0,0,0,15"/>
+
+        <!-- Configuración Unificada -->
+        <GroupBox Grid.Row="1" Grid.RowSpan="2" Header="Configuración de Geometría" Padding="10" Margin="0,0,0,10">
+            <StackPanel>
+                <!-- Modo de Cálculo -->
+                <TextBlock Text="1. ¿Qué dato conoces?" Margin="0,0,0,5"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                    <RadioButton Content="Tengo Cilindros (Calcular Capacidad)" 
+                                 IsChecked="{Binding IsSolveForCapacity}" 
+                                 GroupName="SolveMode" Margin="0,0,15,0"/>
+                    <RadioButton Content="Tengo Capacidad (Calcular Cilindros)" 
+                                 IsChecked="{Binding IsSolveForCapacity, Converter={StaticResource InverseBool}}" 
+                                 GroupName="SolveMode"/>
+                </StackPanel>
+
+                <!-- Inputs Físicos -->
+                <TextBlock Text="2. Geometría Física" Margin="0,0,0,5"/>
+                <Grid Margin="0,0,0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Caras (Heads)" FontSize="11"/>
+                        <TextBox Text="{Binding Specs.Faces, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Sectores/Pista" FontSize="11"/>
+                        <TextBox Text="{Binding Specs.SectorsPerTrack, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="4">
+                        <TextBlock Text="Tam. Sector (B)" FontSize="11"/>
+                        <TextBox Text="{Binding Specs.SectorSize, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="6">
+                        <TextBlock Text="Tam. Bloque (B)" FontSize="11"/>
+                        <TextBox Text="{Binding Specs.BlockSize, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Input Variable -->
+                <TextBlock Text="3. Dato Objetivo" Margin="0,0,0,5"/>
+                
+                <!-- Input: CILINDROS (Visible si IsSolveForCapacity = True) -->
+                <StackPanel Visibility="{Binding IsSolveForCapacity, Converter={StaticResource BoolToVis}}">
+                    <TextBlock Text="Nº Cilindros (Pistas/Cara)" FontSize="11" Foreground="#007ACC"/>
+                    <TextBox Text="{Binding Specs.Cylinders, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"/>
+                </StackPanel>
+
+                <!-- Input: CAPACIDAD (Visible si IsSolveForCapacity = False) -->
+                <StackPanel Visibility="{Binding IsSolveForCapacity, Converter={StaticResource InverseBoolToVis}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Capacidad Total" FontSize="11" Foreground="#28a745"/>
+                            <TextBox Text="{Binding CapacityInput, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Unidad" FontSize="11"/>
+                            <ComboBox ItemsSource="{Binding SizeUnits}" SelectedItem="{Binding SelectedCapacityUnit}" Padding="5" MinWidth="60"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                
+                <!-- Configuración Extra -->
+                <TextBlock Text="4. Configuración Extra" Margin="0,5,0,5"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Indicar índice primera pista: " VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <RadioButton GroupName="idx" Content="0" IsChecked="{Binding IsFirstTrackIndexOne, Converter={StaticResource InverseBool}}" Margin="0,0,10,0"/>
+                    <RadioButton GroupName="idx" Content="1" IsChecked="{Binding IsFirstTrackIndexOne}" />
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Modo de visualización: " VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <RadioButton GroupName="trackMode" Content="Cilindros (Académico)" IsChecked="{Binding ShowCylindersOnly}" Margin="0,0,10,0" 
+                                 ToolTip="Muestra el número de cilindros (pistas por cara). Usado en ejercicios académicos."/>
+                    <RadioButton GroupName="trackMode" Content="Pistas Totales (Técnico)" IsChecked="{Binding ShowCylindersOnly, Converter={StaticResource InverseBool}}"
+                                 ToolTip="Muestra el total de pistas físicas (cilindros × caras). Cálculo técnico completo."/>
+                </StackPanel>
+
+                <Button Command="{Binding CalculateCommand}" Content="🔄 Recalcular" Margin="0,10,0,0" Padding="5"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Dynamic Results -->
+        <Border Grid.Row="3" Margin="0,5,0,0" Background="#F0F8FF" Padding="10" BorderBrush="#007ACC" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="📊 Resultados Calculados" FontWeight="Bold" FontSize="14" Foreground="#007ACC" Margin="0,0,0,10"/>
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Row 0 -->
+                    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="Bloques/Cilindro: " FontWeight="Normal"/>
+                        <TextBlock Text="{Binding BlocksPerCylinder, StringFormat=N2}" FontWeight="Bold" Foreground="Green"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="Bloques/Pista: " FontWeight="Normal"/>
+                        <TextBlock Text="{Binding BlocksPerTrack, StringFormat=N2}" FontWeight="Bold" Foreground="Green"/>
+                    </StackPanel>
+
+                    <!-- Row 1 -->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="Cilindros (Pistas/Cara): " FontWeight="Normal"/>
+                        <TextBlock Text="{Binding Specs.Cylinders}" FontWeight="Bold" Foreground="Green"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="Pistas Totales: " FontWeight="Normal"/>
+                        <TextBlock Text="{Binding TrackRangeString}" FontWeight="Bold" Foreground="Green"/>
+                    </StackPanel>
+
+                    <!-- Row 2 -->
+                    <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="Total Sectores: " FontWeight="Normal"/>
+                        <TextBlock Text="{Binding TotalSectors, StringFormat=N0}" FontWeight="Bold" Foreground="DarkBlue"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="Total Bloques: " FontWeight="Normal"/>
+                        <TextBlock Text="{Binding TotalBlocks, StringFormat=N0}" FontWeight="Bold" Foreground="DarkBlue"/>
+                    </StackPanel>
+
+                    <!-- Row 3 - Capacidad -->
+                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,8,0,3">
+                        <TextBlock Text="Capacidad Total: " FontWeight="Bold"/>
+                        <TextBlock Text="{Binding TotalCapacityBytes, StringFormat=N0}" FontWeight="Bold" Foreground="DarkRed"/>
+                        <TextBlock Text=" bytes" FontWeight="Normal" Margin="3,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- Row 4 -->
+                    <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="≈ " FontWeight="Normal"/>
+                        <TextBlock Text="{Binding TotalCapacityMB, StringFormat=N2}" FontWeight="Bold" Foreground="DarkRed"/>
+                        <TextBlock Text=" MB" FontWeight="Normal" Margin="3,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0,3">
+                        <TextBlock Text="≈ " FontWeight="Normal"/>
+                        <TextBlock Text="{Binding TotalCapacityGB, StringFormat=N4}" FontWeight="Bold" Foreground="DarkRed"/>
+                        <TextBlock Text=" GB" FontWeight="Normal" Margin="3,0,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Block Converter -->
+        <GroupBox Grid.Row="4" Header="Convertidor Bloque → CHS y Pistas" Margin="0,10,0,0" Padding="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Text="Bloques (separados por coma/espacio):" Margin="0,0,0,5"/>
+                <TextBox Grid.Row="1" Text="{Binding BlockInputs, UpdateSourceTrigger=PropertyChanged}" 
+                         Height="50" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10"/>
+
+                <DataGrid Grid.Row="2" ItemsSource="{Binding ConversionResults}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" HeadersVisibility="Column" MaxHeight="150" Margin="0,0,0,10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Bloque" Binding="{Binding Block}" Width="*"/>
+                        <DataGridTextColumn Header="Cilindro" Binding="{Binding Cylinder}" Width="*"/>
+                        <DataGridTextColumn Header="Cara" Binding="{Binding Head}" Width="*"/>
+                        <DataGridTextColumn Header="Sector" Binding="{Binding Sector}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <TextBlock Grid.Row="3" Text="Lista de Pistas (Copia rápida para simulador):" Margin="0,0,0,5" FontWeight="SemiBold"/>
+                <TextBox Grid.Row="4" Text="{Binding ConvertedTracksString, Mode=OneWay}" IsReadOnly="True" Background="#F9F9F9" Padding="5"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
