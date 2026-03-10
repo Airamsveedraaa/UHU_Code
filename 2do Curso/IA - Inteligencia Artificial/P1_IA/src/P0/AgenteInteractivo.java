@@ -111,3 +111,65 @@ class AgenteReactivo {
 	 return acciones[indice]; //”N” “S” “E” “0”
 	 }
 }
+
+/*class AgenteDeliberativo {
+
+public AgenteDeliberativo(int filas, int cols) {
+memoria = new xxxxx[filas][cols];
+}
+public String pensar(Entorno mapa) {
+;
+// TAREA 2: Implementar lógica deliberativa
+// 1. Mirar vecinos.
+// 2. Si esTransitable -> añadir a opcionesSeguras.
+// 3. Valorar opciones sobre la memoria
+
+// --- INICIO CODIGO ALUMNO ---
+// ...
+// --- FIN CODIGO ALUMNO ---
+// Prioridad: transitable, movimiento favorable …
+}
+return …//“acción más favorable”
+	}
+}*/
+
+class AgenteGreedy{
+
+public String pensar(Entorno mapa) {
+	int fila=mapa.agenteF;
+	int col=mapa.agenteC;
+	
+	String mejorAccion="";
+	int menor=Integer.MAX_VALUE;
+	int distancia;
+	if(mapa.esTransitable(fila -1 , col)) {
+		distancia=Math.abs(fila-1 - mapa.metaF) + (Math.abs(col - mapa.metaC));
+		if(distancia < menor) {
+			menor=distancia;
+			mejorAccion="N";
+		}
+	}
+	if(mapa.esTransitable(fila +1 , col)) {
+		distancia=Math.abs(fila+1 - mapa.metaF) + (Math.abs(col - mapa.metaC));
+		if(distancia < menor) {
+			menor=distancia;
+			mejorAccion="S";
+		}
+	}
+	if(mapa.esTransitable(fila , col+1)) {
+		distancia=Math.abs(fila - mapa.metaF) + (Math.abs(col+1 - mapa.metaC));
+		if(distancia < menor) {
+			menor=distancia;
+			mejorAccion="E";
+		}
+	}
+	if(mapa.esTransitable(fila , col-1)) {
+		distancia=Math.abs(fila - mapa.metaF) + (Math.abs(col-1 - mapa.metaC));
+		if(distancia < menor) {
+			menor=distancia;
+			mejorAccion="O";
+		}
+	}
+	return mejorAccion;
+	}
+}
