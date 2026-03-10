@@ -1,0 +1,320 @@
+<!-- R Commander Markdown Template -->
+
+PRACTICA 2
+=======================
+
+### Your Name
+
+### `r as.character(Sys.Date())`
+
+```{r echo=FALSE}
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, out.width=750, fig.height=8, fig.width=8)
+library(Rcmdr)
+library(car)
+library(RcmdrMisc)
+```
+
+
+```{r echo=FALSE}
+# include this code chunk as-is to enable 3D graphs
+library(rgl)
+knitr::knit_hooks$set(webgl = hook_webgl)
+```
+
+
+```{r}
+load("C:/Users/Airam/Downloads/RCars_EN (1).RData")
+```
+
+Lo primero que haremos sera responder a una serie de preguntas
+
+
+```{r}
+summary(RCars_en)
+```
+
+1.la moda es USA
+2.maximo de la variable cons (26), minimo (5)
+3.hay un 25% de coches con un consumo menor o igual a 8l/100km (supuestamente)
+4.idk
+
+
+```{r}
+RCars_en <- within(RCars_en, {
+  cylind_fact <- as.factor(cylind)
+})
+```
+
+
+```{r}
+library(abind, pos=25)
+```
+
+
+```{r}
+library(e1071, pos=26)
+```
+
+
+```{r}
+summary(RCars_en)
+```
+
+la moda de la variable cylind es 4, 4 cilindros es el valor mas repetido
+
+```{r}
+numSummary(RCars_en[,c("HP", "weight"), drop=FALSE], groups=RCars_en$origin, 
+  statistics=c("mean", "quantiles"), quantiles=c(.33))
+```
+
+esto quiere decir que un 33% de los coches europeos tienen un cv menor o igual a 71, un 33% de los japoneses un cv menor o igual a 67.74
+y un 33% de los estadounidenses con un cv menor o igual a 90 
+
+de igual forma, para el peso, en europa el 33% de estos tiene un peso menor a 710, en japon ese valor se encuentra en 674.48 y en EEUU en 972.6
+
+```{r}
+numSummary(RCars_en[,"accel", drop=FALSE], statistics=c("sd"), quantiles=c(0,.25,.5,
+  .75,1))
+```
+la desviacion tipica de la variable accel es 2.820984
+
+```{r}
+numSummary(RCars_en[,c("cons", "weight"), drop=FALSE], statistics=c("sd", "cv"), 
+  quantiles=c(0,.25,.5,.75,1))
+```
+
+comparamos ahora la desviacion tipica y coeficiente de variacion de cons y weight
+cons tiene una desviacion de 3.946172 y un coef de 0.3514380
+weight tiene una desviacion de 283.277160 y un coef de 0.2862796
+
+```{r}
+numSummary(RCars_en[,"weight", drop=FALSE], statistics=c("skewness", "kurtosis"), 
+  quantiles=c(0,.25,.5,.75,1), type="1")
+```
+hallar kurtosis y asimetria, no se explicar a que se refiere la velda, pa q mentir
+
+
+```{r}
+RCars_en <- within(RCars_en, {
+  year_fact <- as.factor(year)
+})
+```
+
+
+```{r}
+Tapply(weight ~ origin + year_fact, mean, na.action=na.omit, data=RCars_en) 
+  # mean by groups
+```
+ahora hemos sacado la media de los coches en cuanto al peso, para cada año de fabricacion y para cada origen
+
+```{r}
+local({
+  .Table <- with(RCars_en, table(origin))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+```
+en el ejemplo hay 73 coches europeos, que representan el 18.02%, 79 coches japoneses, que representan el 19.51% y 253 estadounidenses, que representan el 62.47%
+
+EJERCICIOS:
+1-
+
+```{r}
+local({
+  .Table <- xtabs(~origin+cylind_fact, data=RCars_en, subset=origin=="Europe")
+  cat("\nFrequency table:\n")
+  print(.Table)
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+
+```{r}
+local({
+  .Table <- xtabs(~cylind_fact+origin, data=RCars_en, subset=origin=="Europe")
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+
+```{r}
+local({
+  .Table <- xtabs(~origin+cylind_fact, data=RCars_en, subset=origin=="Europe")
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+EJERCICIOS:
+1-90.4% de los coches Europeos tienen 4 cilindros
+
+```{r}
+local({
+  .Table <- xtabs(~origin+cylind_fact, data=RCars_en, subset=origin=="USA")
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+
+```{r}
+local({
+  .Table <- xtabs(~origin+cylind_fact, data=RCars_en, subset=)
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+
+```{r}
+local({
+  .Table <- with(RCars_en, table(cylind_fact))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+```
+EJERCICIOS:
+1-90.4% de los coches Europeos tienen 4 cilindros
+2-el numero de cilindros mas comun en los coches estadounidenses es 8
+3-el 20.74% de los coches tienen 6 cilindros
+
+```{r}
+local({
+  .Table <- with(RCars_en, table(origin))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+```
+EJERCICIOS:
+1-90.4% de los coches Europeos tienen 4 cilindros
+2-el numero de cilindros mas comun en los coches estadounidenses es 8
+3-el 20.74% de los coches tienen 6 cilindros
+4-el 18.02% de los coches son europeos
+
+```{r}
+local({
+  .Table <- with(RCars_en, table(cylind_fact))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+local({
+  .Table <- with(RCars_en, table(origin))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+```
+
+```{r}
+local({
+  .Table <- with(RCars_en, table(cylind_fact))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+local({
+  .Table <- with(RCars_en, table(origin))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+```
+
+```{r}
+Tapply(cylind ~ origin, mean, na.action=na.omit, data=RCars_en) # mean by groups
+```
+
+```{r}
+summary(RCars_en)
+```
+
+
+```{r}
+local({
+  .Table <- xtabs(~origin+cylind_fact, data=RCars_en, subset=cylind_fact==6)
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+
+```{r}
+local({
+  .Table <- xtabs(~cylind_fact+origin, data=RCars_en, subset=cylind_fact==6)
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+EJERCICIOS:
+1-90.4% de los coches Europeos tienen 4 cilindros
+2-el numero de cilindros mas comun en los coches estadounidenses es 8
+3-el 20.74% de los coches tienen 6 cilindros
+4-el 18.02% de los coches son europeos
+5-el 4.8% de los coches son europeos y tienen 6 cilindros
+
+```{r}
+local({
+  .Table <- xtabs(~cylind_fact+origin, data=RCars_en, subset=cylind_fact==4)
+  cat("\nFrequency table:\n")
+  print(.Table)
+  cat("\nRow percentages:\n")
+  print(rowPercents(.Table))
+  .Test <- chisq.test(.Table, correct=FALSE)
+  print(.Test)
+})
+```
+
+EJERCICIOS:
+1-90.4% de los coches Europeos tienen 4 cilindros
+2-el numero de cilindros mas comun en los coches estadounidenses es 8
+3-el 20.74% de los coches tienen 6 cilindros
+4-el 18.02% de los coches son europeos
+5-el 4.8% de los coches son europeos y tienen 6 cilindros
+6-USA tiene el mayor porcentaje de coches con 4 cilindros (34.8%)
+7-El porcentaje de coches japoneses con 4 cilindros es de 33.3%
+
+TODOS ESTOS EJERCICIOS HAN SIDO RESUELTOS CON TABLAS DE DOBLE ENTRADA,RESUMENES NUMERICOS Y DISTRIBUCIONES DE FRECUENCIAS
+
+```{r}
+encoding="utf-8"
+```
+
+
+```{r}
+options(encoding="utf-8")
+```
+
+
+

@@ -1,0 +1,283 @@
+<!-- R Commander Markdown Template -->
+
+PRACTICA 4
+=======================
+
+### Your Name
+
+### `r as.character(Sys.Date())`
+
+```{r echo=FALSE}
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, out.width=750, fig.height=8, fig.width=8)
+library(Rcmdr)
+library(car)
+library(RcmdrMisc)
+```
+
+
+```{r echo=FALSE}
+# include this code chunk as-is to enable 3D graphs
+library(rgl)
+knitr::knit_hooks$set(webgl = hook_webgl)
+```
+
+Aqui usaremos la funcion lp del paquete lpsolve, donde:
+direction: si queremos optimizar para conseguir el maximo o el minimo
+obj_vec: vector de coeficientes de la funcion objetivo
+const_mat: matri de coeficientes numericos de restriccion, una linea por restriccion, una columna por variable
+const_dir: vector de strings que indican la direccion de la restriccion(>=,=,<=)
+const_rhs: vector de valores numericos a la derecha de las restricciones (<=,=>)
+definicion de matrix: matrix(vector of matrix entries by rowss,nrow=number of rows, byrow=TRUE)
+$objval: solucion optima para funcion objetivo
+$solution: valores optimos para las variables, esta es la solucion optima
+
+ahora hacemos el ejercicio dado en la seccion 3
+
+```{r}
+library(lpSolve, pos=25)
+```
+
+```{r}
+direction="max"
+```
+
+
+```{r}
+obj_vec=c(2,1)
+```
+
+
+```{r}
+const_mat=matrix(c(1,1,1,-2),nrow=2,byrow=TRUE)
+```
+
+
+```{r}
+const_dir=c("<=","<=")
+```
+
+
+```{r}
+const_rhs=c(5,3)
+```
+
+
+```{r}
+sol=lp(direction, obj_vec, const_mat, const_dir, const_rhs)
+```
+
+
+```{r}
+sol$objval
+```
+
+
+```{r}
+sol$solution
+```
+
+la ultima, sol$solution da los valores de x1 y x2 optimos para la funcion objetivo, que es nuestra solucion
+
+Ahora, resolvemos el problema de la transportacion dado en la seccion 2.1
+
+```{r}
+direction="min"
+```
+
+
+```{r}
+obj_vec=c(8,6,10,10,4,9)
+```
+
+```{r}
+const_dir=c("<=","<=","=>","=>","=>")
+```
+
+
+```{r}
+const_rhs=c(2000,2500,1400,2000,1000)
+```
+
+```{r}
+direction="min"
+```
+
+
+```{r}
+obj_vec=c(8,6,10,10,4,9)
+```
+
+```{r}
+const_dir=c("<=","<=","=>","=>","=>")
+```
+
+
+```{r}
+const_rhs=c(2000,2500,1400,2000,1000)
+```
+
+```{r}
+direction="min"
+```
+
+
+```{r}
+obj_vec=c(8,6,10,10,4,9)
+```
+
+```{r}
+const_dir=c("<=","<=",">=",">=",">=")
+```
+
+
+```{r}
+const_rhs=c(2000,2500,1400,2000,1000)
+```
+
+
+```{r}
+sol=lp(direction, obj_vec, const_mat, const_dir, const_rhs)
+```
+
+
+```{r}
+sol$objval
+```
+
+
+```{r}
+sol$solution
+```
+
+
+```{r}
+direction="min"
+```
+
+
+```{r}
+obj_vec=c(8,6,10,10,4,9)
+```
+
+
+```{r}
+const_mat=matrix(c(1,1,1,0,0,0,0,0,0,1,1,1,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1),
+  nrow=5,byrow=TRUE)
+```
+
+
+```{r}
+const_dir=c("<=","<=",">=",">=",">=")
+```
+
+
+```{r}
+const_rhs=c(2000,2500,1400,2000,1000)
+```
+
+
+```{r}
+sol=lp(direction, obj_vec, const_mat, const_dir, const_rhs)
+```
+
+
+```{r}
+sol$objval
+```
+
+
+```{r}
+sol$solution
+```
+
+ahora resolvemos el problema de asignacion dado en la seccion 2.3
+
+```{r}
+direction="min"
+```
+
+
+```{r}
+obj_vec=c(2,3,1,1,3,5,3,4,2)
+```
+
+
+```{r}
+const_mat=matrix(c(1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,0,0,
+  1,0,0,0,1,0,0,1,0,0,1,0,0,0,0,1,0,0,1,0,0,1),nrow=6,byrow=TRUE)
+```
+
+
+```{r}
+const_dir=c("=","=","=","=","=","=")
+```
+
+
+```{r}
+const_rhs=c(1,1,1,1,1,1)
+```
+
+
+```{r}
+all.bin=TRUE
+```
+
+
+```{r}
+sol=lp(direction, obj_vec, const_mat, const_dir, const_rhs)
+```
+
+
+```{r}
+direction="min"
+```
+
+
+```{r}
+obj_vec=c(2,3,1,1,3,5,3,4,2)
+```
+
+
+```{r}
+const_mat=matrix(c(1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,0,0,
+  1,0,0,0,1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1),nrow=6,byrow=TRUE)
+```
+
+
+```{r}
+const_dir=c("=","=","=","=","=","=")
+```
+
+
+```{r}
+const_rhs=c(1,1,1,1,1,1)
+```
+
+
+```{r}
+all.bin=TRUE
+```
+
+
+```{r}
+sol=lp(direction, obj_vec, const_mat, const_dir, const_rhs)
+```
+
+
+```{r}
+sol$objval
+```
+
+
+```{r}
+sol$solution
+```
+
+
+```{r}
+options(encoding="utf-8")
+```
+
+
+

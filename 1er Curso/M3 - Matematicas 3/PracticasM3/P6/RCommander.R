@@ -1,0 +1,59 @@
+
+local({
+  .x <- seq(0.002, 22.805, length.out=1000)  
+  plotDistr(.x, dexp(.x, rate=0.3333), cdf=FALSE, xlab="x", ylab="Density", 
+  main=paste("Exponential Distribution:  Rate=0.3333"))
+})
+
+
+local({
+  .x <- seq(0, 2.534, length.out=1000)  
+  plotDistr(.x, dexp(.x, rate=3), cdf=FALSE, xlab="x", ylab="Density", 
+  main=paste("Exponential Distribution:  Rate=3"))
+})
+local({
+  .x <- seq(0, 2.534, length.out=1000)  
+  plotDistr(.x, pexp(.x, rate=3), cdf=TRUE, xlab="x", ylab="Cumulative Probability", 
+  main=paste("Exponential Distribution:  Rate=3"))
+})
+
+
+22/60
+pexp(c(0.3666667), rate=3, lower.tail=FALSE)
+qexp(c(0.99), rate=3, lower.tail=FALSE)
+qexp(c(0.99), rate=3, lower.tail=TRUE)
+0.003350112*60
+pgamma(c(1), shape=3, scale=0.33333, lower.tail=TRUE)
+local({
+  .x <- seq(1.671, 2.329, length.out=1000)  
+  plotDistr(.x, dnorm(.x, mean=2, sd=0.1), cdf=FALSE, xlab="x", ylab="Density", 
+  main=paste("Normal Distribution:  Mean=2, Standard deviation=0.1"))
+})
+local({
+  .x <- seq(1.671, 2.329, length.out=1000)  
+  plotDistr(.x, pnorm(.x, mean=2, sd=0.1), cdf=TRUE, xlab="x", 
+  ylab="Cumulative Probability", 
+  main=paste("Normal Distribution:  Mean=2, Standard deviation=0.1"))
+})
+pnorm(c(1.9), mean=2, sd=0.1, lower.tail=TRUE)
+1-0.1586553
+pnorm(c(2.1), mean=2, sd=0.1, lower.tail=TRUE)
+pnorm(c(1.9), mean=2, sd=0.1, lower.tail=FALSE)
+pnorm(c(1.9), mean=2, sd=0.1, lower.tail=TRUE)
+0.8413447-0.1586553
+pnorm(c(2.1), mean=2, sd=0.1, lower.tail=TRUE)
+pnorm(c(1.9), mean=2, sd=0.1, lower.tail=TRUE)
+0.8413447-0.1586553
+pnorm(c(1.95), mean=2, sd=0.1, lower.tail=TRUE)
+0.8413447-0.3085375
+qnorm(c(0.05), mean=2, sd=0.1, lower.tail=TRUE)
+TCL <- as.data.frame(matrix(runif(1000*40, min=0, max=2), ncol=40))
+rownames(TCL) <- paste("sample", 1:1000, sep="")
+colnames(TCL) <- paste("obs", 1:40, sep="")
+TCL <- within(TCL, {
+  mean <- rowMeans(TCL[,1:40])
+})
+densityPlot( ~ mean, data=TCL, bw=bw.SJ, adjust=1, kernel=dnorm, method="adaptive")
+curve(dnorm(x,mean=1,sd=1/sqrt(120)),add=TRUE,col="red")
+
+options(encoding="utf-8")

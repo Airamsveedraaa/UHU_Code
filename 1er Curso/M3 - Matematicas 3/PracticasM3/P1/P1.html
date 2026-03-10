@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>PRACTICA 1</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!-- R Commander Markdown Template -->
+
+<h1>PRACTICA 1</h1>
+
+<h3>Your Name</h3>
+
+<h3>2025-04-22</h3>
+
+<pre><code class="r">&gt; load(&quot;C:/Users/Airam/AppData/Local/Temp/RtmpQj7g9g/Example_people&quot;)
+</code></pre>
+
+<p>Primeramente hemos creado el conjunto de datos Example_people con lo que da la moodle</p>
+
+<pre><code class="r">&gt; load(&quot;C:/Users/Airam/AppData/Local/Temp/RtmpQj7g9g/People1&quot;)
+</code></pre>
+
+<pre><code class="r">&gt; load(&quot;C:/Users/Airam/AppData/Local/Temp/RtmpQj7g9g/People1_hair&quot;)
+</code></pre>
+
+<pre><code class="r">&gt; load(&quot;C:/Users/Airam/AppData/Local/Temp/RtmpQj7g9g/People2&quot;)
+</code></pre>
+
+<p>Ahora se han creado los 3 conjuntos de datos People1,People1_hair y People2 con los datos dados de moodle</p>
+
+<pre><code class="r">&gt; People1_data &lt;- merge(People1, People1_hair, all=TRUE, by=&quot;row.names&quot;)
+&gt; rownames(People1_data) &lt;- People1_data$Row.names
+&gt; People1_data$Row.names &lt;- NULL
+</code></pre>
+
+<p>hemos mezclado los conjuntos People1 y People1_hair por columnas en People1_Data, eliminando la columna de nombre repetida</p>
+
+<pre><code class="r">&gt; All_people &lt;- mergeRows(People1_data, People2, common.only=FALSE)
+</code></pre>
+
+<pre><code class="r">&gt; People1_data &lt;- merge(People1, People1_hair, all=TRUE, by=&quot;row.names&quot;)
+&gt; rownames(People1_data) &lt;- People1_data$Row.names
+&gt; People1_data$Row.names &lt;- NULL
+</code></pre>
+
+<pre><code class="r">&gt; All_people &lt;- mergeRows(People1_data, People2, common.only=FALSE)
+</code></pre>
+
+<p>Finalmente, mezclamos el conjunto People1_Data y people2 por filas y obtenemos el conjunto All_people</p>
+
+<pre><code class="r">&gt; All_people$BMI &lt;- with(All_people, Weight/ Height^2)
+</code></pre>
+
+<p>Codificamos la nueva variable BMI y la aÃ±adimos al conjunto de datos activo</p>
+
+<pre><code class="r">&gt; load(&quot;C:/Users/Airam/Downloads/RCars_EN (1).RData&quot;)
+</code></pre>
+
+<pre><code class="r">&gt; cons_Europe &lt;- subset(RCars_en, subset=origin==&quot;Europe&quot;, select=c(cons))
+</code></pre>
+
+<pre><code class="r">&gt; summary(RCars_en)
+</code></pre>
+
+<pre><code>      cons           engine           HP             weight           accel      
+ Min.   : 5.00   Min.   :  66   Min.   : 46.00   Min.   : 244.0   Min.   : 8.00  
+ 1st Qu.: 8.00   1st Qu.:1708   1st Qu.: 75.75   1st Qu.: 741.2   1st Qu.:13.62  
+ Median :10.00   Median :2434   Median : 95.00   Median : 936.5   Median :15.50  
+ Mean   :11.23   Mean   :3180   Mean   :104.83   Mean   : 989.5   Mean   :15.50  
+ 3rd Qu.:13.00   3rd Qu.:4806   3rd Qu.:129.25   3rd Qu.:1203.8   3rd Qu.:17.07  
+ Max.   :26.00   Max.   :7456   Max.   :230.00   Max.   :1713.0   Max.   :24.80  
+ NA&#39;s   :8                      NA&#39;s   :6                                        
+      year          origin        cylind     
+ Min.   :70.00   Europe: 73   Min.   :3.000  
+ 1st Qu.:73.00   Japan : 79   1st Qu.:4.000  
+ Median :76.00   USA   :253   Median :4.000  
+ Mean   :75.94   NA&#39;s  :  1   Mean   :5.469  
+ 3rd Qu.:79.00                3rd Qu.:8.000  
+ Max.   :82.00                Max.   :8.000  
+ NA&#39;s   :1                    NA&#39;s   :1      
+</code></pre>
+
+<pre><code class="r">&gt; library(abind, pos=25)
+</code></pre>
+
+<pre><code class="r">&gt; library(e1071, pos=26)
+</code></pre>
+
+<pre><code class="r">&gt; numSummary(RCars_en[,&quot;cons&quot;, drop=FALSE], groups=RCars_en$origin, statistics=c(&quot;mean&quot;,
++    &quot;sd&quot;, &quot;IQR&quot;, &quot;quantiles&quot;), quantiles=c(0,.25,.5,.75,1))
+</code></pre>
+
+<pre><code>            mean       sd IQR 0% 25% 50% 75% 100% cons:n cons:NA
+Europe  8.885714 2.157178   2  5   8   9  10   15     70       3
+Japan   8.050633 1.825031   2  5   7   7   9   13     79       0
+USA    12.842742 3.793702   6  6  10  13  16   24    248       5
+</code></pre>
+
+<p>Lo que hemos hecho hasta ahora, cargar el conjunto de datos Rcars, filtrar el conjunto de datos para coger todos esos cochesde origen europeo y ver su consumicion
+y posteriormente hemos usado los resumenes numericos del apartado estadisticos para hallar varias cosas
+primeramente la media de consumicion de los coches japoneses, 8.05 l/100km en este caso</p>
+
+<p>ahora hallaremos los cv maximos de los coches que no tienen 8 cilindros</p>
+
+<pre><code class="r">&gt; numSummary(RCars_en[,&quot;HP&quot;, drop=FALSE], statistics=c(&quot;mean&quot;, &quot;sd&quot;, &quot;IQR&quot;, 
++   &quot;quantiles&quot;), quantiles=c(0,.25,.5,.75,1))
+</code></pre>
+
+<pre><code>     mean       sd  IQR 0%   25% 50%    75% 100%   n NA
+ 104.8325 38.52206 53.5 46 75.75  95 129.25  230 400  6
+</code></pre>
+
+<pre><code class="r">&gt; summary(RCars_en)
+</code></pre>
+
+<pre><code>      cons           engine           HP             weight           accel      
+ Min.   : 5.00   Min.   :  66   Min.   : 46.00   Min.   : 244.0   Min.   : 8.00  
+ 1st Qu.: 8.00   1st Qu.:1708   1st Qu.: 75.75   1st Qu.: 741.2   1st Qu.:13.62  
+ Median :10.00   Median :2434   Median : 95.00   Median : 936.5   Median :15.50  
+ Mean   :11.23   Mean   :3180   Mean   :104.83   Mean   : 989.5   Mean   :15.50  
+ 3rd Qu.:13.00   3rd Qu.:4806   3rd Qu.:129.25   3rd Qu.:1203.8   3rd Qu.:17.07  
+ Max.   :26.00   Max.   :7456   Max.   :230.00   Max.   :1713.0   Max.   :24.80  
+ NA&#39;s   :8                      NA&#39;s   :6                                        
+      year          origin        cylind     
+ Min.   :70.00   Europe: 73   Min.   :3.000  
+ 1st Qu.:73.00   Japan : 79   1st Qu.:4.000  
+ Median :76.00   USA   :253   Median :4.000  
+ Mean   :75.94   NA&#39;s  :  1   Mean   :5.469  
+ 3rd Qu.:79.00                3rd Qu.:8.000  
+ Max.   :82.00                Max.   :8.000  
+ NA&#39;s   :1                    NA&#39;s   :1      
+</code></pre>
+
+<pre><code class="r">&gt; binnedCounts(RCars_en[,&quot;HP&quot;, drop=FALSE])
+</code></pre>
+
+<pre><code>Binned distribution of HP 
+           Count Percent
+[40, 60]      21    5.25
+(60, 80]      99   24.75
+(80, 100]    124   31.00
+(100, 120]    50   12.50
+(120, 140]    26    6.50
+(140, 160]    41   10.25
+(160, 180]    23    5.75
+(180, 200]     6    1.50
+(200, 220]     6    1.50
+(220, 240]     4    1.00
+Total        400  100.00
+</code></pre>
+
+<pre><code class="r">&gt; summary(RCars_en)
+</code></pre>
+
+<pre><code>      cons           engine           HP             weight           accel      
+ Min.   : 5.00   Min.   :  66   Min.   : 46.00   Min.   : 244.0   Min.   : 8.00  
+ 1st Qu.: 8.00   1st Qu.:1708   1st Qu.: 75.75   1st Qu.: 741.2   1st Qu.:13.62  
+ Median :10.00   Median :2434   Median : 95.00   Median : 936.5   Median :15.50  
+ Mean   :11.23   Mean   :3180   Mean   :104.83   Mean   : 989.5   Mean   :15.50  
+ 3rd Qu.:13.00   3rd Qu.:4806   3rd Qu.:129.25   3rd Qu.:1203.8   3rd Qu.:17.07  
+ Max.   :26.00   Max.   :7456   Max.   :230.00   Max.   :1713.0   Max.   :24.80  
+ NA&#39;s   :8                      NA&#39;s   :6                                        
+      year          origin        cylind     
+ Min.   :70.00   Europe: 73   Min.   :3.000  
+ 1st Qu.:73.00   Japan : 79   1st Qu.:4.000  
+ Median :76.00   USA   :253   Median :4.000  
+ Mean   :75.94   NA&#39;s  :  1   Mean   :5.469  
+ 3rd Qu.:79.00                3rd Qu.:8.000  
+ Max.   :82.00                Max.   :8.000  
+ NA&#39;s   :1                    NA&#39;s   :1      
+</code></pre>
+
+<pre><code class="r">&gt; cil_no_8 &lt;- subset(RCars_en, subset=cylind !=8)
+</code></pre>
+
+<pre><code class="r">&gt; summary(cil_no_8)
+</code></pre>
+
+<pre><code>      cons            engine           HP             weight           accel      
+ Min.   : 5.000   Min.   :1114   Min.   : 46.00   Min.   : 537.0   Min.   :11.30  
+ 1st Qu.: 8.000   1st Qu.:1590   1st Qu.: 71.00   1st Qu.: 710.0   1st Qu.:14.90  
+ Median : 9.000   Median :1983   Median : 86.00   Median : 836.0   Median :16.20  
+ Mean   : 9.454   Mean   :2298   Mean   : 85.34   Mean   : 856.8   Mean   :16.49  
+ 3rd Qu.:11.000   3rd Qu.:2753   3rd Qu.: 97.00   3rd Qu.: 981.0   3rd Qu.:17.88  
+ Max.   :16.000   Max.   :4293   Max.   :165.00   Max.   :1302.0   Max.   :24.80  
+ NA&#39;s   :3                       NA&#39;s   :6                                        
+      year          origin        cylind    
+ Min.   :70.00   Europe: 73   Min.   :3.00  
+ 1st Qu.:74.00   Japan : 79   1st Qu.:4.00  
+ Median :77.00   USA   :146   Median :4.00  
+ Mean   :76.72                Mean   :4.56  
+ 3rd Qu.:80.00                3rd Qu.:6.00  
+ Max.   :82.00                Max.   :6.00  
+
+</code></pre>
+
+<p>el maximo de cv son 165 para los que no tienen 8 cilindros</p>
+
+<pre><code class="r">&gt; accel_Europe &lt;- subset(RCars_en, subset=cylind==4 &amp;&amp; origin==&quot;Europe&quot;)
+</code></pre>
+
+<pre><code class="r">&gt; accel_4 &lt;- subset(RCars_en, subset=origin==&quot;Europe&quot; &amp;&amp; cylind==4, select=c(accel))
+</code></pre>
+
+<pre><code class="r">&gt; subaccel &lt;- subset(RCars_en, subset=origin==&quot;Europe&quot; &amp; cylind==4, select=c(accel))
+</code></pre>
+
+<pre><code class="r">&gt; summary(subaccel)
+</code></pre>
+
+<pre><code>     accel      
+ Min.   :12.20  
+ 1st Qu.:14.50  
+ Median :15.50  
+ Mean   :16.76  
+ 3rd Qu.:18.45  
+ Max.   :24.80  
+</code></pre>
+
+<p>el valor maximo de accel para los coches europeos que tienen 4 cilindros es 24.8</p>
+
+<pre><code class="r">&gt; hp_minor8 &lt;- subset(RCars_en, subset=cons&lt;8, select=c(HP))
+</code></pre>
+
+<pre><code class="r">&gt; summary(hp_minor8)
+</code></pre>
+
+<pre><code>       HP        
+ Min.   : 48.00  
+ 1st Qu.: 65.00  
+ Median : 68.00  
+ Mean   : 70.42  
+ 3rd Qu.: 75.00  
+ Max.   :132.00  
+ NA&#39;s   :2       
+</code></pre>
+
+<p>ahora hemos buscado el valor medio de hp para los coches que no sobrepasan una consumicion de 8l/100km</p>
+
+<pre><code class="r">&gt; cylind_origin &lt;- subset(RCars_en, subset=cylind=4 &amp; cylind=8, select=c(cylind))
+</code></pre>
+
+<pre><code>Error: &lt;text&gt;:1:48: inesperado &#39;=&#39;
+1: cylind_origin &lt;- subset(RCars_en, subset=cylind=
+                                                   ^
+</code></pre>
+
+<pre><code class="r">&gt; numSummary(RCars_en[,&quot;cylind&quot;, drop=FALSE], groups=RCars_en$origin, 
++   statistics=c(&quot;mean&quot;, &quot;quantiles&quot;), quantiles=c(0,.25,.5,.75,1))
+</code></pre>
+
+<pre><code>           mean 0% 25% 50% 75% 100% cylind:n
+Europe 4.150685  4   4   4   4    6       73
+Japan  4.101266  3   4   4   4    6       79
+USA    6.276680  4   4   6   8    8      253
+</code></pre>
+
+<pre><code class="r">&gt; cylind_sub &lt;- subset(RCars_en, subset=cylind=4&amp;8)
+</code></pre>
+
+<pre><code>Error: &lt;text&gt;:1:45: inesperado &#39;=&#39;
+1: cylind_sub &lt;- subset(RCars_en, subset=cylind=
+                                                ^
+</code></pre>
+
+<pre><code class="r">&gt; sub_cylind &lt;- subset(RCars_en, subset=cylind ==4 &amp;&amp; ==8, select=c(cylind))
+</code></pre>
+
+<pre><code>Error: &lt;text&gt;:1:53: inesperado &#39;==&#39;
+1: sub_cylind &lt;- subset(RCars_en, subset=cylind ==4 &amp;&amp; ==
+                                                        ^
+</code></pre>
+
+<pre><code class="r">&gt; subcyl &lt;- subset(RCars_en, subset=cylind=4&amp;8)
+</code></pre>
+
+<pre><code>Error: &lt;text&gt;:1:41: inesperado &#39;=&#39;
+1: subcyl &lt;- subset(RCars_en, subset=cylind=
+                                            ^
+</code></pre>
+
+<pre><code class="r">&gt; sub_cyl &lt;- subset(RCars_en, subset=cylind==4 | cylind==8, select=c(cylind))
+</code></pre>
+
+<pre><code class="r">&gt; summary(sub_cyl)
+</code></pre>
+
+<pre><code>     cylind     
+ Min.   :4.000  
+ 1st Qu.:4.000  
+ Median :4.000  
+ Mean   :5.363  
+ 3rd Qu.:8.000  
+ Max.   :8.000  
+</code></pre>
+
+<pre><code class="r">&gt; summary(sub_cyl)
+</code></pre>
+
+<pre><code>     cylind     
+ Min.   :4.000  
+ 1st Qu.:4.000  
+ Median :4.000  
+ Mean   :5.363  
+ 3rd Qu.:8.000  
+ Max.   :8.000  
+</code></pre>
+
+<pre><code class="r">&gt; sub_cylind &lt;- subset(RCars_en, subset=cylind==4 | cylind==8)
+</code></pre>
+
+<pre><code class="r">&gt; summary(sub_cylind)
+</code></pre>
+
+<pre><code>      cons           engine           HP            weight           accel      
+ Min.   : 5.00   Min.   :1114   Min.   : 46.0   Min.   : 537.0   Min.   : 8.00  
+ 1st Qu.: 8.00   1st Qu.:1606   1st Qu.: 72.0   1st Qu.: 716.5   1st Qu.:13.50  
+ Median : 9.00   Median :1999   Median : 90.0   Median : 860.5   Median :15.00  
+ Mean   :10.95   Mean   :3117   Mean   :106.1   Mean   : 973.5   Mean   :15.31  
+ 3rd Qu.:14.75   3rd Qu.:5031   3rd Qu.:145.0   3rd Qu.:1275.2   3rd Qu.:17.00  
+ Max.   :24.00   Max.   :7456   Max.   :230.0   Max.   :1713.0   Max.   :24.80  
+ NA&#39;s   :8                      NA&#39;s   :5                                       
+      year          origin        cylind     
+ Min.   :70.00   Europe: 66   Min.   :4.000  
+ 1st Qu.:73.00   Japan : 69   1st Qu.:4.000  
+ Median :76.00   USA   :179   Median :4.000  
+ Mean   :75.91                Mean   :5.363  
+ 3rd Qu.:79.00                3rd Qu.:8.000  
+ Max.   :82.00                Max.   :8.000  
+
+</code></pre>
+
+<pre><code class="r">&gt; numSummary(sub_cylind[,&quot;cylind&quot;, drop=FALSE], groups=sub_cylind$origin, 
++   statistics=c(&quot;mean&quot;, &quot;sd&quot;, &quot;IQR&quot;, &quot;quantiles&quot;), quantiles=c(0,.25,.5,.75,1))
+</code></pre>
+
+<pre><code>           mean       sd IQR 0% 25% 50% 75% 100% cylind:n
+Europe 4.000000 0.000000   0  4   4   4   4    4       66
+Japan  4.000000 0.000000   0  4   4   4   4    4       69
+USA    6.391061 1.966897   4  4   4   8   8    8      179
+</code></pre>
+
+<p>ahora hemos buscado cual es el origen con mas coches con 4 y 8 cilindros</p>
+
+<pre><code class="r">&gt; encoding=&quot;utf-8&quot;
+</code></pre>
+
+<pre><code class="r">&gt; options(encoding=&quot;utf-8&quot;)
+</code></pre>
+
+</body>
+
+</html>

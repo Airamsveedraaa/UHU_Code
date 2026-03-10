@@ -1,0 +1,221 @@
+
+> local({
++   .x <- 0:12
++   plotDistr(.x, dbinom(.x, size=21, prob=0.25), xlab="Number of Successes", 
++   ylab="Probability Mass", 
++   main="Binomial Distribution:  Binomial trials=21, Probability of success=0.25", 
++   discrete=TRUE)
++ })
+
+> local({
++   .x <- 0:12
++   plotDistr(.x, pbinom(.x, size=21, prob=0.25), xlab="Number of Successes",
++   ylab="Cumulative Probability", 
++   main="Binomial Distribution:  Binomial trials=21, Probability of success=0.25", 
++   discrete=TRUE, cdf=TRUE)
++ })
+
+> local({
++   .Table <- data.frame(Probability=dbinom(0:21, size=21, prob=0.25))
++   rownames(.Table) <- 0:21 
++   print(.Table)
++ })
+    Probability
+0  2.378409e-03
+1  1.664886e-02
+2  5.549621e-02
+3  1.171587e-01
+4  1.757380e-01
+5  1.991697e-01
+6  1.770398e-01
+7  1.264570e-01
+8  7.376657e-02
+9  3.551724e-02
+10 1.420689e-02
+11 4.735631e-03
+12 1.315453e-03
+13 3.035661e-04
+14 5.782212e-05
+15 8.994552e-06
+16 1.124319e-06
+17 1.102273e-07
+18 8.164989e-09
+19 4.297362e-10
+20 1.432454e-11
+21 2.273737e-13
+
+> qbinom(c(10), size=21, prob=0.25, lower.tail=TRUE)
+[1] NaN
+
+> pbinom(c(10), size=21, prob=0.25, lower.tail=TRUE)
+[1] 0.9935773
+
+> pbinom(c(10), size=21, prob=0.25, lower.tail=FALSE)
+[1] 0.00642271
+
+> local({
++   .x <- 0:14
++   plotDistr(.x, dpois(.x, lambda=5), xlab="x", ylab="Probability Mass", 
++   main="Poisson Distribution:  Mean=5", discrete=TRUE)
++ })
+
+> local({
++   .x <- 0:14
++   plotDistr(.x, ppois(.x, lambda=5), xlab="x",ylab="Cumulative Probability", 
++   main="Poisson Distribution:  Mean=5", discrete=TRUE, cdf=TRUE)
++ })
+
+> local({
++   .Table <- data.frame(Probability=dpois(0:14, lambda=5))
++   rownames(.Table) <- 0:14 
++   print(.Table)
++ })
+    Probability
+0  0.0067379470
+1  0.0336897350
+2  0.0842243375
+3  0.1403738958
+4  0.1754673698
+5  0.1754673698
+6  0.1462228081
+7  0.1044448630
+8  0.0652780393
+9  0.0362655774
+10 0.0181327887
+11 0.0082421767
+12 0.0034342403
+13 0.0013208616
+14 0.0004717363
+
+> qpois(c(7), lambda=10, lower.tail=TRUE)
+[1] NaN
+
+> qpois(c(7), lambda=10, lower.tail=FALSE)
+[1] NaN
+
+> ppois(c(7), lambda=10, lower.tail=TRUE)
+[1] 0.2202206
+
+> qpois(c(0.9), lambda=5, lower.tail=TRUE)
+[1] 8
+
+> local({
++   .x <- 0:26
++   plotDistr(.x, dgeom(.x, prob=0.25), xlab="Number of Failures until Success", 
++   ylab="Probability Mass", main="Geometric Distribution:  Probability of success=0.25", 
++   discrete=TRUE)
++ })
+
+> local({
++   .Table <- data.frame(Probability=dgeom(0:26, prob=0.25))
++   rownames(.Table) <- 0:26 
++   print(.Table)
++ })
+    Probability
+0  0.2500000000
+1  0.1875000000
+2  0.1406250000
+3  0.1054687500
+4  0.0791015625
+5  0.0593261719
+6  0.0444946289
+7  0.0333709717
+8  0.0250282288
+9  0.0187711716
+10 0.0140783787
+11 0.0105587840
+12 0.0079190880
+13 0.0059393160
+14 0.0044544870
+15 0.0033408653
+16 0.0025056489
+17 0.0018792367
+18 0.0014094275
+19 0.0010570706
+20 0.0007928030
+21 0.0005946022
+22 0.0004459517
+23 0.0003344638
+24 0.0002508478
+25 0.0001881359
+26 0.0001411019
+
+> pgeom(c(6), prob=0.25, lower.tail=TRUE)
+[1] 0.8665161
+
+> pgeom(c(5), prob=0.25, lower.tail=TRUE)
+[1] 0.8220215
+
+> local({
++   .Table <- data.frame(Probability=dnbinom(0:40, size=3, prob=0.25))
++   rownames(.Table) <- 0:40 
++   print(.Table)
++ })
+    Probability
+0  0.0156250000
+1  0.0351562500
+2  0.0527343750
+3  0.0659179688
+4  0.0741577148
+5  0.0778656006
+6  0.0778656006
+7  0.0750846863
+8  0.0703918934
+9  0.0645259023
+10 0.0580733120
+11 0.0514740720
+12 0.0450398130
+13 0.0389767613
+14 0.0334086525
+15 0.0283973546
+16 0.0239602680
+17 0.0200843423
+18 0.0167369519
+19 0.0138740522
+20 0.0114460931
+21 0.0094021479
+22 0.0076926665
+23 0.0062711955
+24 0.0050953463
+25 0.0041272305
+26 0.0033335323
+27 0.0026853455
+28 0.0021578669
+29 0.0017300140
+30 0.0013840112
+31 0.0011049767
+32 0.0008805283
+33 0.0007004202
+34 0.0005562161
+35 0.0004409999
+36 0.0003491249
+37 0.0002759974
+38 0.0002178927
+39 0.0001718000
+40 0.0001352925
+
+> local({
++   .Table <- data.frame(Probability=dhyper(0:2, m=10, n=10, k=2))
++   rownames(.Table) <- 0:2 
++   print(.Table)
++ })
+  Probability
+0   0.2368421
+1   0.5263158
+2   0.2368421
+
+> local({
++   .Table <- data.frame(Probability=dhyper(0:5, m=5, n=15, k=10))
++   rownames(.Table) <- 0:5 
++   print(.Table)
++ })
+  Probability
+0  0.01625387
+1  0.13544892
+2  0.34829721
+3  0.34829721
+4  0.13544892
+5  0.01625387
+
+> options(encoding="utf-8")
+

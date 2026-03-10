@@ -1,0 +1,70 @@
+
+> load("C:/Users/Airam/Downloads/World95R.RData")
+
+> example1 <- subset(World95, subset=region=="OECD")
+
+> normalityTest(~b_to_d, test="shapiro.test", data=example1)
+
+	Shapiro-Wilk normality test
+
+data:  b_to_d
+W = 0.89222, p-value = 0.0248
+
+
+> with(example1, qqPlot(b_to_d, dist="norm", id=list(method="y", n=1, 
++   labels=rownames(example1))))
+49 
+10 
+
+> editDataset(example1)
+
+> normalityTest(~b_to_d, test="shapiro.test", data=example1)
+
+	Shapiro-Wilk normality test
+
+data:  b_to_d
+W = 0.90986, p-value = 0.06335
+
+
+> 802+795+752+810+783/5
+[1] 3315.6
+
+> 802+795+752+810+783
+[1] 3942
+
+> 3942/5
+[1] 788.4
+
+> editDataset(Example2)
+
+> with(Example2, (t.test(tons, alternative='less', mu=800, conf.level=.95)))
+
+	One Sample t-test
+
+data:  tons
+t = -1.146, df = 4, p-value = 0.1578
+alternative hypothesis: true mean is less than 800
+95 percent confidence interval:
+     -Inf 809.9791
+sample estimates:
+mean of x 
+    788.4 
+
+
+> with(Example4, (t.test(Time.bef, Time.aft, alternative='less', conf.level=.95, 
++   paired=TRUE)))
+
+	Paired t-test
+
+data:  Time.bef and Time.aft
+t = -4.4508, df = 9, p-value = 0.0007992
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -5.293262
+sample estimates:
+mean of the differences 
+                     -9 
+
+
+> options(encoding="utf-8")
+

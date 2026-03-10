@@ -1,0 +1,227 @@
+<!-- R Commander Markdown Template -->
+
+PRACTICA 1
+=======================
+
+### Your Name
+
+### `r as.character(Sys.Date())`
+
+```{r echo=FALSE}
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, out.width=750, fig.height=8, fig.width=8)
+library(Rcmdr)
+library(car)
+library(RcmdrMisc)
+```
+
+
+```{r echo=FALSE}
+# include this code chunk as-is to enable 3D graphs
+library(rgl)
+knitr::knit_hooks$set(webgl = hook_webgl)
+```
+
+```{r}
+load("C:/Users/Airam/AppData/Local/Temp/RtmpQj7g9g/Example_people")
+```
+Primeramente hemos creado el conjunto de datos Example_people con lo que da la moodle
+
+```{r}
+load("C:/Users/Airam/AppData/Local/Temp/RtmpQj7g9g/People1")
+```
+
+```{r}
+load("C:/Users/Airam/AppData/Local/Temp/RtmpQj7g9g/People1_hair")
+```
+
+```{r}
+load("C:/Users/Airam/AppData/Local/Temp/RtmpQj7g9g/People2")
+```
+Ahora se han creado los 3 conjuntos de datos People1,People1_hair y People2 con los datos dados de moodle
+
+```{r}
+People1_data <- merge(People1, People1_hair, all=TRUE, by="row.names")
+rownames(People1_data) <- People1_data$Row.names
+People1_data$Row.names <- NULL
+```
+
+hemos mezclado los conjuntos People1 y People1_hair por columnas en People1_Data, eliminando la columna de nombre repetida
+
+```{r}
+All_people <- mergeRows(People1_data, People2, common.only=FALSE)
+```
+
+```{r}
+People1_data <- merge(People1, People1_hair, all=TRUE, by="row.names")
+rownames(People1_data) <- People1_data$Row.names
+People1_data$Row.names <- NULL
+```
+
+```{r}
+All_people <- mergeRows(People1_data, People2, common.only=FALSE)
+```
+
+Finalmente, mezclamos el conjunto People1_Data y people2 por filas y obtenemos el conjunto All_people
+
+```{r}
+All_people$BMI <- with(All_people, Weight/ Height^2)
+```
+
+Codificamos la nueva variable BMI y la añadimos al conjunto de datos activo
+
+```{r}
+load("C:/Users/Airam/Downloads/RCars_EN (1).RData")
+```
+
+```{r}
+cons_Europe <- subset(RCars_en, subset=origin=="Europe", select=c(cons))
+```
+
+```{r}
+summary(RCars_en)
+```
+
+
+```{r}
+library(abind, pos=25)
+```
+
+
+```{r}
+library(e1071, pos=26)
+```
+
+
+```{r}
+numSummary(RCars_en[,"cons", drop=FALSE], groups=RCars_en$origin, statistics=c("mean",
+   "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+```
+
+Lo que hemos hecho hasta ahora, cargar el conjunto de datos Rcars, filtrar el conjunto de datos para coger todos esos cochesde origen europeo y ver su consumicion
+y posteriormente hemos usado los resumenes numericos del apartado estadisticos para hallar varias cosas
+primeramente la media de consumicion de los coches japoneses, 8.05 l/100km en este caso
+
+ahora hallaremos los cv maximos de los coches que no tienen 8 cilindros
+
+```{r}
+numSummary(RCars_en[,"HP", drop=FALSE], statistics=c("mean", "sd", "IQR", 
+  "quantiles"), quantiles=c(0,.25,.5,.75,1))
+```
+
+```{r}
+summary(RCars_en)
+```
+
+
+```{r}
+binnedCounts(RCars_en[,"HP", drop=FALSE])
+```
+
+```{r}
+summary(RCars_en)
+```
+
+
+```{r}
+cil_no_8 <- subset(RCars_en, subset=cylind !=8)
+```
+
+```{r}
+summary(cil_no_8)
+```
+
+el maximo de cv son 165 para los que no tienen 8 cilindros
+
+```{r}
+accel_Europe <- subset(RCars_en, subset=cylind==4 && origin=="Europe")
+```
+
+```{r}
+accel_4 <- subset(RCars_en, subset=origin=="Europe" && cylind==4, select=c(accel))
+```
+
+```{r}
+subaccel <- subset(RCars_en, subset=origin=="Europe" & cylind==4, select=c(accel))
+```
+
+
+```{r}
+summary(subaccel)
+```
+
+el valor maximo de accel para los coches europeos que tienen 4 cilindros es 24.8
+
+```{r}
+hp_minor8 <- subset(RCars_en, subset=cons<8, select=c(HP))
+```
+
+
+```{r}
+summary(hp_minor8)
+```
+
+ahora hemos buscado el valor medio de hp para los coches que no sobrepasan una consumicion de 8l/100km
+
+```{r}
+cylind_origin <- subset(RCars_en, subset=cylind=4 & cylind=8, select=c(cylind))
+```
+
+```{r}
+numSummary(RCars_en[,"cylind", drop=FALSE], groups=RCars_en$origin, 
+  statistics=c("mean", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+```
+
+```{r}
+cylind_sub <- subset(RCars_en, subset=cylind=4&8)
+```
+
+```{r}
+sub_cylind <- subset(RCars_en, subset=cylind ==4 && ==8, select=c(cylind))
+```
+
+```{r}
+subcyl <- subset(RCars_en, subset=cylind=4&8)
+```
+
+```{r}
+sub_cyl <- subset(RCars_en, subset=cylind==4 | cylind==8, select=c(cylind))
+```
+
+
+```{r}
+summary(sub_cyl)
+```
+
+
+```{r}
+summary(sub_cyl)
+```
+
+```{r}
+sub_cylind <- subset(RCars_en, subset=cylind==4 | cylind==8)
+```
+
+```{r}
+summary(sub_cylind)
+```
+
+
+```{r}
+numSummary(sub_cylind[,"cylind", drop=FALSE], groups=sub_cylind$origin, 
+  statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+```
+
+ahora hemos buscado cual es el origen con mas coches con 4 y 8 cilindros
+
+```{r}
+encoding="utf-8"
+```
+
+
+```{r}
+options(encoding="utf-8")
+```
+
+
+
