@@ -2,7 +2,7 @@
 
 Repositorio de prácticas y proyectos del Grado en Ingeniería Informática (UHU).
 
-> ⚠️ **Aviso:** Este repositorio recoge las prácticas entregadas para cada asignatura en los años que yo las he cursado. Puede que algunas no estén mantenidas activamente o contengan errores, dado que son las que yo entregué en su momento y puede que haya cambiado el temario o que simplemente mi código sea erróneo en algún punto. Si encuentras alguno, ¡no dudes en comentármelo!
+> ⚠️ **Aviso:** Este repositorio recoge las prácticas entregadas para cada asignatura en los años que yo las he cursado. Puede que algunas no estén mantenidas activamente o contengan errores, dado que son las que yo entregué en su momento y puede que haya cambiado el temario o que simplemente mi código sea erróneo en algún punto y que hay asignaturas que no he aprobado en el mismo año que las he cursado o sus prácticas simplemente no tenían nada entregable a modo código, siento más de resolución de problemas en el propio aula. Si encuentras algún error o similar, ¡no dudes en comentármelo!
 >
 > Puedes contactarme a través de mi perfil de GitHub: [@Airamsveedraaa](https://github.com/Airamsveedraaa)
 
