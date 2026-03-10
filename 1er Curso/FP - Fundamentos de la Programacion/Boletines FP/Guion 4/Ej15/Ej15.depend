@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1738857569 source:c:\users\airam\desktop\estudio fp\guion 4\ej15\main.cpp
+	<iostream>
+	<cstring>
+	<conio.h>
+	<cctype>
+

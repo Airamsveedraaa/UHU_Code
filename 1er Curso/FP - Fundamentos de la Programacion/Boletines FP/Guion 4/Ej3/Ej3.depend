@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1738619511 source:c:\users\airam\desktop\estudio fp\guion 4\ej3\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+

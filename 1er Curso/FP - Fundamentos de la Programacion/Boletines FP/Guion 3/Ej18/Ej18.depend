@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1738595281 source:c:\users\airam\desktop\estudio fp\guion 3\ej18\main.cpp
+	<iostream>
+	<windows.h>
+

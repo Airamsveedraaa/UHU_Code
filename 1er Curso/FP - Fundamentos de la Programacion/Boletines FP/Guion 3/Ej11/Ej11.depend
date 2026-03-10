@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1738531682 source:c:\users\airam\desktop\estudio fp\guion 3\ej11\main.cpp
+	<iostream>
+	<cstring>
+	<windows.h>
+	<cstdlib>
+	<ctime>
+
