@@ -15,13 +15,13 @@ Repositorio de prácticas y proyectos del Grado en Ingeniería Informática (UHU
 | FP — Fundamentos de la Programación | C++ | [Ver carpeta](./1er%20Curso/FP%20-%20Fundamentos%20de%20la%20Programacion) |
 | ED — Estructura de Datos | C++ | [Ver carpeta](./1er%20Curso/ED%20-%20Estructura%20de%20Datos) |
 | FAA — Fundamentos de Análisis de Algoritmos | C++ | [Ver carpeta](./1er%20Curso/FAA%20-%20Fundamentos%20de%20Analisis%20de%20Algoritmos) |
-| FC — Fundamentos de Computadores | — | [Ver carpeta](./1er%20Curso/FC%20-%20Fundamentos%20de%20Computadores) |
+| FC — Fundamentos de Computadores | DigitalWords/VHDL | [Ver carpeta](./1er%20Curso/FC%20-%20Fundamentos%20de%20Computadores) |
 | TC — Tecnología de Computadores | — | [Ver carpeta](./1er%20Curso/TC%20-%20Tecnologia%20de%20Computadores) |
 | FÍSICA — Física | — | [Ver carpeta](./1er%20Curso/FISICA%20-%20Fisica) |
 | ADE — Administración y Dirección de Empresas | — | [Ver carpeta](./1er%20Curso/ADE%20-%20Administracion%20y%20Direccion%20de%20Empresas) |
-| M1 — Matemáticas 1 | — | [Ver carpeta](./1er%20Curso/M1%20-%20Matematicas%201) |
-| M2 — Matemáticas 2 | — | [Ver carpeta](./1er%20Curso/M2%20-%20Matematicas%202) |
-| M3 — Matemáticas 3 | — | [Ver carpeta](./1er%20Curso/M3%20-%20Matematicas%203) |
+| M1 — Matemáticas 1 | Matlab | [Ver carpeta](./1er%20Curso/M1%20-%20Matematicas%201) |
+| M2 — Matemáticas 2 | Matlab | [Ver carpeta](./1er%20Curso/M2%20-%20Matematicas%202) |
+| M3 — Matemáticas 3 | Rcommander | [Ver carpeta](./1er%20Curso/M3%20-%20Matematicas%203) |
 
 ---
 
