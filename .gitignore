@@ -1,0 +1,44 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Visual Studio / Visual Studio Code
+.vs/
+*.user
+*.suo
+*.sln.docstates
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+# JetBrains IDEs (CLion, IntelliJ, etc.)
+.idea/
+*.iml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+env/
+*.egg-info/
+
+# C/C++
+*.o
+*.out
+*.a
+*.so
+
+# Java
+*.class
+*.jar
+
+# Logs y temporales
+*.log
+*.tmp
+*.temp
