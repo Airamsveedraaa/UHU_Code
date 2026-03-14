@@ -39,8 +39,8 @@ public class Tron_P0_BaseSimple {
      // 2. Elegir Agente (Descomentar el que se quiera probar)
         //AgenteInteractivo agente= new AgenteInteractivo();
          //AgenteReactivo agente = new AgenteReactivo();
-        //AgenteDeliberativo agente = new AgenteDeliberativo(juego.filas, juego.cols);
-        AgenteGreedy agente= new AgenteGreedy();
+        AgenteDeliberativo agente = new AgenteDeliberativo(juego.filas, juego.cols);
+        //AgenteGreedy agente= new AgenteGreedy();
         System.out.println("--- Inicio de la Simulación ---");
         int ciclos = 0;
         boolean juegoActivo = true;
