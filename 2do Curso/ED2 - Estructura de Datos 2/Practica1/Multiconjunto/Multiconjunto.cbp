@@ -40,8 +40,8 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="main.cpp" />
-		<Unit filename="main.h" />
+		<Unit filename="MC.cpp" />
+		<Unit filename="MC.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
