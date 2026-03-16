@@ -2,7 +2,7 @@ package P0;
 
 import java.util.Random;
 
-class AgenteDeliberativo2B {
+class AgenteDeliberativo2B extends Agente implements MetricaPasos , MetricaInercia,MetricaMem{
 	
 	Random generador= new Random();
 	char mem[][];
@@ -13,6 +13,44 @@ public AgenteDeliberativo2B(int filas, int cols) {
 
 	mem=new char[filas][cols];
 }
+
+
+public int numPasos (int f,int c,int df, int dc, char mem[][], Entorno mapa) {
+	 int pasos=0;
+	 for(int i=1; ;i++) {
+		 if(mapa.esTransitable(f +i*df, c +i*dc) && mem[f+i*df][c+i*dc]=='\0'){
+			 pasos++;
+		 }
+		 else {
+			 break;
+		 }
+	 }
+	 return pasos;
+}
+
+public void actualizarMem(int f, int c, Entorno mapa) {
+	//posicion actual pisada
+	mem[f][c]='.';
+	
+	if(f-1 >=0) {mem[f-1][c]=mapa.grid[f-1][c]==' ' ? 'v': mapa.grid[f-1][c];}
+	if(f+1< mapa.filas) {mem[f+1][c]=mapa.grid[f+1][c]==' ' ? 'v':mapa.grid[f+1][c];}
+	if(c-1 >=0) {mem[f][c-1]=mapa.grid[f][c-1]==' ' ? 'v': mapa.grid[f][c-1];}
+	if(c+1< mapa.cols) {mem[f][c+1]=mapa.grid[f][c+1]==' ' ? 'v':mapa.grid[f][c+1];}
+}
+
+public boolean puedeInercia(String ultimaAccion, int f, int c, char mem[][],Entorno mapa) {
+	if(ultimaAccion.equals(""))return false;
+	if(ultimaAccion.equals("N")) {return mapa.esTransitable(f-1, c) && mem[f-1][c]=='\0';}
+	if(ultimaAccion.equals("S")) {return mapa.esTransitable(f+1, c) && mem[f+1][c]=='\0';}
+	if(ultimaAccion.equals("E")) {return mapa.esTransitable(f, c+1) && mem[f][c+1]=='\0';}
+	if(ultimaAccion.equals("O")) {return mapa.esTransitable(f, c-1) && mem[f][c-1]=='\0';}
+	return false;
+}
+
+public 	boolean esNuevaZona(int f,int c,char mem[][]) {
+	
+	return mem[f][c]=='\0';
+}
 public String pensar(Entorno mapa) {
 	
 	int fila=mapa.agenteF;
@@ -20,108 +58,73 @@ public String pensar(Entorno mapa) {
 	String accion="";
 	mem[fila][col]='.';
 	String acciones[]=new String[4];
-	String visitadas[]=new String[4];
 	int n=0;
-	int m=0;
-	
+	int maxPasos=-1;
 	//comprobar si puedo seguir la inercia de movimiento
-	if(!ultimaAccion.equals("")) {
-		//si entra es que la ultima accion ha sido una valida
-		if(ultimaAccion.equals("N")) {
-			if(mapa.esTransitable(fila -1, col) && mem[fila-1][col]=='\0') {
-				//si es transitable Y ADEMÁS, no ha sido visitada, la devuelvo directamente
-				ultimaAccion="N";
+	if(puedeInercia(ultimaAccion,fila,col,mem,mapa)) {
+				actualizarMem(fila,col,mapa);
 				return ultimaAccion;
-			}
+			}	
+		//2.movernos en base a pasos
+		if(mapa.esTransitable(fila-1, col)) {
+			int pasos=numPasos(fila,col,-1,0,mem,mapa);
+			if(pasos>maxPasos) {maxPasos=pasos;}
 		}
-		if(ultimaAccion.equals("S")) {
-			if(mapa.esTransitable(fila +1, col) && mem[fila+1][col]=='\0') {
-				//si es transitable Y ADEMÁS, no ha sido visitada, la devuelvo directamente
-				ultimaAccion="S";
-				return ultimaAccion;
-			}
+		
+		if(mapa.esTransitable(fila+1, col)) {
+			int pasos=numPasos(fila,col,+1,0,mem,mapa);
+			if(pasos>maxPasos) {maxPasos=pasos;}
 		}
-		if(ultimaAccion.equals("E")) {
-			if(mapa.esTransitable(fila, col+1) && mem[fila][col+1]=='\0') {
-				//si es transitable Y ADEMÁS, no ha sido visitada, la devuelvo directamente
-				ultimaAccion="E";
-				return ultimaAccion;
-			}
+		
+		if(mapa.esTransitable(fila, col-1)) {
+			int pasos=numPasos(fila,col,0,-1,mem,mapa);
+			if(pasos>maxPasos) {maxPasos=pasos;}
 		}
-		if(ultimaAccion.equals("O")) {
-			if(mapa.esTransitable(fila, col-1) && mem[fila][col-1]=='\0') {
-				//si es transitable Y ADEMÁS, no ha sido visitada, la devuelvo directamente
-				ultimaAccion="O";
-				return ultimaAccion;
-			}
+		
+		if(mapa.esTransitable(fila, col+1)) {
+			int pasos=numPasos(fila,col,0,+1,mem,mapa);
+			if(pasos>maxPasos) {maxPasos=pasos;}
 		}
-	}
-	
-	if(mapa.esTransitable(fila -1, col)) {
-		//si Norte es transitable
-		if(mem[fila-1][col]=='\0') {
-			acciones[n]="N";
-			n++;
-			mem[fila-1][col]='v'; //vista esa casilla, si es visitada se pone un '.'
+		
+		//Segunda pasada para quedarnos con las de maximos pasos unicamente y elegir entre esas si es que hay empate
+		if(mapa.esTransitable(fila-1, col)) {
+			int pasos=numPasos(fila,col,-1,0,mem,mapa);
+			if(pasos==maxPasos) {acciones[n]="N";n++;}
 		}
-		else {
-			visitadas[m]="N";
-			m++;
+		
+		if(mapa.esTransitable(fila+1, col)) {
+			int pasos=numPasos(fila,col,+1,0,mem,mapa);
+			if(pasos==maxPasos) {acciones[n]="S";n++;}
 		}
-	}
-	if(mapa.esTransitable(fila +1, col)) {
-		//si Sur es transitable
-		if(mem[fila+1][col]=='\0') {
-			acciones[n]="S";
-			n++;
-			mem[fila+1][col]='v';
+		
+		if(mapa.esTransitable(fila, col-1)) {
+			int pasos=numPasos(fila,col,0,-1,mem,mapa);
+			if(pasos==maxPasos) {acciones[n]="O";n++;}
 		}
-		else {
-			visitadas[m]="S";
-			m++;
+		
+		if(mapa.esTransitable(fila, col+1)) {
+			int pasos=numPasos(fila,col,0,+1,mem,mapa);
+			if(pasos==maxPasos) {acciones[n]="E";n++;}
 		}
-	}
-	if(mapa.esTransitable(fila, col+1)) {
-		//si Este es transitable
-		if(mem[fila][col+1]=='\0') {
-			acciones[n]="E";
-			n++;
-			mem[fila][col+1]='v';
+		
+		if(n==0) {
+		    // tercer nivel: todas las zonas nuevas agotadas, elegir entre transitables visitadas
+		    String[] visitadas = new String[4];
+		    int m = 0;
+		    if(mapa.esTransitable(fila-1,col)) { visitadas[m]="N"; m++; }
+		    if(mapa.esTransitable(fila+1,col)) { visitadas[m]="S"; m++; }
+		    if(mapa.esTransitable(fila,col+1)) { visitadas[m]="E"; m++; }
+		    if(mapa.esTransitable(fila,col-1)) { visitadas[m]="O"; m++; }
+		    if(m==0) return "N";
+		    ultimaAccion = visitadas[generador.nextInt(m)];
+		    return ultimaAccion;
 		}
-		else {
-			visitadas[m]="E";
-			m++;
-		}
-	}
-	if(mapa.esTransitable(fila, col-1)) {
-		//si Oeste es transitable
-		if(mem[fila][col-1]=='\0') {
-			acciones[n]="O";
-			n++;
-			mem[fila][col-1]='v';
-		}
-		else {
-			visitadas[m]="O";
-			m++;
-		}
-	}
-	
-	if(n!=0) {
-		//si n es distinto de 0, tengo al menos una transitable
-		//elegir entre 1 de todas esas transitables
+		
 		int indice=generador.nextInt(n);
 		accion=acciones[indice];
 		ultimaAccion=accion;
-	}
-	else if(m!=0) {
-		//si es 0, es que todas han sido visitadas ya, hay que tirar del otro array
-		int indice=generador.nextInt(m);
-		accion=visitadas[indice];
-		ultimaAccion=accion;
-	}
-	else {
-		return "N"; //caso base para la salida estandar y no consumir ciclos
-	}
+		
+
 	imprimirMemoria();
 	return accion;//“acción más favorable”
 

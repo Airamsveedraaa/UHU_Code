@@ -1,11 +1,24 @@
 package P0;
 
 import java.util.Random;
-public class AgenteDeliberativo2A {
+public class AgenteDeliberativo2A extends Agente implements MetricaSalida, MetricaHuecos {
 	
 	 Random generador= new Random();
 	 char [][] visor;
 	 
+	 
+	 public boolean esSalida(int f, int c, Entorno mapa) {
+		 return f==mapa.metaF && c==mapa.metaC;
+	 }
+	 
+	 public int numHuecos (int f,int c,Entorno mapa) {
+			int huecos=0;
+			if(mapa.esTransitable(f-1,c)) {huecos++;}
+			if(mapa.esTransitable(f+1, c)) {huecos++;}
+			if(mapa.esTransitable(f, c-1)) {huecos++;}
+			if(mapa.esTransitable(f, c+1)) {huecos++;}
+			return huecos;
+		}
 	public String pensar(Entorno mapa) {
 
 		String accion="";
@@ -21,7 +34,7 @@ public class AgenteDeliberativo2A {
 		if(mapa.esTransitable(fila-1, col)) {
 			//Si el norte es transitable, compruebo las otras 3 posibles 
 			//Hacer NS no tiene sentido porque vuelves al sitio del que inicias
-			if(fila-1==mapa.metaF && col==mapa.metaC) {
+			if(esSalida(fila-1,col,mapa)) {
 				//me lleva a salida, la eligo
 				accion="N";
 				return accion;
@@ -30,7 +43,7 @@ public class AgenteDeliberativo2A {
 				//Norte no es salida, miramos las otras 3 posibles direcciones
 				if(mapa.esTransitable(fila -2, col)) {
 					//si NN es transitable, ver si lleva a salida igual que antes
-					if(fila-2==mapa.metaF && col==mapa.metaC) {
+					if(esSalida(fila-2,col,mapa)) {
 						//me lleva a salida, la eligo
 						accion="N";
 						return accion;
@@ -39,7 +52,7 @@ public class AgenteDeliberativo2A {
 				
 				if(mapa.esTransitable(fila-1, col +1)) {
 					//NE como opcion
-					if (fila-1==mapa.metaF && col+1==mapa.metaC){
+					if (esSalida(fila-1,col+1,mapa)){
 						accion="E";
 						return accion;
 					}
@@ -47,7 +60,7 @@ public class AgenteDeliberativo2A {
 				
 				if(mapa.esTransitable(fila-1, col-1)) {
 					//NO como opcion
-					if(fila-1==mapa.metaF && col-1==mapa.metaC) {
+					if(esSalida(fila-1,col-1,mapa)) {
 						accion="O";
 						return accion;
 					}
@@ -59,7 +72,7 @@ public class AgenteDeliberativo2A {
 		if(mapa.esTransitable(fila+1, col)) {
 			//Si el Sur es transitable, compruebo las otras 3 posibles 
 			//Hacer SN no tiene sentido porque vuelves al sitio del que inicias
-			if(fila+1==mapa.metaF && col==mapa.metaC) {
+			if(esSalida(fila+1,col,mapa)) {
 				//me lleva a salida, la eligo
 				accion="S";
 				return accion;
@@ -68,7 +81,7 @@ public class AgenteDeliberativo2A {
 				//Sur no es salida, miramos las otras 3 posibles direcciones
 				if(mapa.esTransitable(fila+2 , col)) {
 					//si SS es transitable, ver si lleva a salida igual que antes
-					if(fila+2==mapa.metaF && col==mapa.metaC) {
+					if(esSalida(fila+2,col,mapa)) {
 						//me lleva a salida, la eligo
 						accion="S";
 						return accion;
@@ -77,7 +90,7 @@ public class AgenteDeliberativo2A {
 				
 				if(mapa.esTransitable(fila+1, col +1)) {
 					//SE como opcion
-					if (fila+1==mapa.metaF && col+1==mapa.metaC){
+					if (esSalida(fila+1,col+1,mapa)){
 						accion="E";
 						return accion;
 					}
@@ -85,7 +98,7 @@ public class AgenteDeliberativo2A {
 				
 				if(mapa.esTransitable(fila+1, col-1)) {
 					//SO como opcion
-					if(fila+1==mapa.metaF && col-1==mapa.metaC) {
+					if(esSalida(fila+1,col-1,mapa)) {
 						accion="O";
 						return accion;
 					}
@@ -96,7 +109,7 @@ public class AgenteDeliberativo2A {
 		if(mapa.esTransitable(fila, col+1)) {
 			//Si el este es transitable, compruebo las otras 3 posibles 
 			//Hacer EO no tiene sentido porque vuelves al sitio del que inicias
-			if(fila==mapa.metaF && col+1==mapa.metaC) {
+			if(esSalida(fila,col+1,mapa)) {
 				//me lleva a salida, la eligo
 				accion="E";
 				return accion;
@@ -105,16 +118,16 @@ public class AgenteDeliberativo2A {
 				//Norte no es salida, miramos las otras 3 posibles direcciones
 				if(mapa.esTransitable(fila, col+2)) {
 					//si EE es transitable, ver si lleva a salida igual que antes
-					if(fila==mapa.metaF && col+2==mapa.metaC) {
+					if(esSalida(fila,col+2,mapa)) {
 						//me lleva a salida, la eligo
-						accion="N";
+						accion="E";
 						return accion;
 					}
 				}
 				
 				if(mapa.esTransitable(fila+1, col+1)) {
 					//ES como opcion
-					if (fila+1==mapa.metaF && col+1==mapa.metaC){
+					if (esSalida(fila+1,col+1,mapa)){
 						accion="S";
 						return accion;
 					}
@@ -122,7 +135,7 @@ public class AgenteDeliberativo2A {
 				
 				if(mapa.esTransitable(fila-1, col+1)) {
 					//EN como opcion
-					if(fila-1==mapa.metaF && col+1==mapa.metaC) {
+					if(esSalida(fila-1,col+1,mapa)) {
 						accion="N";
 						return accion;
 					}
@@ -133,7 +146,7 @@ public class AgenteDeliberativo2A {
 		if(mapa.esTransitable(fila, col-1)) {
 			//Si el oeste es transitable, compruebo las otras 3 posibles 
 			//Hacer OE no tiene sentido porque vuelves al sitio del que inicias
-			if(fila==mapa.metaF && col-1==mapa.metaC) {
+			if(esSalida(fila,col-1,mapa)) {
 				//me lleva a salida, la eligo
 				accion="O";
 				return accion;
@@ -142,7 +155,7 @@ public class AgenteDeliberativo2A {
 				//Oeste no es salida, miramos las otras 3 posibles direcciones
 				if(mapa.esTransitable(fila, col-2)) {
 					//si OO es transitable, ver si lleva a salida igual que antes
-					if(fila==mapa.metaF && col-2==mapa.metaC) {
+					if(esSalida(fila,col-2,mapa)) {
 						//me lleva a salida, la eligo
 						accion="O";
 						return accion;
@@ -151,7 +164,7 @@ public class AgenteDeliberativo2A {
 				
 				if(mapa.esTransitable(fila-1, col-1)) {
 					//ON como opcion
-					if (fila-1==mapa.metaF && col-1==mapa.metaC){
+					if (esSalida(fila-1,col-1,mapa)){
 						accion="N";
 						return accion;
 					}
@@ -159,7 +172,7 @@ public class AgenteDeliberativo2A {
 				
 				if(mapa.esTransitable(fila+1, col-1)) {
 					//OS como opcion
-					if(fila+1==mapa.metaF && col-1==mapa.metaC) {
+					if(esSalida(fila+1,col-1,mapa)) {
 						accion="S";
 						return accion;
 					}
@@ -170,20 +183,9 @@ public class AgenteDeliberativo2A {
 		//2. Si por lo que sea, lo anterior no surte efecto, contar huecos y elegir
 		// en caso de empate se elegira aleatoriamente
 		if(mapa.esTransitable(fila-1, col)) {
-			int huecos=0;
 			//si es transitable, contamos huecos que hay en esa direccion
 			//tendremos max 3 huecos porque no podemos retroceder
-			if(mapa.esTransitable(fila-2,col)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila-1,col+1)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila-1,col-1)) {
-				huecos++;
-			}
+			int huecos=numHuecos(fila-1,col,mapa);
 			if(huecos > maxHuecos) {
 				maxHuecos=huecos;
 			}
@@ -193,18 +195,7 @@ public class AgenteDeliberativo2A {
 		//Idem para el resto
 		
 		if(mapa.esTransitable(fila+1, col)) {
-			int huecos=0;
-			if(mapa.esTransitable(fila+2,col)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila+1,col+1)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila+1,col-1)) {
-				huecos++;
-			}
+			int huecos=numHuecos(fila+1,col,mapa);
 			if(huecos > maxHuecos) {
 				maxHuecos=huecos;
 			}
@@ -212,18 +203,7 @@ public class AgenteDeliberativo2A {
 		}
 		
 		if(mapa.esTransitable(fila, col+1)) {
-			int huecos=0;
-			if(mapa.esTransitable(fila,col+2)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila-1,col+1)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila+1,col+1)) {
-				huecos++;
-			}
+			int huecos=numHuecos(fila,col+1,mapa);
 			if(huecos > maxHuecos) {
 				maxHuecos=huecos;
 			}
@@ -231,18 +211,7 @@ public class AgenteDeliberativo2A {
 		}
 		
 		if(mapa.esTransitable(fila, col-1)) {
-			int huecos=0;
-			if(mapa.esTransitable(fila,col-2)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila-1,col-1)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila+1,col-1)) {
-				huecos++;
-			}
+			int huecos=numHuecos(fila,col-1,mapa);
 			if(huecos > maxHuecos) {
 				maxHuecos=huecos;
 			}
@@ -251,18 +220,7 @@ public class AgenteDeliberativo2A {
 		
 		//Segunda pasada para quedarme solo con las de maximos huecos
 		if(mapa.esTransitable(fila-1, col)) {
-			int huecos=0;
-			if(mapa.esTransitable(fila-2,col)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila-1,col+1)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila-1,col-1)) {
-				huecos++;
-			}
+			int huecos=numHuecos(fila-1,col,mapa);
 			if(huecos == maxHuecos) {
 				acciones[n]="N";
 				n++;
@@ -273,18 +231,7 @@ public class AgenteDeliberativo2A {
 		//Idem para el resto
 		
 		if(mapa.esTransitable(fila+1, col)) {
-			int huecos=0;
-			if(mapa.esTransitable(fila+2,col)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila+1,col+1)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila+1,col-1)) {
-				huecos++;
-			}
+			int huecos=numHuecos(fila+1,col,mapa);
 			if(huecos == maxHuecos) {
 				acciones[n]="S";
 				n++;
@@ -293,18 +240,7 @@ public class AgenteDeliberativo2A {
 		}
 		
 		if(mapa.esTransitable(fila, col+1)) {
-			int huecos=0;
-			if(mapa.esTransitable(fila,col+2)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila-1,col+1)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila+1,col+1)) {
-				huecos++;
-			}
+			int huecos=numHuecos(fila,col+1,mapa);
 			if(huecos == maxHuecos) {
 				acciones[n]="E";
 				n++;
@@ -313,18 +249,7 @@ public class AgenteDeliberativo2A {
 		}
 		
 		if(mapa.esTransitable(fila, col-1)) {
-			int huecos=0;
-			if(mapa.esTransitable(fila,col-2)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila-1,col-1)) {
-				huecos++;
-			}
-			
-			if(mapa.esTransitable(fila+1,col-1)) {
-				huecos++;
-			}
+			int huecos=numHuecos(fila,col-1,mapa);
 			if(huecos == maxHuecos) {
 				acciones[n]="O";
 				n++;

@@ -2,15 +2,7 @@ package P0;
 
 import java.util.Random;
 import java.util.Scanner;
-//==========================================
-//TAREA 0: AGENTE INTERACTIVO
-//==========================================
-
-
-//==========================================
-//TAREA 0: AGENTE INTERACTIVO
-//==========================================
-class AgenteInteractivo{
+class AgenteInteractivo extends Agente{
 	
 	Scanner scanner = new Scanner(System.in);
 	
@@ -45,25 +37,13 @@ class AgenteInteractivo{
 		System.out.println("Acción no posible de realizar ");
 	}
 	}while(!entorno.esTransitable(fila,col));
-	// codigo Alumno 
+
 	return accion;
 	
 	}
 }
 
-//Agente reactivo, metodo pensar en el que obtenemos la pos del agente y las posiciones de su alrededor
-//tomamos la posicion en la que estamos y miramos alrededor y solo nos guardamos las transitables
-//una vez teniendo eso, se mueve aleatoriamente entre las posiciones posibles
 
-//Agente que "sabe todo", carga laberinto en memoria completamente, hacemos matriz que represente el mundo
-//y cogemos la casilla que mas cerca este de la salida, es un greedy
-
-//Agente Deliberativo, tiene "memoria", puede ver 2 movimientos mas alla del que puede realizar, puede ver 2 hacia cualquier direccion
-//si es posible por ejemplo, calcular posiciones relativas transitables en la matriz
-//si una opcion lleva a S , tiene prioridad, sino movemos en base a las que lleven a mas huecos libres
-//El segundo deliberativo se acuerda de las casillas ya visitadas.
-//es como que va generando un mundo en su memoria a partir de lo que va visitando.
-//puedo usar libreria con cola prioritaria para establecer el orden de seleccion de movimientos  
 
 
 

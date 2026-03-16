@@ -2,21 +2,13 @@ package P0;
 
 import java.util.Random;
 
-class AgenteReactivo {
-	// --- INICIO CODIGO ALUMNO ---
-	 int fila,col;
-	 Random generador= new Random();
-	 // --- FIN CODIGO ALUMNO ---
+class AgenteReactivo extends Agente{
+	
+	Random generador= new Random();
+	 
 	 public String pensar(Entorno mapa) {
-
-	 // TAREA 1: Completar lógica reactiva
-	 // Usar mapa.esTransitable(...) para mirar N, S, E, O
-	 // Añadir a 'opciones' las direcciones válidas
-
-	 // --- INICIO CODIGO ALUMNO ---
-	 //cogemos la posicion actual del agente
-	 fila=mapa.agenteF;
-	 col=mapa.agenteC;
+	 int fila=mapa.agenteF;
+	 int col=mapa.agenteC;
 	 
 	 //comprobamos las 4 direcciones posibles
 	 int n=0; //dimension array de acciones posibles

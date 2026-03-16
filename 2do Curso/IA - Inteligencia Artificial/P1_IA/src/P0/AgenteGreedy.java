@@ -2,12 +2,18 @@ package P0;
 
 import java.util.Random;
 
-class AgenteGreedy{
+class AgenteGreedy extends Agente implements MetricaManhatan{
+
+	Random generador= new Random();
+	
+	public int distManhatan (int f,int c, Entorno mapa) {
+		int dist= Math.abs(f-mapa.metaF) + Math.abs(c-mapa.metaC);
+		return dist;
+	}
 
 public String pensar(Entorno mapa) {
 	int fila=mapa.agenteF;
 	int col=mapa.agenteC;
-	 Random generador= new Random();
 
 	
 	int menor=Integer.MAX_VALUE;
@@ -17,35 +23,35 @@ public String pensar(Entorno mapa) {
 	
 	//Primera pasada para obtener la menor distancia
 	if(mapa.esTransitable(fila -1 , col)) {
-		distancia=Math.abs(fila-1 - mapa.metaF) + (Math.abs(col - mapa.metaC));
+		distancia=distManhatan(fila-1,col,mapa);
 		if(distancia < menor) {
 			menor=distancia;
 			
 		}
 	}
 	if(mapa.esTransitable(fila +1 , col)) {
-		distancia=Math.abs(fila+1 - mapa.metaF) + (Math.abs(col - mapa.metaC));
+		distancia=distManhatan(fila+1,col,mapa);
 		if(distancia < menor) {
 			menor=distancia;
 			
 		}
 	}
 	if(mapa.esTransitable(fila , col+1)) {
-		distancia=Math.abs(fila - mapa.metaF) + (Math.abs(col+1 - mapa.metaC));
+		distancia=distManhatan(fila,col+1,mapa);
 		if(distancia < menor) {
 			menor=distancia;
 			
 		}
 	}
 	if(mapa.esTransitable(fila , col-1)) {
-		distancia=Math.abs(fila - mapa.metaF) + (Math.abs(col-1 - mapa.metaC));
+		distancia=distManhatan(fila,col-1,mapa);
 		if(distancia < menor) {
 			menor=distancia;
 		}
 	}
 	
 	if(mapa.esTransitable(fila -1 , col)) {
-		distancia=Math.abs(fila-1 - mapa.metaF) + (Math.abs(col - mapa.metaC));
+		distancia=distManhatan(fila-1,col,mapa);
 		if(distancia == menor) {
 			acciones[n]="N";
 			n++;
@@ -53,7 +59,7 @@ public String pensar(Entorno mapa) {
 		}
 	}
 	if(mapa.esTransitable(fila +1 , col)) {
-		distancia=Math.abs(fila+1 - mapa.metaF) + (Math.abs(col - mapa.metaC));
+		distancia=distManhatan(fila+1,col,mapa);
 		if(distancia == menor) {
 			acciones[n]="S";
 			n++;
@@ -61,7 +67,7 @@ public String pensar(Entorno mapa) {
 		}
 	}
 	if(mapa.esTransitable(fila , col+1)) {
-		distancia=Math.abs(fila - mapa.metaF) + (Math.abs(col+1 - mapa.metaC));
+		distancia=distManhatan(fila,col+1,mapa);
 		if(distancia == menor) {
 			acciones[n]="E";
 			n++;
@@ -69,7 +75,7 @@ public String pensar(Entorno mapa) {
 		}
 	}
 	if(mapa.esTransitable(fila , col-1)) {
-		distancia=Math.abs(fila - mapa.metaF) + (Math.abs(col-1 - mapa.metaC));
+		distancia=distManhatan(fila,col-1,mapa);
 		if(distancia == menor) {
 			acciones[n]="O";
 			n++;
@@ -83,7 +89,6 @@ public String pensar(Entorno mapa) {
 	
 	//devolver uno aleatorio de los añadidos al array
 	 int indice=generador.nextInt(n);
-	 // --- FIN CODIGO ALUMNO ---
-	 return acciones[indice]; //”N” “S” “E” “0” 
+	 return acciones[indice];
 	}
 }
