@@ -1,5 +1,5 @@
 #include "MC.h"
-
+#include "Persona.h"
 template <typename T> Multiconjunto<T>::Multiconjunto()
 {
 
@@ -74,3 +74,4 @@ template <typename T> bool Multiconjunto<T>::pertenece(const T& objeto)const
 
 template class Multiconjunto<int>;
 template class Multiconjunto<char>;
+template class Multiconjunto<Persona>;

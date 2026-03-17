@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1773756042 source:c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica1\multiconjunto\mc.cpp
+	"MC.h"
+	"Persona.h"
+
+1773153099 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica1\multiconjunto\mc.h
+
+1773755411 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica1\persona\persona\persona.h
+	<string>
+	<iostream>
+

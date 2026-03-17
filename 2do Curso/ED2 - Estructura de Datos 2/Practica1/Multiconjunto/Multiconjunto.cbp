@@ -15,8 +15,9 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-Wall" />
-					<Add option="-DBUILD_DLL" />
 					<Add option="-g" />
+					<Add option="-DBUILD_DLL" />
+					<Add directory="C:/Users/Airam/Desktop/UHU_Code/2do Curso/ED2 - Estructura de Datos 2/Practica1/Persona/Persona" />
 				</Compiler>
 				<Linker>
 					<Add library="user32" />
@@ -42,6 +43,7 @@
 		</Build>
 		<Unit filename="MC.cpp" />
 		<Unit filename="MC.h" />
+		<Unit filename="Persona.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
