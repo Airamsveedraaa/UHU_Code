@@ -2,11 +2,11 @@ package P0;
 
 import java.util.Random;
 
-class AgenteGreedy extends Agente implements MetricaManhatan{
+class AgenteGreedy extends Agente{
 
 	Random generador= new Random();
 	
-	public int distManhatan (int f,int c, Entorno mapa) {
+	private int distManhatan (int f,int c, Entorno mapa) {
 		int dist= Math.abs(f-mapa.metaF) + Math.abs(c-mapa.metaC);
 		return dist;
 	}
@@ -19,76 +19,35 @@ public String pensar(Entorno mapa) {
 	int menor=Integer.MAX_VALUE;
 	int distancia;
 	int n=0; //indice para el array
-	String [] acciones= new String[4]; //acciones con menor distancia manhatan
-	
-	//Primera pasada para obtener la menor distancia
-	if(mapa.esTransitable(fila -1 , col)) {
-		distancia=distManhatan(fila-1,col,mapa);
-		if(distancia < menor) {
-			menor=distancia;
-			
-		}
-	}
-	if(mapa.esTransitable(fila +1 , col)) {
-		distancia=distManhatan(fila+1,col,mapa);
-		if(distancia < menor) {
-			menor=distancia;
-			
-		}
-	}
-	if(mapa.esTransitable(fila , col+1)) {
-		distancia=distManhatan(fila,col+1,mapa);
-		if(distancia < menor) {
-			menor=distancia;
-			
-		}
-	}
-	if(mapa.esTransitable(fila , col-1)) {
-		distancia=distManhatan(fila,col-1,mapa);
-		if(distancia < menor) {
-			menor=distancia;
+	String [] accion= new String[4]; //acciones con menor distancia manhatan
+	String nombres[]= {"N","S","E","O"};
+	int df[]= {-1,+1,0,0};
+	int dc[]= {0,0,+1,-1};
+	boolean posibles[]=percibir(fila,col,mapa);
+	//primera pasada, obtener mejor distancia manhatan
+	for(int i=0;i<4;i++) 
+	{
+		if(posibles[i]) 
+		{
+			distancia=distManhatan(fila+df[i],col+dc[i],mapa);
+			if(distancia < menor) menor=distancia;
 		}
 	}
 	
-	if(mapa.esTransitable(fila -1 , col)) {
-		distancia=distManhatan(fila-1,col,mapa);
-		if(distancia == menor) {
-			acciones[n]="N";
+	//Segunda pasada, quedarnos con las mejores opciones y elegir entre ellas
+	for(int i=0;i<4;i++) 
+	{
+		if(posibles[i]) 
+		{
+			distancia=distManhatan(fila+df[i],col+dc[i],mapa);
+			if(distancia == menor) 
+			{ accion[n]=nombres[i]; 
 			n++;
-			
-		}
-	}
-	if(mapa.esTransitable(fila +1 , col)) {
-		distancia=distManhatan(fila+1,col,mapa);
-		if(distancia == menor) {
-			acciones[n]="S";
-			n++;
-			
-		}
-	}
-	if(mapa.esTransitable(fila , col+1)) {
-		distancia=distManhatan(fila,col+1,mapa);
-		if(distancia == menor) {
-			acciones[n]="E";
-			n++;
-			
-		}
-	}
-	if(mapa.esTransitable(fila , col-1)) {
-		distancia=distManhatan(fila,col-1,mapa);
-		if(distancia == menor) {
-			acciones[n]="O";
-			n++;
+			}
 		}
 	}
 	
-	//caso en el que no haya acciones posibles
-	if(n==0) {
-		 return "N";
-	 }
-	
-	//devolver uno aleatorio de los añadidos al array
-	 int indice=generador.nextInt(n);
-	 return acciones[indice];
-	}
+	if(n==0)return "N";
+	return accion[generador.nextInt(n)];
+}
 }
