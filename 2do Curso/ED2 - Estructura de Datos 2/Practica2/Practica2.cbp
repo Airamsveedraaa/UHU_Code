@@ -14,6 +14,11 @@
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library="C:/Users/Airam/Desktop/UHU_Code/2do Curso/ED2 - Estructura de Datos 2/Practica2/abb.o" />
+					<Add library="C:/Users/Airam/Desktop/UHU_Code/2do Curso/ED2 - Estructura de Datos 2/Practica2/arbin.o" />
+					<Add library="C:/Users/Airam/Desktop/UHU_Code/2do Curso/ED2 - Estructura de Datos 2/Practica2/nodoB.o" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Practica2" prefix_auto="1" extension_auto="1" />
@@ -32,7 +37,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="abb.h" />
+		<Unit filename="arbin.h" />
+		<Unit filename="excep_Ej6.h" />
+		<Unit filename="excep_abb.h" />
+		<Unit filename="excep_arbin.h" />
+		<Unit filename="excepcion.h" />
+		<Unit filename="nodoB.h" />
+		<Unit filename="practica2.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

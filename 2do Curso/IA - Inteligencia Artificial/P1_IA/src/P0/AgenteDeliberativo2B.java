@@ -18,13 +18,12 @@ public AgenteDeliberativo2B(int filas, int cols) {
 private int numPasos (int f,int c,int df, int dc, char mem[][], Entorno mapa) {
 	 int pasos=0;
 	 for(int i=1; ;i++) {
-		 char casilla=mem[f+i*df][ c+i*dc];
-		 if(casilla!='#'){
-			 pasos++;
-		 }
-		 else {
-			 break;
-		 }
+		int nf=f+i*df;
+		int nc=c+i*dc;
+		if(nf < 0 || nf >= mapa.filas || nc < 0 || nc >= mapa.cols) break;
+		char casilla=mem[nf][nc];
+		if(casilla=='\0' || casilla=='.' || casilla=='#')break;
+		pasos++;
 	 }
 	 return pasos;
 }
@@ -37,6 +36,7 @@ private void actualizarMem(int f, int c, Entorno mapa) {
 	if(f+1< mapa.filas) {mem[f+1][c]=mapa.grid[f+1][c]==' ' ? 'v':mapa.grid[f+1][c];}
 	if(c-1 >=0) {mem[f][c-1]=mapa.grid[f][c-1]==' ' ? 'v': mapa.grid[f][c-1];}
 	if(c+1< mapa.cols) {mem[f][c+1]=mapa.grid[f][c+1]==' ' ? 'v':mapa.grid[f][c+1];}
+	
 }
 
 
@@ -64,9 +64,20 @@ public String pensar(Entorno mapa) {
 	
 	for(int i=0;i < 4 ; i++) {
 	    if(posibles[i]) {
-	        acciones[n]=nombres[i];
-	        n++;
+	    	int pasos=numPasos(fila,col,df[i],dc[i],mem,mapa);
+	    	if(pasos>maxPasos)maxPasos=pasos;
 	    }
+	}
+	
+	for(int i=0; i < 4; i++) {
+		if(posibles[i]) {
+			int pasos=numPasos(fila,col,df[i],dc[i],mem,mapa);
+			if(pasos==maxPasos)
+				{
+				acciones[n]=nombres[i];
+				n++;
+				}
+		}
 	}
 	
 	if(n==0)return "N";
