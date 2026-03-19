@@ -1,9 +1,7 @@
 package P0;
 
-import java.util.Random;
 public class AgenteDeliberativo2A extends Agente {
 	
-	 Random generador= new Random();	 
 	 
 	 private boolean esSalida(int f, int c, Entorno mapa) {
 		 return f==mapa.metaF && c==mapa.metaC;
@@ -73,6 +71,6 @@ public class AgenteDeliberativo2A extends Agente {
 		}
 		
 		if(n==0)return "N";
-		return acciones[generador.nextInt(n)];
+		return acciones[this.generador.nextInt(n)];
 	}
 }

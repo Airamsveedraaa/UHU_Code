@@ -1,10 +1,7 @@
 package P0;
 
-import java.util.Random;
 
 class AgenteGreedy extends Agente{
-
-	Random generador= new Random();
 	
 	private int distManhatan (int f,int c, Entorno mapa) {
 		int dist= Math.abs(f-mapa.metaF) + Math.abs(c-mapa.metaC);
@@ -48,6 +45,6 @@ public String pensar(Entorno mapa) {
 	}
 	
 	if(n==0)return "N";
-	return accion[generador.nextInt(n)];
+	return accion[this.generador.nextInt(n)];
 }
 }

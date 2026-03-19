@@ -32,15 +32,15 @@ public class Tron_P0_BaseSimple {
 
         // 1. SELECCIONAR MAPA
         // String mapaActual = MAPA_CALLEJON;
-        String mapaActual = MAPA_GRANDE;
+        String mapaActual = MAPA_CALLEJON;
 
         Entorno juego = new Entorno(mapaActual);
         
      // 2. Elegir Agente (Descomentar el que se quiera probar)
         //AgenteInteractivo agente= new AgenteInteractivo();
          //AgenteReactivo agente = new AgenteReactivo();
-        AgenteDeliberativo2B agente = new AgenteDeliberativo2B(juego.filas, juego.cols);
-        //AgenteDeliberativo2A agente= new AgenteDeliberativo2A();
+        //AgenteDeliberativo2B agente = new AgenteDeliberativo2B(juego.filas, juego.cols);
+        AgenteDeliberativo2A agente= new AgenteDeliberativo2A();
         //AgenteGreedy agente= new AgenteGreedy();
         System.out.println("--- Inicio de la Simulación ---");
         int ciclos = 0;

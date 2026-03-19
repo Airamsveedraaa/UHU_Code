@@ -1,10 +1,8 @@
 package P0;
 
-import java.util.Random;
 
 class AgenteReactivo extends Agente{
 	
-	Random generador= new Random();
 	 
 	 public String pensar(Entorno mapa) {
 	 int fila=mapa.agenteF;

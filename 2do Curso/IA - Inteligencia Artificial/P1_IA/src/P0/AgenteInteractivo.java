@@ -1,7 +1,7 @@
 package P0;
 
-import java.util.Random;
 import java.util.Scanner;
+
 class AgenteInteractivo extends Agente{
 	
 	Scanner scanner = new Scanner(System.in);
@@ -19,17 +19,17 @@ class AgenteInteractivo extends Agente{
 		fila--;
 		}
 	
-	else if(accion.equals("S")) {
+	if(accion.equals("S")) {
 		fila++;
 		}
 	
 	
-	else if(accion.equals("E")) {
+	if(accion.equals("E")) {
 		col++;
 		}
 	
 	
-	else if(accion.equals("O")) {
+	if(accion.equals("O")) {
 		col--;
 	}
 	

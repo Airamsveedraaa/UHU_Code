@@ -26,8 +26,6 @@ class Entorno {
 
  public boolean esTransitable(int f, int c) {
      if (f < 0 || f >= filas || c < 0 || c >= cols) return false;
-     // Transitable si es espacio, meta o monedas (si hubiera)
-     // No transitable si es Muro (#) o Rastro (.)
      return grid[f][c] != '#' && grid[f][c] != '.';
  }
  

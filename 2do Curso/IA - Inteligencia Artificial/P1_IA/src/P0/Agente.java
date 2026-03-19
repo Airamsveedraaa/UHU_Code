@@ -1,7 +1,10 @@
 package P0;
 
+import java.util.Random;
+
 public abstract class Agente {
 			public abstract String pensar(Entorno mapa);
+			
 			static boolean[] percibir(int f, int c, Entorno mapa) {
 				boolean acciones[]=new boolean[4];
 				if(mapa.esTransitable(f-1, c)) {acciones[0]=true;}
@@ -10,4 +13,6 @@ public abstract class Agente {
 				if(mapa.esTransitable(f, c-1)) {acciones[3]=true;}
 				return acciones;
 			}
+			
+			protected Random generador= new Random();
 }
