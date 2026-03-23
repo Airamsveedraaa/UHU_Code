@@ -7,6 +7,21 @@ public abstract class AgenteBusquedaXX {
 
 	class BusquedaAnchura {
 	 public List<String> resolver(Entorno mapa) {
+		 List<String> Abiertos=new List();
+		 List<String> Cerrados=new List();
+		 Abiertos.add();
+		 while(Abiertos.size()>0) {
+			 Nodo Actual=Abiertos.removeFirst();
+			 Cerrados.add(Actual);
+			 if(Actual==fin) {
+				 return reconstruirCamino(fin);
+			 }
+			 else {
+				 List<Nodo> Sucesores= getsucesores(Actual);
+				 sucesores= QuitarRepetidos(sucesores,Cerrados);
+				 Abiertos.add(Sucesores);
+			 }
+		 }
 	 // TODO: Lógica de inicialización, bucles, CERRADOS...
 	 return null;
 	 }
