@@ -7,14 +7,15 @@ public abstract class AgenteBusquedaXX {
 
 	class BusquedaAnchura {
 	 public List<String> resolver(Entorno mapa) {
-		 List<String> Abiertos=new List();
-		 List<String> Cerrados=new List();
-		 Abiertos.add();
+		 LinkedList<Nodo> Abiertos=new LinkedList<>();
+		 List<Nodo> Cerrados=new LinkedList<>();
+		 Nodo inicial = new Nodo(mapa.agenteF,mapa.agenteC,null,null,0,0);
+		 Abiertos.add(inicial);
 		 while(Abiertos.size()>0) {
 			 Nodo Actual=Abiertos.removeFirst();
 			 Cerrados.add(Actual);
-			 if(Actual==fin) {
-				 return reconstruirCamino(fin);
+			 if(mapa.esMeta(Actual.f, Actual.c)) {
+				 return reconstruirCamino(Actual);
 			 }
 			 else {
 				 List<Nodo> Sucesores= getsucesores(Actual);
