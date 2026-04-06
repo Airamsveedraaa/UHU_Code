@@ -38,7 +38,7 @@ class Entorno {
 	 grid[agenteF][agenteC] = '.'; // Deja rastro por donde pasa
 	 agenteF = nf; agenteC = nc;
 
-	 if (grid[nf][nc] != 'S') grid[nf][nc] = 'A'; // Pinta al agente
+	 if (grid[nf][nc] != 'A') grid[nf][nc] = 'E'; // Pinta al agente
 	 return true;
 	 }
 	 public boolean hemosGanado() {

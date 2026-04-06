@@ -6,19 +6,30 @@ public class P2_Busquedas_main {
 	    // --- MAPAS DE PRUEBA ---
 	    
 	    // Mapa trampa: La casilla (1,1) al Este lleva a un callejón sin salida
-	    static String mapaTexto=
+	     static final String mapaTexto1=
 	    		"#######\n" +
 	    		"#E    #\n" +
 	    	    "# ### #\n" +
 	    		"#   #S#\n" +
 	    		"#######";
-
+	    
+	     static final String mapaTexto2=
+	    		"####################\n" +
+	            "#A  #              #\n" +
+	    		"# # # ###### ##### #\n" +
+	    		"# #   #      #     #\n" +
+	    		"# ##### ###### ### #\n" +
+	    		"#     #        #   #\n" +
+	    		"# ### ######## # # #\n" +
+	    		"#   #          #   #\n" +
+	    		"# ############## S #\n" +
+	    		"####################";
 
 	    public static void main(String[] args) throws InterruptedException {
 
 	        // 1. SELECCIONAR MAPA
-	        // String mapaActual = MAPA_CALLEJON;
-	        String mapaActual = mapaTexto;
+	        // String mapaActual = ;
+	        String mapaActual = mapaTexto1;
 
 	        Entorno juego = new Entorno(mapaActual);
 	        
