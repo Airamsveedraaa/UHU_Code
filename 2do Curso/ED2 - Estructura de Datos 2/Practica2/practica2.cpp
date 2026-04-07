@@ -171,10 +171,67 @@ template <typename T> bool compensado(const Arbin<T>& a, const typename Arbin<T>
 /*****************************************************************************/
 //Ejercicio 5
 
+template <typename T> void Palabras (const Arbin<T>& a)
+{
 
+    Palabras(a, a.getRaiz(),"");
+}
+
+
+template <typename T> void Palabras (const Arbin<T>& a, const typename Arbin<T>::Iterador r, string s)
+{
+
+    if(!r.arbolVacio())
+    {
+        s+=r.observar();
+        if(a.subDer(r).arbolVacio() && a.subIzq(r).arbolVacio())
+        {
+            cout << s << endl;
+        }
+        else
+        {
+            Palabras(a,a.subDer(r),s);
+            Palabras(a,a.subIzq(r),s);
+        }
+    }
+
+}
 
 /******************************************************************************/
 //Ejercicio 6
+
+int siguienteMayor(const ABB<int>& a, const Arbin<int>::Iterador& r,int x)throw (NoHaySiguienteMayor)
+{
+
+    if(r.arbolVacio())
+    {
+        throw NoHaySiguienteMayor();
+    }
+
+    if (r.observar() <= x)
+    {
+        return siguienteMayor(a,a.subDer(r),x);
+    }
+    else
+    {
+        try
+        {
+            return siguienteMayor(a,a.subIzq(r),x);
+        }
+        catch(const NoHaySiguienteMayor& e)
+        {
+            return r.observar();
+
+        }
+    }
+}
+
+int siguienteMayor(const ABB<int>& a,int x)
+{
+
+    return siguienteMayor(a,a.getRaiz(),x);
+
+}
 
 
 
@@ -251,44 +308,51 @@ int main(int argc, char *argv[])
     cout << "Esta B compensado?:";
     cout << (compensado(B) ? " SI" : " NO") << endl << endl;
 
-    /*     // PALABRAS DE UN ARBOL //
-         cout << "PALABRAS DE A:\n";
-         palabras(E);
-         cout << "PALABRAS DE B:\n";
-         palabras(B);
-         cout << endl;
+    // PALABRAS DE UN ARBOL //
+    cout << "PALABRAS DE E:\n";
+    Palabras(E);
+    cout << "PALABRAS DE B:\n";
+    Palabras(B);
+    cout << endl;
 
-         // SIGUIENTE MAYOR
-         BB6.insertar(8); BB6.insertar(3); BB6.insertar(10); BB6.insertar(1); BB6.insertar(6);
-         BB6.insertar(14); BB6.insertar(4); BB6.insertar(7); BB6.insertar(13);
-         try
-         {
-             cout << "Siguiente mayor en BB6 de 5: " << siguienteMayor(BB6, 5) << endl;
-             cout << "Siguiente mayor en BB6 de 8: " << siguienteMayor(BB6, 8) << endl;
-             cout << "Siguiente mayor en BB6 de 13: " << siguienteMayor(BB6, 13) << endl;
-             cout << "Siguiente mayor en BB6 de 14: " << siguienteMayor(BB6, 14) << endl;
-         }
-         catch(const NoHaySiguienteMayor& e)
-         {
-             cout << e.Mensaje() << endl << endl;
-         }
+    // SIGUIENTE MAYOR
+    BB6.insertar(8);
+    BB6.insertar(3);
+    BB6.insertar(10);
+    BB6.insertar(1);
+    BB6.insertar(6);
+    BB6.insertar(14);
+    BB6.insertar(4);
+    BB6.insertar(7);
+    BB6.insertar(13);
+    try
+    {
+        cout << "Siguiente mayor en BB6 de 5: " << siguienteMayor(BB6, 5) << endl;
+        cout << "Siguiente mayor en BB6 de 8: " << siguienteMayor(BB6, 8) << endl;
+        cout << "Siguiente mayor en BB6 de 13: " << siguienteMayor(BB6, 13) << endl;
+        cout << "Siguiente mayor en BB6 de 14: " << siguienteMayor(BB6, 14) << endl;
+    }
+    catch(const NoHaySiguienteMayor& e)
+    {
+        cout << e.Mensaje() << endl << endl;
+    }
 
-         // POSICION INORDEN //
-         BB7.insertar(5); BB7.insertar(1); BB7.insertar(3); BB7.insertar(8); BB7.insertar(6);
-         cout << "Posicion Inorden en BB7 de 3: ";
-         cout << posicionInorden(BB7, 3);
-         cout << endl << "Posicion Inorden en BB7 de 8: ";
-         cout << posicionInorden(BB7, 8);
-         cout << endl << "Posicion Inorden en BB7 de 7: ";
-         cout << posicionInorden(BB7, 7);
-         cout << endl << endl;
+    /*  // POSICION INORDEN //
+      BB7.insertar(5); BB7.insertar(1); BB7.insertar(3); BB7.insertar(8); BB7.insertar(6);
+      cout << "Posicion Inorden en BB7 de 3: ";
+      cout << posicionInorden(BB7, 3);
+      cout << endl << "Posicion Inorden en BB7 de 8: ";
+      cout << posicionInorden(BB7, 8);
+      cout << endl << "Posicion Inorden en BB7 de 7: ";
+      cout << posicionInorden(BB7, 7);
+      cout << endl << endl;
 
-         // SUMA CAMINO
-         cout << "Hay un camino de suma 26 en F?:";
-         cout << (haySumaCamino(F, 26) ? " SI" : " NO") << endl;
-         cout << "Hay un camino de suma 9 en F?:";
-         cout << (haySumaCamino(F, 9) ? " SI" : " NO") << endl;
-     */
+      // SUMA CAMINO
+      cout << "Hay un camino de suma 26 en F?:";
+      cout << (haySumaCamino(F, 26) ? " SI" : " NO") << endl;
+      cout << "Hay un camino de suma 9 en F?:";
+      cout << (haySumaCamino(F, 9) ? " SI" : " NO") << endl;
+      */
 
     system("PAUSE");
     return 0;
