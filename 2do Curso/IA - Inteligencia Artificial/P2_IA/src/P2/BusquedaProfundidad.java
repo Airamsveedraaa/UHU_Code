@@ -1,5 +1,6 @@
 package P2;
 import java.util.Stack;
+import java.util.List;
 
 public class BusquedaProfundidad extends Busqueda{
 		 private Stack<Nodo> Abiertos=new Stack<>();
@@ -10,15 +11,17 @@ public class BusquedaProfundidad extends Busqueda{
 			 Stack<Nodo> sucesores=new Stack<>();
 			 int f=Actual.f;
 			 int c=Actual.c;
-			 int g=Actual.g;
+			 int g=Actual.g; //f c y g del nodo en ese momento
 			 
-			 if(mapa.esTransitable(f -1, c)) {sucesores.push(new Nodo(f-1,c,Actual,"N",g+2,0));}
-			 if(mapa.esTransitable(f +1, c)) {sucesores.push(new Nodo(f+1,c,Actual,"S",g+1,0));}
-			 if(mapa.esTransitable(f, c+1)) {sucesores.push(new Nodo(f,c+1,Actual,"E",g+1,0));}
-			 if(mapa.esTransitable(f, c-1)) {sucesores.push(new Nodo(f,c-1,Actual,"O",g+2,0));}
+			 //IDEM a BFS totalmente.
+			 if(mapa.esTransitable(f -1, c)) {sucesores.push(new Nodo(f-1,c,Actual,"N",g+super.costeIZQ_ARRIBA,0));}
+			 if(mapa.esTransitable(f +1, c)) {sucesores.push(new Nodo(f+1,c,Actual,"S",g+super.costeDER_ABAJO,0));}
+			 if(mapa.esTransitable(f, c+1)) {sucesores.push(new Nodo(f,c+1,Actual,"E",g+super.costeDER_ABAJO,0));}
+			 if(mapa.esTransitable(f, c-1)) {sucesores.push(new Nodo(f,c-1,Actual,"O",g+super.costeIZQ_ARRIBA,0));}
 			 return sucesores;
 		 }
 		 
+		 //IDEM a BFS totalmente 
 		 private Stack<Nodo> quitarRepetidos(Stack<Nodo> sucesores, Stack<Nodo> Cerrados, Stack<Nodo> Abiertos){
 			
 			 Stack<Nodo> noRepetidos=new Stack();
@@ -31,7 +34,8 @@ public class BusquedaProfundidad extends Busqueda{
 			 return noRepetidos;
 		 }
 		 
-	 public Stack<String> resolver(Entorno mapa) {
+		 //IDEM a BFS todo el código con la diferencia de que usaremos pilas (Stacks) en vez de listas como estructuras, el resto es todo lo mismo.
+	 public List<String> resolver(Entorno mapa) {
 
 		 Stack<Nodo> sucesores=new Stack();
 		 Nodo inicial = new Nodo(mapa.agenteF,mapa.agenteC,null,null,0,0);
@@ -53,13 +57,14 @@ public class BusquedaProfundidad extends Busqueda{
 			 if(mapa.esMeta(Actual.f, Actual.c)) {
 				 super.tFin=System.currentTimeMillis();
 				 super.tiempo=super.tFin-super.tIni;
-				 return (Stack<String>) super.reconstruirCamino(Actual);
+				 return super.reconstruirCamino(Actual,"DFS");
 			 }
 			 else {
 				 	sucesores=getSucesores(Actual,mapa);
 				 	sucesores=quitarRepetidos(sucesores,Cerrados,Abiertos);
 					System.out.println("Generados hijos: (" + sucesores + ")");
 					int n=sucesores.size();
+					//bucle auxiliar para poder transferir todos los elementos 
 				 	for(int i=0; i<n;i++) {
 				 		Abiertos.push(sucesores.pop());
 				 	}

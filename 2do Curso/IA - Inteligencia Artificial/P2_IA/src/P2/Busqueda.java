@@ -1,16 +1,16 @@
 package P2;
-import java.util.Queue;
-import java.util.PriorityQueue;
 import java.util.List;
 import java.util.LinkedList;
-import java.util.Stack;
+
 
 public abstract class Busqueda {
-	 protected int tamMax=-1;
-	 protected int nAbiertos;
-	 protected long tIni,tFin,tiempo;
+	 protected int tamMax=-1; //para tamaño maximo de la estructura abiertos
+	 protected int nAbiertos; //para numero de nodos expandidos.
+	 protected long tIni,tFin,tiempo; //variables auxiliares para calculo del tiempo de ejecucion.
+	 protected final int costeIZQ_ARRIBA=2;
+	 protected final int costeDER_ABAJO=1; //costes de los movimientos.
 	 
-	 protected List<String> reconstruirCamino(Nodo meta) {
+	 protected List<String> reconstruirCamino(Nodo meta, String algoritmo) {
 			LinkedList<String> camino = new LinkedList<>();
 			LinkedList<String>coordenadas=new LinkedList<>();
 			Nodo actual = meta;
@@ -21,7 +21,7 @@ public abstract class Busqueda {
 			}
 			coordenadas.addFirst("(" + actual.f + "," + actual.c + ")");
 				System.out.println("--- ESTADÍSTICAS FINALES ---");
-				System.out.println("Solución encontrada usando A* Ponderado");
+				System.out.println("Solución encontrada usando " + algoritmo);
 				System.out.println("Camino recorrido (x,y): " + coordenadas);	
 				System.out.println("Coste total del camino: " + meta.g);
 				System.out.println("Nodos expandidos: " + nAbiertos);
