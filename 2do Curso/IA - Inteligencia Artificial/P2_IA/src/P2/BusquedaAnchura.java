@@ -1,14 +1,10 @@
 package P2;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.LinkedList;
 
-
-public class BusquedaAnchura {
+public class BusquedaAnchura extends Busqueda{
 		 private List<Nodo> Abiertos=new LinkedList<>();
 		 private List<Nodo> Cerrados=new LinkedList<>();
-		 private int tamMax=-1;
-		 private int nAbiertos;
-		 long tIni,tFin,tiempo;
 		 private List<Nodo> getSucesores(Nodo Actual, Entorno mapa){
 				
 			 List<Nodo> sucesores=new LinkedList();
@@ -23,12 +19,12 @@ public class BusquedaAnchura {
 			 return sucesores;
 		 }
 		 
-		 private List<Nodo> quitarRepetidos(List<Nodo> sucesores, List<Nodo> Cerrados){
+		 private List<Nodo> quitarRepetidos(List<Nodo> sucesores, List<Nodo> Cerrados, List<Nodo> Abiertos){
 			
 			 List<Nodo> noRepetidos=new LinkedList();
 			 for(int i=0; i<sucesores.size(); i++) {
 				 Nodo s=sucesores.get(i);
-			 if(!Cerrados.contains(s)) {
+			 if(!Cerrados.contains(s) && !Abiertos.contains(s)) {
 				 noRepetidos.add(s);
 			 }
 			 }
@@ -61,7 +57,7 @@ public class BusquedaAnchura {
 			 }
 			 else {
 				 	sucesores=getSucesores(Actual,mapa);
-				 	sucesores=quitarRepetidos(sucesores,Cerrados);
+				 	sucesores=quitarRepetidos(sucesores,Cerrados, Abiertos);
 				 	Abiertos.addAll(sucesores);
 					
 				}
@@ -77,25 +73,6 @@ public class BusquedaAnchura {
 		 System.out.println("Tiempo de ejecucion: " + tiempo + "ms\n");
 	 return null;
 	 }
-	 private List<String> reconstruirCamino(Nodo meta) {
-	 LinkedList<String> camino = new LinkedList<>();
-	 LinkedList<String>coordenadas=new LinkedList<>();
-	 Nodo actual = meta;
-	 while (actual.padre != null) {
-	 camino.addFirst(actual.accion);
-	 coordenadas.addFirst("(" + actual.f + "," + actual.c + ")");
-	 actual = actual.padre;
-	 }
-	 coordenadas.addFirst("(" + actual.f + "," + actual.c + ")");
-	 	System.out.println("--- ESTADÍSTICAS FINALES ---");
-		System.out.println("Solución encontrada usando BFS");
-		System.out.println("Camino recorrido (x,y): " + coordenadas);
-		System.out.println("Nodos expandidos: " + nAbiertos);
-		System.out.println("Tamaño máximo de ABIERTOS: " + tamMax);
-		System.out.println("Coste total: " + meta.g);
-		System.out.println("Tiempo de ejecución: " + tiempo + "ms");
-	 return camino;
-	 }
-	}
+}
 
 

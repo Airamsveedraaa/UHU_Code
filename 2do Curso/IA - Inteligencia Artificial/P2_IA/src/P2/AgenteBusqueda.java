@@ -12,9 +12,10 @@ class AgenteBusqueda {
  public String pensar(Entorno entorno) {
  // Solo calculamos la ruta completa en el primer ciclo
  if (!yaCalculado) {
- //BusquedaAnchura buscador = new BusquedaAnchura();
+ BusquedaAnchura buscador = new BusquedaAnchura();
  //BusquedaProfundidad buscador=new BusquedaProfundidad();
- BusquedaAEstrella buscador = new BusquedaAEstrella();
+ //BusquedaAEstrella buscador = new BusquedaAEstrella();
+ //BusquedaAEstrellaPonderada buscador=new BusquedaAEstrellaPonderada();
  List<String> camino = buscador.resolver(entorno);
  if (camino != null) {
  planDeAccion.addAll(camino);

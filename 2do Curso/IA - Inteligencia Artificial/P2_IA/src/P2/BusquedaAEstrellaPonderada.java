@@ -1,34 +1,39 @@
 package P2;
-import java.util.Queue;
-import java.util.PriorityQueue;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.LinkedList;
+import java.util.Queue;
 
-
-public class BusquedaAEstrella extends Busqueda{
-		 private Queue<Nodo> Abiertos=new PriorityQueue<>();
+public class BusquedaAEstrellaPonderada {
+		private Queue<Nodo> Abiertos=new PriorityQueue<>();
 		 private Queue<Nodo> Cerrados=new PriorityQueue<>();
-		 
+
 		 private Queue<Nodo> getSucesores(Nodo Actual, Entorno mapa){
 				
 			 Queue<Nodo> sucesores=new PriorityQueue<>();
 			 int f=Actual.f;
 			 int c=Actual.c;
 			 int g=Actual.g;
+			 int despF=mapa.metaF-f;
+			 int despC=mapa.metaC-c;
+			 
+			 //if (despF >=0) {despF=despF*(-2);}
+			 //if (despC >=0) {despC=despC*(-2);}
 			 
 			 if(mapa.esTransitable(f -1, c)) {
-				 int h=Math.abs((f-1)-mapa.metaF) + Math.abs(c-mapa.metaC); //heurística de Distancia Manhattan
+				 int h=((despF >=0) ? despF : despF*(-2)) + ((despC >=0) ? despC : despC*(-2));
 				 sucesores.add(new Nodo(f-1,c,Actual,"N",g+2,h));}
 			 if(mapa.esTransitable(f+1, c)) {
-				 int h=Math.abs((f+1)-mapa.metaF) + Math.abs(c-mapa.metaC); //heurística de Distancia Manhattan
+				 int h=((despF >=0) ? despF : despF*(-2)) + ((despC >=0) ? despC : despC*(-2));
 				 sucesores.add(new Nodo(f+1,c,Actual,"S",g+1,h));}
 			 if(mapa.esTransitable(f, c+1)) {
-				 int h=Math.abs(f-mapa.metaF) + Math.abs((c+1)-mapa.metaC); //heurística de Distancia Manhattan
+				 int h=((despF >=0) ? despF : despF*(-2)) + ((despC >=0) ? despC : despC*(-2));
 				 sucesores.add(new Nodo(f,c+1,Actual,"E",g+1,h));}
 			 if(mapa.esTransitable(f, c-1)) {
-				 int h=Math.abs(f-mapa.metaF) + Math.abs((c-1)-mapa.metaC); //heurística de Distancia Manhattan
+				 int h=((despF >=0) ? despF : despF*(-2)) + ((despC >=0) ? despC : despC*(-2));
 				 sucesores.add(new Nodo(f,c-1,Actual,"O",g+2,h));}
 			 return sucesores;
+			 
 		 }
 		 
 		 private Queue<Nodo> quitarRepetidos(Queue<Nodo> sucesores, Queue<Nodo> Cerrados){
@@ -44,11 +49,11 @@ public class BusquedaAEstrella extends Busqueda{
 			 return noRepetidos;
 		 }
 		 
-	 public List<String> resolver(Entorno mapa) {
+	public List<String> resolver(Entorno mapa) {
 
 		 Queue<Nodo> sucesores=new PriorityQueue<>();
 		 int Hinicial=Math.abs(mapa.agenteF-mapa.metaF) + Math.abs(mapa.agenteC - mapa.metaC);
-		 super.tIni=System.currentTimeMillis();
+		 tIni=System.currentTimeMillis();
 		 Nodo inicial = new Nodo(mapa.agenteF,mapa.agenteC,null,null,0,Hinicial);
 		 Abiertos.add(inicial);
 		 int paso=1;
@@ -56,17 +61,17 @@ public class BusquedaAEstrella extends Busqueda{
 		 System.out.println(" Origen: " + "(" + inicial.f + "," + inicial.c + ")  -> Meta: " + "(" + mapa.metaF + "," + mapa.metaC + ")\n\n" );
 		 while(Abiertos.size()>0) {
 			 int tam=Abiertos.size();
-			 if(tam > super.tamMax) super.tamMax=tam;
-			 super.nAbiertos++;
+			 if(tam > tamMax) tamMax=tam;
+			 nAbiertos++;
 			 Nodo Actual=Abiertos.remove();
 			 Cerrados.add(Actual);
 			 System.out.println("[PASO " + paso + " ]");
 			 System.out.println("Seleccionado: " + Actual + " [f= " + Actual.valorF + ", g= " + Actual.g + ", h= " + Actual.h +" ]");
 			 
 			 if(mapa.esMeta(Actual.f, Actual.c)) {
-				 super.tFin=System.currentTimeMillis();
-				 super.tiempo=super.tFin-super.tIni;
-				 return super.reconstruirCamino(Actual);
+				 tFin=System.currentTimeMillis();
+				 tiempo=tFin-tIni;
+				 return reconstruirCamino(Actual);
 			 }
 			 else {
 				 	sucesores=getSucesores(Actual,mapa);
@@ -79,15 +84,12 @@ public class BusquedaAEstrella extends Busqueda{
 				System.out.println("Estado CERRADOS: " + Cerrados);
 				paso++;
 		 }
-		 super.tFin=System.currentTimeMillis();
-		 super.tiempo=super.tFin-super.tIni;
+		 tFin=System.currentTimeMillis();
+		 tiempo=tFin-tIni;
 		 System.out.println("Solución no encontrada usando A*");
-		 System.out.println("Nodos Expandidos: " + super.nAbiertos);
-		 System.out.println("Tiempo de ejecucion: " + super.tiempo + "ms\n");
-	 return null;
-	 }
-}
-
-
-
-
+		 System.out.println("Nodos Expandidos: " + nAbiertos);
+		 System.out.println("Tiempo de ejecucion: " + tiempo + "ms\n");
+	return null;
+	}
+	
+	}
