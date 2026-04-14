@@ -25,25 +25,27 @@ public class P2_Busquedas_main {
 	    		"# ############## S #\n" +
 	    		"####################";
 	     
-	     static final String mapaDFSvsBFS =
-	    		    "#######\n" +
-	    		    "#E    #\n" +
-	    		    "# ### #\n" +
-	    		    "#   #S#\n" +
-	    		    "#######";
+	     static final String mapaTexto3 =
+	             "#########\n" +
+	             "#A      #\n" + 
+	             "# ##### #\n" + 
+	             "# #   # #\n" + 
+	             "#     S #\n" +
+	             "#########";
 	     
-	     static final String mapaAEstrella =
+	     static final String mapaTexto4 =
 	    		    "#######\n" +
 	    		    "#S    #\n" +
 	    		    "#     #\n" +
 	    		    "#    A#\n" +
 	    		    "#######";
-
+	     
+	     
 	    public static void main(String[] args) throws InterruptedException {
 
 	        // 1. SELECCIONAR MAPA
 	        // String mapaActual = ;
-	        String mapaActual = mapaAEstrella;
+	        String mapaActual = mapaTexto2;
 
 	        Entorno juego = new Entorno(mapaActual);
 	        

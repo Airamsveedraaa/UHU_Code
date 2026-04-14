@@ -23,7 +23,10 @@ class Nodo implements Comparable<Nodo> {
  
  @Override
  public int compareTo(Nodo otro) {
- return Integer.compare(this.valorF, otro.valorF);
+	 if(this.valorF != otro.valorF)
+	 return Integer.compare(this.valorF, otro.valorF);
+	 else
+		 return Integer.compare(this.h, otro.h);
  }
  
  @Override

@@ -24,13 +24,18 @@ public class BusquedaAnchura extends Busqueda{
 		 private List<Nodo> quitarRepetidos(List<Nodo> sucesores, List<Nodo> Cerrados, List<Nodo> Abiertos){
 			
 			 List<Nodo> noRepetidos=new LinkedList();
+			 List<Nodo> repetidos=new LinkedList<>();
 			 for(int i=0; i<sucesores.size(); i++) {
 				 Nodo s=sucesores.get(i); //para comparaciones
 			 if(!Cerrados.contains(s) && !Abiertos.contains(s)) {
 				 //si no está en cerrados no es repetido, pero también hay que mirar si está o no en abiertos para evitar añadir un nodo duplicado que esté abierto en ese momento.
 				 noRepetidos.add(s);
 			 }
+			 else {
+				 repetidos.add(s);
 			 }
+			 }
+			 if(!repetidos.isEmpty()) System.out.println("Sucesores Repetidos descartados: " + "(" + repetidos + ")");
 			 return noRepetidos;
 		 }
 		 
@@ -42,11 +47,11 @@ public class BusquedaAnchura extends Busqueda{
 		 int paso=1; //para el numero de paso, usado en traza.
 		 System.out.println("Iniciando busqueda BFS...");
 		 System.out.println(" Origen: " + "(" + inicial.f + "," + inicial.c + ")  -> Meta: " + "(" + mapa.metaF + "," + mapa.metaC + ")\n\n" );
-		 super.tIni=System.currentTimeMillis(); //calculo de tiempo de ejecucion.
+		 this.tIni=System.currentTimeMillis(); //calculo de tiempo de ejecucion.
 		 while(Abiertos.size()>0) {
 			 int tam=Abiertos.size();
-			 if(tam > super.tamMax) super.tamMax=tam; //obtenemos el tamaño maximo de la estructura abiertos.
-			 super.nAbiertos++; //numero de nodos abiertos
+			 if(tam > this.tamMax) this.tamMax=tam; //obtenemos el tamaño maximo de la estructura abiertos.
+			 this.nAbiertos++; //numero de nodos abiertos
 			 Nodo Actual=Abiertos.removeFirst();
 			 Cerrados.add(Actual);
 			 
@@ -55,9 +60,9 @@ public class BusquedaAnchura extends Busqueda{
 			 
 			 if(mapa.esMeta(Actual.f, Actual.c)) {
 				 //si es la meta calculamos el tiempo de ejecucion y reconstruimos el camino mostrando las estadísticas.
-				 tFin=System.currentTimeMillis();
-				 tiempo=tFin-tIni;
-				 return reconstruirCamino(Actual,"BFS");
+				 this.tFin=System.currentTimeMillis();
+				 this.tiempo=this.tFin-this.tIni;
+				 return this.reconstruirCamino(Actual,"BFS");
 			 }
 			 else {
 				 //si no es la meta obtenemos los sucesores y tratamos los repetidos y volvemos a hacer otra pasada
@@ -73,11 +78,11 @@ public class BusquedaAnchura extends Busqueda{
 				paso++;
 		 }
 		 //si no encuentra la solución calculamos tiempo de ejecución y mostramos el mensaje de error correspondiente.
-		 super.tFin=System.currentTimeMillis();
-		 super.tiempo=tFin-tIni;
+		 this.tFin=System.currentTimeMillis();
+		 this.tiempo=tFin-tIni;
 		 System.out.println("Solución no encontrada usando BFS");
-		 System.out.println("Nodos Expandidos: " + super.nAbiertos);
-		 System.out.println("Tiempo de ejecucion: " + super.tiempo + "ms\n");
+		 System.out.println("Nodos Expandidos: " + this.nAbiertos);
+		 System.out.println("Tiempo de ejecucion: " + this.tiempo + "ms\n");
 	 return null;
 	 }
 }

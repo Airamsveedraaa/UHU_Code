@@ -1,10 +1,11 @@
 package P2;
 import java.util.Stack;
 import java.util.List;
+import java.util.LinkedList;
 
 public class BusquedaProfundidad extends Busqueda{
 		 private Stack<Nodo> Abiertos=new Stack<>();
-		 private Stack<Nodo> Cerrados=new Stack<>();
+		 private List<Nodo> Cerrados=new LinkedList<>();
 
 		 private Stack<Nodo> getSucesores(Nodo Actual, Entorno mapa){
 				
@@ -22,15 +23,20 @@ public class BusquedaProfundidad extends Busqueda{
 		 }
 		 
 		 //IDEM a BFS totalmente 
-		 private Stack<Nodo> quitarRepetidos(Stack<Nodo> sucesores, Stack<Nodo> Cerrados, Stack<Nodo> Abiertos){
+		 private Stack<Nodo> quitarRepetidos(Stack<Nodo> sucesores, List<Nodo> Cerrados, Stack<Nodo> Abiertos){
 			
 			 Stack<Nodo> noRepetidos=new Stack();
+			 List<Nodo> repetidos=new LinkedList<>();
 			 for(int i=0; i<sucesores.size(); i++) {
 				 Nodo s=sucesores.get(i);
 			 if(!Cerrados.contains(s) && !Abiertos.contains(s)) {
 				 noRepetidos.push(s);
 			 }
+			 else {
+				 repetidos.add(s);
 			 }
+			 }
+			 if(!repetidos.isEmpty()) System.out.println("Sucesores Repetidos descartados: " + "(" + repetidos + ")");
 			 return noRepetidos;
 		 }
 		 
@@ -43,21 +49,21 @@ public class BusquedaProfundidad extends Busqueda{
 		 int paso=1;
 		 System.out.println("Iniciando busqueda DFS...");
 		 System.out.println(" Origen: " + "(" + inicial.f + "," + inicial.c + ")  -> Meta: " + "(" + mapa.metaF + "," + mapa.metaC + ")\n\n" );
-		 super.tIni=System.currentTimeMillis();
+		 this.tIni=System.currentTimeMillis();
 		 while(Abiertos.size()>0) {
 			 int tam=Abiertos.size();
-			 if(tam > super.tamMax) super.tamMax=tam; 
-			 super.nAbiertos++;
+			 if(tam > this.tamMax) this.tamMax=tam; 
+			 this.nAbiertos++;
 			 Nodo Actual=Abiertos.pop();
-			 Cerrados.push(Actual);
+			 Cerrados.add(Actual);
 			 
 			 System.out.println("[PASO " + paso + " ]");
 			 System.out.println("Seleccionado: " + Actual + " [f= " + Actual.valorF + ", g= " + Actual.g + ", h= " + Actual.h +" ]");
 			 
 			 if(mapa.esMeta(Actual.f, Actual.c)) {
-				 super.tFin=System.currentTimeMillis();
-				 super.tiempo=super.tFin-super.tIni;
-				 return super.reconstruirCamino(Actual,"DFS");
+				 this.tFin=System.currentTimeMillis();
+				 this.tiempo=this.tFin-this.tIni;
+				 return this.reconstruirCamino(Actual,"DFS");
 			 }
 			 else {
 				 	sucesores=getSucesores(Actual,mapa);
@@ -74,11 +80,11 @@ public class BusquedaProfundidad extends Busqueda{
 				System.out.println("Estado CERRADOS: " + Cerrados);
 				paso++;
 		 }
-		 super.tFin=System.currentTimeMillis();
-		 super.tiempo=super.tFin-super.tIni;
+		 this.tFin=System.currentTimeMillis();
+		 this.tiempo=this.tFin-this.tIni;
 		 System.out.println("Solución no encontrada usando DFS");
-		 System.out.println("Nodos Expandidos: " + super.nAbiertos);
-		 System.out.println("Tiempo de ejecucion: " + super.tiempo + "ms\n");
+		 System.out.println("Nodos Expandidos: " + this.nAbiertos);
+		 System.out.println("Tiempo de ejecucion: " + this.tiempo + "ms\n");
 	 return null;
 	 }
 	}

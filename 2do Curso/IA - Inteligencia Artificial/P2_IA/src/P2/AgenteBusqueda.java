@@ -13,9 +13,9 @@ class AgenteBusqueda {
  // Solo calculamos la ruta completa en el primer ciclo
  if (!yaCalculado) {
  //BusquedaAnchura buscador = new BusquedaAnchura();
- //BusquedaProfundidad buscador=new BusquedaProfundidad();
+ BusquedaProfundidad buscador=new BusquedaProfundidad();
  //BusquedaAEstrella buscador = new BusquedaAEstrella(false); //DistanciaManhattan
- BusquedaAEstrella buscador=new BusquedaAEstrella(true); //DistanciaManhattan Ponderada
+ //BusquedaAEstrella buscador=new BusquedaAEstrella(true); //DistanciaManhattan Ponderada
  List<String> camino = buscador.resolver(entorno);
  if (camino != null) {
  planDeAccion.addAll(camino);
