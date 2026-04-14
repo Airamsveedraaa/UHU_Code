@@ -200,7 +200,7 @@ template <typename T> void Palabras (const Arbin<T>& a, const typename Arbin<T>:
 /******************************************************************************/
 //Ejercicio 6
 
-int siguienteMayor(const ABB<int>& a, const Arbin<int>::Iterador& r,int x)throw (NoHaySiguienteMayor)
+int siguienteMayor(const ABB<int>& a, const typename Arbin<int>::Iterador& r,int x)throw (NoHaySiguienteMayor)
 {
 
     if(r.arbolVacio())
@@ -238,10 +238,47 @@ int siguienteMayor(const ABB<int>& a,int x)
 /******************************************************************************/
 //Ejercicio 7
 
+template <typename T> int posicionInorden(const ABB<T>& a,int x)
+{
+
+    return posicionInorden(a,a.getRaiz(),x);
+
+}
+
+template <typename T> int posicionInorden(const ABB<T>& a, const typename ABB<T>::Iterador r,int x )
+{
+
+    if(r.arbolVacio())return 0;
+    else if(r.observar()==x) return numNodos(a,a.subIzq(r))+1;
+    else if (x < r.observar()) return posicionInorden(a,a.subIzq(r),x);
+    else
+    {
+        int pos=posicionInorden(a,a.subDer(r),x);
+        if (pos==0)return 0;
+        return numNodos(a,a.subIzq(r)) + 1 + pos;
+    }
+}
 
 /******************************************************************************/
 //Ejercicio 8
 
+bool haySumaCamino(const Arbin<int>& a, const typename Arbin<int>::Iterador r, int suma)
+{
+
+    if (r.arbolVacio())return false;
+
+        suma=suma-r.observar();
+        if(a.subIzq(r).arbolVacio() && a.subDer(r).arbolVacio())
+            return suma==0;
+        return haySumaCamino(a,a.subIzq(r),suma) || haySumaCamino(a,a.subDer(r),suma);
+
+}
+
+bool haySumaCamino(const Arbin<int>& a, int suma)
+{
+
+    return haySumaCamino(a,a.getRaiz(),suma);
+}
 
 
 /****************************************************************************/
@@ -337,22 +374,26 @@ int main(int argc, char *argv[])
         cout << e.Mensaje() << endl << endl;
     }
 
-    /*  // POSICION INORDEN //
-      BB7.insertar(5); BB7.insertar(1); BB7.insertar(3); BB7.insertar(8); BB7.insertar(6);
-      cout << "Posicion Inorden en BB7 de 3: ";
-      cout << posicionInorden(BB7, 3);
-      cout << endl << "Posicion Inorden en BB7 de 8: ";
-      cout << posicionInorden(BB7, 8);
-      cout << endl << "Posicion Inorden en BB7 de 7: ";
-      cout << posicionInorden(BB7, 7);
-      cout << endl << endl;
+    // POSICION INORDEN //
+    BB7.insertar(5);
+    BB7.insertar(1);
+    BB7.insertar(3);
+    BB7.insertar(8);
+    BB7.insertar(6);
+    cout << "Posicion Inorden en BB7 de 3: ";
+    cout << posicionInorden(BB7, 3);
+    cout << endl << "Posicion Inorden en BB7 de 8: ";
+    cout << posicionInorden(BB7, 8);
+    cout << endl << "Posicion Inorden en BB7 de 7: ";
+    cout << posicionInorden(BB7, 7);
+    cout << endl << endl;
 
-      // SUMA CAMINO
-      cout << "Hay un camino de suma 26 en F?:";
-      cout << (haySumaCamino(F, 26) ? " SI" : " NO") << endl;
-      cout << "Hay un camino de suma 9 en F?:";
-      cout << (haySumaCamino(F, 9) ? " SI" : " NO") << endl;
-      */
+    // SUMA CAMINO
+    cout << "Hay un camino de suma 26 en F?:";
+    cout << (haySumaCamino(F, 26) ? " SI" : " NO") << endl;
+    cout << "Hay un camino de suma 9 en F?:";
+    cout << (haySumaCamino(F, 9) ? " SI" : " NO") << endl;
+
 
     system("PAUSE");
     return 0;
