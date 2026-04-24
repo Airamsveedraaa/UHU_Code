@@ -45,7 +45,7 @@ public class P2_Busquedas_main {
 
 	        // 1. SELECCIONAR MAPA
 	        // String mapaActual = ;
-	        String mapaActual = mapaTexto2;
+	        String mapaActual = mapaTexto4;
 
 	        Entorno juego = new Entorno(mapaActual);
 	        

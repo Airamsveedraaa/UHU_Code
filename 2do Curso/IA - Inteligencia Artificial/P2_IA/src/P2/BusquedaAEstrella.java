@@ -74,7 +74,7 @@ public class BusquedaAEstrella extends Busqueda{
 	 public List<String> resolver(Entorno mapa) {
 
 		 Queue<Nodo> sucesores=new PriorityQueue<>();
-		 int Hinicial=Math.abs(mapa.agenteF-mapa.metaF) + Math.abs(mapa.agenteC - mapa.metaC); //el nodo inicial también tiene h que hay que calcular
+		 int Hinicial=calcularH(mapa.agenteF, mapa.agenteC, mapa); //el nodo inicial también tiene h que hay que calcular
 		 this.tIni=System.currentTimeMillis(); //para cálculo de tiempo de ejecución
 		 Nodo inicial = new Nodo(mapa.agenteF,mapa.agenteC,null,null,0,Hinicial);
 		 Abiertos.add(inicial);
