@@ -1,0 +1,10 @@
+1. mkdir -pv prac6/prac6 prac6/fuentes/tmp1 prac6/fuentes/tmp2 prac6/guiones
+2. GUION="$HOME/prac6/guiones", para q tome efecto se ejecuta en modo source, cp /home/luisairam.saavedra/*.txt prac6/fuentes/tmp1
+3. el fichero en lo que consiste es en hacer if [ -f $1 ] then more $1, elif [ -d $1 ] then ls -la $1 else echo "$1"
+4. cd ../prac6, ../guiones/tratafichero con los 2 parametros q dice 
+5. el guion esta bien creado, pero al no encontrar parametros el find no funciona.
+6. funciona bien si no me he equivocado
+7. funciona bien se supone  
+8. funciona
+9. chmod 641 ../fuentes/tmp[12]
+10. ps -u | wc -l 

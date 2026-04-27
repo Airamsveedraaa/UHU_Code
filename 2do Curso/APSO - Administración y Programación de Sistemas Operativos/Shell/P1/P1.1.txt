@@ -1,0 +1,18 @@
+1. mkdir ./prac1/
+2. cp -v /home/so/velez/MI/p1.txt /home/luisairam.saavedra/prac1/
+3. abrir el fichero que da velez con joe y modificarlo para escribir las soluciones
+4. mkdir /home/luisairam.saavedra/prac1/pac11/, cd ./prac1/prac11
+5. mkdir ../prac12 ../prac13 ../prac14 ../prac15
+6. cd /, cat ./home/luisairam.saavedra/prac1/p1.txt, cd ./home/luisairam.saavedra/prc1/prac13, cat ../p1.txt
+7. joe /home/luisairam.saavedra/prac1/prac13/prueba13 y añadir la linea, lo mismo con prueba12
+8. joe ../prac11/ejemplo01 y añadir frase
+9. cp -v ./prueba13 ../prac12/prueba12 ../prac11/
+10. cp -v ../prac12/prueba12 ../prac14/prueba14
+11. mkdir -v ../prac12/tmp1 ../prac12/tmp2
+12. cd .., mv -v ./prac13/prueba13 ./prac12/tmp1, cp -v ./prac12/prueba12 ./prac14/prueba14 ./prac12/tmp1
+13. cp -v ./prac12/tmp1/p*1[1-5] ./prac12/tmp2
+14. rm -v /home/luisairam.saavedra/prac1/prac12/tmp1/*[0-9]?
+15. rmdir /home/luisairam.saavedra/prac1/prac12/tmp1, rm -rv ./prac12/tmp2
+16. cd  , pwd
+17. Control K X para guardar con ese nombre
+18. chmod 700 prac1/solp1.txt 

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Dame un numero"
+read N
+
+RUTA="."
+i=0
+while [ $i -lt $N ]
+do
+	RUTA="$RUTA/$1"
+	i=$((i+1))
+done
+mkdir -p $RUTA  

@@ -1,0 +1,10 @@
+1. mkdir -pv prac5/prac51 prac5/prac52 prac5/guiones
+2. añadir PATH=$PATH:$HOME/prac5/guiones y ejecutar en modo source para que tome efecto junto a lo de la 4.
+3. nano busca y añadimos la linea find $1 -type f -mtime -$2 y listo.
+4. listaf='ls $HOME -laR', gente='who | wc-l' fecha2='date +"Hola. Son las $H horas y %M minutos del %A %d %B de %Y.Chao"'
+5. find $2 -type f -newer $1 | wc -l, fviejos es lo mismo pero negando el newer
+6. cd ../prac51, el script lo que tiene es more $(find $1 -type f -name "*.txt" 2>/dev/null) y ya.
+7. añadir PS1='\u\w>' y ya
+8. el script lo que hace es cp $1/$2 $1/$3, como le mandamos la ruta absoluta se puede hacer asi
+9. el script lo que hace es more $(find . -type f -name "s*.[cp]" -newer $1 2>/dev/null | sort)
+10. este lo q muestra es el id -nu, id -ng, tty, date y cal 03 2026

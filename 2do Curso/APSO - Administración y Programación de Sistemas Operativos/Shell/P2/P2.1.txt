@@ -1,0 +1,22 @@
+1. mkdir -pv prac2/prac21/tmp1 prac2/prac22 prac2/prac23/tmp2
+2. cp -v /home/so/velez/MI/f1.txt /home/so/velez/MI/f2.txt .
+3. chmod 700 .
+4. chmod 740 f1.txt f2.txt
+5. cd /home/luisairam.saavedra/prac2/prac21 , cp ../f1.txt ../f2.txt ./tmp1/, mv ./tmp1/f1.txt ./tmp1/f21.txt
+6. mv -v ./tmp1/f2.txt ./../prac23/tmp2/f23.txt
+7. cd ./../prac23/tmp2/, find ~name "?[rRtT]*[!0-9][0-9]"
+8. find /home/luisairam.saavedra/ ! -type d -newer /home/luisairam.saavedra/prac1/p1.txt -mtime -3
+9. grep -i "llama" ../../f1.txt ../../f2.txt
+10. ls -s y wc -c
+11. cal 07 1993, se fundó un jueves
+12. date +"Bienvenido. Son las %H horas y %M minutos del %A %d de %B. Ha sido un placer"
+13. cd espacio, sort -r /home/so/velez/MI/usuarios04-05.txt > prac2/prac22/usu.orden.pabajo , para el otro quitas el -r y cambias el nombre.
+14. cat prac2/f1.txt , tail -2 /home/so/velez/MI/solf1.txt
+15. wc -m prac23/tmp2/f23.txt
+16. ln ../prac1/p1.txt solucionprac1
+17. ln -s prac23/tmp2/ temporal
+18. file solucionprac1, file temporal.
+19. who -q 
+20. para matarlo es kill # y # es el numero de proceso.
+21. write al usuaeio.
+22. chmod 660 al fichero

@@ -1,0 +1,37 @@
+1. echo "Practica 1: Manejo de Shell - Inicio..."
+2. pwd
+3. ls -laR
+4. mkdir ModuloI
+5. mkdir /home/luisairam.saavedra/ModuloI/Practica1
+6. cd ModuloI/Practica1
+7. mkdir -pv /home/luisairam.saavedra/ModuloI/Practica1/Datos/temporal /home/luisairam.saavedra/ModuloI/Practica1/Datos/basura
+8. ls -laR /home/luisairam.saavedra/ModuloI/Practica1/
+9. ls -laR ./../../../..
+10. cp -v ./../../../so/ficheros/soneto ./../../../so/ficheros/cancion . 
+11. cd ..
+12. cp -v Practica1/soneto Practica1/Datos/Temporal/estrofa
+13. mv -v Practica1/cancion Practica1/Datos
+14. cat Practica1/Datos/Temporal/estrofa
+15. mv -v Practica1/soneto Practica1/verso
+16. cp -v /home/so/ficheros/f* Practica1/Datos
+17. ls -la para todos, *[0-9], [!aeiouAEIOU]*, [!0-9]*, *.???, *.????*, [a-zA-Z]*.bak
+18. rm -v Practica1/Datos/??
+19. cp -v Practica1/Datos/*[0-9] Practica1/Datos/Temporal/
+20. more Practica1/Datos/fichcancion
+21. ls -laRSr $PWD, entiendo que con . es lo mismo
+22. la opcion r es para borrar recursivamente, usado para carpetas
+23. rm -r Practica1/Datos/Temporal/ y en caso d estar vacio rmdir
+24. mkdir Practica1/Datos/tmpfiles
+25. joe con la ruta y listo
+26. cat > con la ruta y listo
+27. cat Practica1/Datos/tmpfiles/*
+28. llenar con numeros 
+29. more -5 Practica1/Datos/tmpfiles/file1.txt
+30. con nano lo he hecho 
+31. ls -la Practica1/Datos/tmpfiles/*[-]*
+32. cd con espacio.
+33. cd ModuloI/Practica1/Datos, rm -v /home/luisairam.saavedra/ModuloI/Practica1/Datos/tmpfiles/file2.txt
+34. rm -r tmpfiles
+35. clear
+36. echo "Practica1: Manejo de Shell... Finalizada"
+37. exit

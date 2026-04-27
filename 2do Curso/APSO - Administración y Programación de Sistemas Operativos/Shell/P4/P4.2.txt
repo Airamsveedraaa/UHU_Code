@@ -1,0 +1,26 @@
+1. echo "Práctica 4 : Manejo de Shell - Inicio..."
+2. mkdir -pv ModuloI/Practica4/temp
+3. set | more
+4. ksh, una terminal con prompt distinto, no funciona igual
+5. sh, otra terminal distinta, tampoco funciona igual
+6. exit en ambas
+7. set -x
+8. cp $(find / -name "rmt*" -type f) ModuloI/Practica4/temp
+9. set +x
+10. P4=/home/luisairam.saavedra/ModuloI/Practica4
+11. cd $P4
+12. man echo
+13. echo "El directorio de trabajo actual es $PWD"
+14. unset HOME
+15. cd , no sabe a donde ir, no hay HOME asignado
+16. alias | sort -r >losalias
+17. alias fecha2='date +"%d del %m de %Y"'
+18. como lo habia guardado yo de antes he tenido que hacer HOME=$CASITA
+19. alias p4='cd $P4'
+20. cd ../Practica2 y luego p4.
+21. PS1='\u'?, era eliminar el \h del PS1, pero entiendo q esta funciona igual ns.
+22. desde el .profile, añadimos una linea de PATH=$PATH:/home/luisairam.saavedra y listo.
+23. desde el .profile tambien, que es lo que se carga al conectarse, hacemos echo "Bienvenido $USER"
+24. unalias p4
+25. echo "Practica 4: Manejo de Shell... Finalizada"
+26. exit

@@ -1,0 +1,12 @@
+1. echo "Práctica 6: Scripts (Estructuras de Control) - Inicio..."
+2. mkdir ModuloI/Practica6, cd ModuloI/Practica6
+3. funciona, enlace funciona pero no muestra lo que debe mostrar
+4. funciona
+5. mkdir largos cortos
+6. funciona,los enlaces los trata como ficheros y los copia tal cual.
+7. funciona. 
+8. creo q funciona
+9. funciona
+10. funciona juraria
+11. echo "Práctica 6: Scripts (Estructuras de Control) ... Finalizada)
+12. exit

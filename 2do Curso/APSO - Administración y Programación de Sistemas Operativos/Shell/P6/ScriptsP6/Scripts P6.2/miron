@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+	echo "Se debe pasar parámetro"
+	exit 1
+fi
+if [ -d $1 ]
+then
+	ls -la $1
+elif [ -L $1 ]
+then
+	echo "El enlace lleva a $1"	
+	cat $1
+
+elif [ -f $1 ]
+then
+	more $1
+else
+	echo "Error, el parámetro $1 no es ni directorio, ni enlace, ni fichero"
+	exit 2
+fi

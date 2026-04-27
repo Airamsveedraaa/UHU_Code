@@ -1,0 +1,7 @@
+#!/bin/bash
+
+id -nu
+id -ng
+tty
+date
+cal 03 2026

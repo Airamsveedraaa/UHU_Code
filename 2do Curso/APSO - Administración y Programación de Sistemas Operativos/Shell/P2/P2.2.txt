@@ -1,0 +1,29 @@
+1. echo "Practica 2:Manejo de Shell - Inicio..."
+2. cd ModuloI/Practica1/
+3. mkdir -v ../Practica2
+4. chmod 700 ../Practica2
+5. joe ../Practica2/solucion2
+6. cd /home/luisairam.saavedra/ModuloI/Practica2
+7. find /var -type d -name "*data*"
+8. find /etc -type f -mtime -100
+9. cp /etc/passwd /etc/group .
+10. grep luisairam.saavedra ./*
+11. wc -c group
+12. wc -L passwd
+13. sort -r group | more
+14. head -3 passwd
+15. tail -3 passwd
+16. ln -s /home/luisairam.saavedra/ModuloI/Practica1/Datos/fichcancion ~/versos
+17. grep -i Cobi ~/versos
+18. who -H
+19. id -g
+20. cal 01 2022
+21. date +"Año:%Y, Mes:%m, Dia:%d"
+22. tty
+23. top
+24. se abre una nueva y se conecta
+25. ps -u para encontrar la orden top y luego kill -9 a ese pid
+26. write a un usuario y el mensaje
+27. mesg n y que me escriba otro
+28. echo "Practica 2: Manejo de Shell... Finalizada"
+29. exit.

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -f $1 ] 
+then
+	more $1
+elif [ -d $1 ]
+then
+	ls -la $1 
+else
+	echo "$1"
+fi

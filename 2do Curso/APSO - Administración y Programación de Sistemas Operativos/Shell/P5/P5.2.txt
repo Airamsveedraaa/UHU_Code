@@ -1,0 +1,16 @@
+1. echo "Practica 5: Manejo de Scripts (I) - Inicio..."
+2. mkdir -pv ModuloI/Practica5
+3. YO='Luis Airam Saavedra Paiseo'
+4. tiene el date +"%H %M" , un echo "Saludos, $YO" y un ps -u, hay que hacer export YO en la bash antes de ejecutar.
+5. ./saludos.sh
+6. funciona al fin
+7. man sleep
+8. funciona bien
+9. . personal.sh
+10. ocultos, funciona bien
+11. funciona
+12. echo $?
+13. funcionan los 2
+14. el valor de V1 se ve modificado en el proceso hijo porque forma parte del entorno de ejecucion del padre, pero no se vera reflejado en el proceso padre porque no forma parte del entorno del proceso hijo.
+15. echo "Practica 5: Manejo de Scripts (I) - Finalizada..."
+16. exit.

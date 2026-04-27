@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ $# -ne 3 ]
+then
+	echo "Se necesitan al menos 3 parámetros"
+else
+	if [ ! -d $1 ] || [ ! -d $3 ]
+	then
+		echo "El primer y tercer parámetro han de ser directorios"
+	else
+		find $1 -name "$2" -type l -printf "%f\n" 2>/dev/null >$3/enlaces.txt
+	fi
+fi

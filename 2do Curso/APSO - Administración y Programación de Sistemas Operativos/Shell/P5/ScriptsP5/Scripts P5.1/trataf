@@ -1,0 +1,3 @@
+#!/bin/bash
+
+more $(find $1 -name "*.txt" 2>/dev/null)

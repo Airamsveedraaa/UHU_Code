@@ -1,0 +1,23 @@
+1. Echo "Práctica 3: Manejo de Shell - Inicio..."
+2. mkdir ModuloI/Practica3
+3. find ~ -type f -size -100c -printf "%f %s\n"
+4. cp -v /home/so/ficheros/infinito ModuloI/Practica3
+5. chmod a+x ModuloI/Practica3/infinito
+6. ./infinito
+7. ps -u
+8. CTRL + C
+9. ./infinito& el & es para segundo plano
+10. jobs
+11. fg 1 (el 1 es el numero de trabajo asignado)
+12. lo mismo que el 3 añadiendo >ModuloI/Practica3/pequeños
+13. cd ModuloI/Practica3
+14. id -nu >minfo, tty y id -ng se ponen con >>minfo
+15. find /etc -type f -mtime +100 2>/dev/null
+16. find /etc -type f -mtime +100 2>err
+17. find /var -type f -iname "cr*" >crons 2>>crons
+18. find ~ -type d | wc -l
+19. who -u | sort -r >usersort
+20. more $(find ~ -type f -iname "[fs]*"
+21. cp $(find /home/luisairam.saavedra/ModuloI -type f -atime +2) mas2
+22. echo "Práctica 3: Manejo de Shell... Finalizada"
+23. exit.

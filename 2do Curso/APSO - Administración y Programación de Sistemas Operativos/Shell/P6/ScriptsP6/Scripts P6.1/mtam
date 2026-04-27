@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]
+then
+	echo "Se deben pasar 2 parámetros"
+elif [ ! -d $1 ]
+then
+	echo "El primer parámetro debe ser un directorio"
+else
+
+	for f in $(find $1 -type f -name "$2")
+	do
+		ls -s $f
+	done
+fi

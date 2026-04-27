@@ -1,0 +1,12 @@
+1. mkdir -pv prac3/prac31/tmp1 prac3/prac32/tmp2 prac3/prac33/tmp3
+2. chmod -Rv 700 prac3
+3. ls -la ~
+4. find ~ -type d -name "*[m0-9]*" | wc -l
+5. find /bin ! -type d -name "[aeiouAEIOU]*" -mtime +1 >prac3/prac31/tmp1/comandos 2>/dev/null
+6. find / -name "[aeiouAEIOU0-9][!0-9]??.[cp]" 2>/dev/null |more
+7. cp $(find ~ ! -type d -name "sol*p*") prac3/prac32/tmp2
+8. cd prac3/prac33, mv -v $(find ~ ! -type d -name "*~") tmp3, rm tmp3/*~
+9. cd .., cal 03 2026 >prac32/2_cuatrimestre, los otros 3 es igual pero con >> en vez de >
+10. sort >prac32/ciudades y metemos todo 
+11. find /home -maxdepth 1 -type d -printf "%f\n" | sort -r >prac32/usuarios
+12. id -nu >prac32/personal y las siguientes con >> y

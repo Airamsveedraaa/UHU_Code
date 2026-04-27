@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Dame una palabra"
+read PALABRA
+
+while [ $PALABRA != "." ]
+do
+
+	case $PALABRA in 
+		[0-9]*)echo  $PALABRA>>numero;;
+		[aeiouAEIOU]*) echo $PALABRA>>vocal;;
+		*)  echo $PALABRA>>otro;;
+	esac
+	read PALABRA
+done

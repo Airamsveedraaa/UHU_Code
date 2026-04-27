@@ -1,0 +1,14 @@
+1. mkdir -pv prac4/prac41 prac4/prac42/tmp1 prac4/prac42/tmp2 prac4/prac43
+2. cd prac4/prac43, chmod 700 ../prac42/tmp1 ../prac42/tmp2 ../prac42 ..
+3. cd prac42 cat >tmp1/prueba y la frase, luego cat >>tmp1/prueba y la frase
+4. set |head -52, echo $PATH
+5. crear variables, echo $variable, cp -v $(find $ORIGEN -type f -name "*p*.txt") $DESTINO1
+6. cd ../prac43, alias fnuevos='more $(find ~ -type f -name ".*[eyc]" -amin -180)'
+7. alias sin nada, dir='ls -la . | sort | more', dirinverso igual pero .r en sort, fecha='date +"hoy es %A, %d de %m de %Y. chao"', hora sigue el mismo formato, cd..='cd ..'
+8. who -u | sort >../prac42/tmp2/usuarios
+9. cd .., ksh, ver las variables es con set, y el prompt es el PS1, PS1='Comando::>'
+10. exit, who | wc -l
+11. PS1='\u\w>'
+12. PS2='Cierre las comillas, porfavor'
+13. añadir una linea de PATH y otra de ORIGEN
+14. añadir los 2 alias, luego ejecutar en modo source y listo
