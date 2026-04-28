@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1777381148 source:c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 3\cartelera.cpp
+	"cartelera.h"
+	<iostream>
+
+1776243896 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 3\cartelera.h
+	<map>
+	<utility>
+	<string>
+
+1776243972 source:c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 3\usuariop3.cpp
+	<cstdlib>
+	<iostream>
+	"cartelera.h"
+
