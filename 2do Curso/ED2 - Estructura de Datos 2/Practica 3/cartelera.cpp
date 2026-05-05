@@ -11,18 +11,14 @@ Cartelera::Cartelera(): espectaculos()
 void Cartelera::insertaEspectaculo(const string& e)
 {
 
-    if(espectaculos.find(e) == espectaculos.end())
-        espectaculos[e]=DSalas();
+    espectaculos.insert(PEspectaculos(e,DSalas()));
 
 }
 
 void Cartelera::insertaSala(const string& e, const string& s, const string& c)
 {
 
-    if(espectaculos[e].find(s) == espectaculos[e].end())
-    {
-        espectaculos[e][s]=c;
-    }
+    espectaculos[e].insert(PSalas(s,c));
 
 }
 
@@ -42,11 +38,16 @@ void Cartelera::eliminaSala(const string& e, const string& s)
 
 void Cartelera::listaEspectaculos()
 {
-
-    DEspectaculos::iterator it;
-    for(it=espectaculos.begin(); it != espectaculos.end(); it++)
+    if(espectaculos.empty())
+        cout << "No hay espectaculos" << endl;
+    else
     {
-        cout << it->first << endl;
+        cout << "Lista de espectaculos: " << endl;
+        DEspectaculos::iterator it;
+        for(it=espectaculos.begin(); it != espectaculos.end(); it++)
+        {
+            cout << it->first << endl;
+        }
     }
 
 }
@@ -55,11 +56,20 @@ void Cartelera::listaSalas(const string& e)
 {
 
     DEspectaculos::iterator it = espectaculos.find(e);
-    if(it==espectaculos.end()) return;
-    DSalas::iterator is;
-    for(is=it->second.begin(); is != it->second.end(); is++)
+    if(it==espectaculos.end())
+        cout << "No existe ningun espectaculo" << endl;
+    else
     {
-        cout << is->first << " - " << is->second << endl;
+        if(it->second.empty())
+            cout << "No hay ninguna sala para el espectaculo " << e << endl;
+        else
+        {
+            DSalas::iterator is;
+            for(is=it->second.begin(); is != it->second.end(); is++)
+            {
+                cout << is->first << " - " << is->second << endl;
+            }
+        }
     }
 
 }
