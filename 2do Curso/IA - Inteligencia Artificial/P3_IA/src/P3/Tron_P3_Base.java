@@ -15,13 +15,13 @@ public class Tron_P3_Base {
 		// Comentar/descomentar el algoritmo que se quiera usar para cada jugador
 
 		// Minimax o AlfaBeta para el alumno
-		//BusquedaMinimax agenteA = new BusquedaMinimax();
-		BusquedaAlfaBeta agenteA = new BusquedaAlfaBeta();
-		BusquedaAlfaBeta agenteB = new BusquedaAlfaBeta();
+		//BusquedaMinimax agenteA = new BusquedaMinimax(1);
+		BusquedaAlfaBeta agenteA = new BusquedaAlfaBeta(1);
+		//BusquedaAlfaBeta agenteB = new BusquedaAlfaBeta();
 		
 		// El enemigo es un AgenteDummy (elige el primer movimiento válido que
 		// encuentra)
-		//AgenteDummy agenteB = new AgenteDummy();
+		AgenteDummy agenteB = new AgenteDummy();
 
 		System.out.println("--- Inicio de la Simulación ---");
 		boolean juegoActivo = true;
