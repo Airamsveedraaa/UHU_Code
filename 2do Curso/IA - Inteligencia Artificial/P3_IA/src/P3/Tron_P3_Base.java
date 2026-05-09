@@ -15,8 +15,8 @@ public class Tron_P3_Base {
 		// Comentar/descomentar el algoritmo que se quiera usar para cada jugador
 
 		// Minimax o AlfaBeta para el alumno
-		//BusquedaMinimax agenteA = new BusquedaMinimax(1);
-		BusquedaAlfaBeta agenteA = new BusquedaAlfaBeta(1);
+		//BusquedaMinimax agenteA = new BusquedaMinimax(2);
+		BusquedaAlfaBeta agenteA = new BusquedaAlfaBeta(2);
 		//BusquedaAlfaBeta agenteB = new BusquedaAlfaBeta();
 		
 		// El enemigo es un AgenteDummy (elige el primer movimiento válido que

@@ -1,7 +1,6 @@
 package P3;
 
 class BusquedaAlfaBeta extends Busqueda {
-	private int maxProfundidad = 6;
 
 	public BusquedaAlfaBeta(int modoHeuristica) {
 		super(modoHeuristica);
@@ -19,7 +18,7 @@ class BusquedaAlfaBeta extends Busqueda {
 
 			if (super.comprobarAccion(mapa, super.acciones[i], f + super.df[i], c + super.dc[i])) {
 				mapa.moverAgente(jugador, acciones[i]);
-				int valor = maxValor(mapa, maxProfundidad - 1, alfa, beta);
+				int valor = maxValor(mapa, super.maxProfundidad - 1, alfa, beta);
 				mapa.deshacerMovimiento(jugador, acciones[i]);
 				if (valor > mejorValor) {
 					mejorValor = valor;

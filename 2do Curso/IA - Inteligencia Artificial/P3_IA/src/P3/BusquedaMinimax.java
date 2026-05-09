@@ -7,7 +7,6 @@ package P3;
  */
 
 class BusquedaMinimax extends Busqueda {
-	private int maxProfundidad = 4; // Profundidad máxima
 	
 	public BusquedaMinimax(int modoHeuristica) {
 		super(modoHeuristica);
@@ -23,7 +22,7 @@ class BusquedaMinimax extends Busqueda {
 			int c = mapa.getAgenteC(jugador);
 			if (super.comprobarAccion(mapa, super.acciones[i], f + super.df[i], c + super.dc[i])) {
 				mapa.moverAgente(jugador, acciones[i]);
-				int valor = minValor(mapa, maxProfundidad - 1);
+				int valor = minValor(mapa, super.maxProfundidad - 1);
 				mapa.deshacerMovimiento(jugador, acciones[i]);
 
 				if (valor > mejorValor) {

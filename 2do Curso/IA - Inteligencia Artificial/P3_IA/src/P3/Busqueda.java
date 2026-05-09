@@ -5,6 +5,9 @@ public abstract class Busqueda {
 	protected int modoHeuristica;
 
 	protected int nodosVisitados = 0;
+	
+	protected final int maxProfundidad = 6;
+
 
 	protected String acciones[] = { "N", "S", "E", "O" }; // Movimientos disponibles
 	protected int df[] = { -1, 1, 0, 0 };
