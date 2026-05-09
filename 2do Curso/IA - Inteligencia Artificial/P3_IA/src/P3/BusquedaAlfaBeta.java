@@ -2,7 +2,7 @@ package P3;
 
 class BusquedaAlfaBeta extends Busqueda {
 	private int maxProfundidad = 6;
-	
+
 	public BusquedaAlfaBeta(int modoHeuristica) {
 		super(modoHeuristica);
 	}
@@ -40,7 +40,7 @@ class BusquedaAlfaBeta extends Busqueda {
 
 		super.nodosVisitados++;
 
-		int valor = Integer.MIN_VALUE;
+		int mejorvalor = Integer.MIN_VALUE;
 		boolean puede = false;
 
 		for (int i = 0; i < 4; i++) {
@@ -49,16 +49,21 @@ class BusquedaAlfaBeta extends Busqueda {
 			if (super.comprobarAccion(mapa, super.acciones[i], f + super.df[i], c + super.dc[i])) {
 				puede = true;
 				mapa.moverAgente('A', acciones[i]);
-				valor = Math.max(valor, minValor(mapa, profundidad - 1, alfa, beta));
-				alfa = Math.max(alfa, valor);
+				int valor = minValor(mapa, profundidad - 1, alfa, beta);
 				mapa.deshacerMovimiento('A', acciones[i]);
-				if (alfa >= beta)
-					return valor;
+				if (valor > mejorvalor)
+					mejorvalor = valor;
+
+				if (mejorvalor > alfa)
+					alfa = mejorvalor;
+
+				if (mejorvalor >= beta)
+					break;
 			}
 		}
 		if (!puede)
 			return -1000;
-		return valor;
+		return mejorvalor;
 	}
 
 	public int minValor(Entorno mapa, int profundidad, int alfa, int beta) {
@@ -68,7 +73,7 @@ class BusquedaAlfaBeta extends Busqueda {
 
 		super.nodosVisitados++;
 
-		int valor = Integer.MAX_VALUE;
+		int mejorvalor = Integer.MAX_VALUE;
 		boolean puede = false;
 
 		for (int i = 0; i < 4; i++) {
@@ -77,16 +82,20 @@ class BusquedaAlfaBeta extends Busqueda {
 			if (super.comprobarAccion(mapa, super.acciones[i], f + super.df[i], c + super.dc[i])) {
 				puede = true;
 				mapa.moverAgente('B', acciones[i]);
-				valor = Math.min(valor, maxValor(mapa, profundidad - 1, alfa, beta));
-				beta = Math.min(beta, valor);
+				int valor = maxValor(mapa, profundidad - 1, alfa, beta);
 				mapa.deshacerMovimiento('B', acciones[i]);
-				if (alfa >= beta)
-					return valor;
+				if (valor < mejorvalor)
+					mejorvalor = valor;
+
+				if (mejorvalor < beta)
+					beta = mejorvalor;
+				if (mejorvalor <= alfa)
+					break;
 			}
 		}
 		if (!puede)
 			return +1000;
-		return valor;
+		return mejorvalor;
 	}
 
 }
