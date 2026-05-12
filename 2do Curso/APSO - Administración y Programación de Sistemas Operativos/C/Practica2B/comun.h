@@ -34,6 +34,6 @@ struct tipo_elemento{
  int cuerpo; //Aspecto del cuerpo, número entre 0 y MAXCUERPOS-1
 };
  
-
+int creacola(key_t clave);
 
 

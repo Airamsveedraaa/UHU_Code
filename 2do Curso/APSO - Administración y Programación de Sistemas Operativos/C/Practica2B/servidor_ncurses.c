@@ -44,7 +44,7 @@ void pinta_alumnos_inverso(WINDOW *ventana, struct alumno *datos_ventana, int ma
 void pinta_alumnos(WINDOW *valumnos, struct alumno *datos_ventana1, int maximo);
 
 void limpia_array(struct alumno *datos, int maximo);
-void R12();
+void R12(int signal);
 int crea_cola(key_t clave);
 
 /***** DECLARACION DE VARIABLES GLOBALES ***********/
@@ -584,7 +584,7 @@ void limpia_array(struct alumno *datos, int maximo)
 
 /************** FUNCION: R10 *******************************************************************/
 /************** Atiende a la senyal 10 cuando llega *******************************************/
-void R12()
+void R12(int signal)
 {
   fin = 1; // cuando llega la senyal 10 finalizo el servidor.
 }
