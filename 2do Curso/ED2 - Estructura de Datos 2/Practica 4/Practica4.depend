@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1778591360 source:c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 4\practica4.cpp
+	<iostream>
+	<cstdlib>
+	"grafo.h"
+	"conjunto.h"
+	<queue>
+	<sstream>
+	<map>
+
+1776244237 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 4\grafo.h
+	"vertice.h"
+	"arista.h"
+	"conjunto.h"
+	"excep_grafo.h"
+	<map>
+
+1776244253 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 4\vertice.h
+
+1776244200 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 4\arista.h
+	"vertice.h"
+
+1776244207 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 4\conjunto.h
+	"excep_conjunto.h"
+	<memory>
+
+1776244214 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 4\excep_conjunto.h
+	"excepcion.h"
+
+1776244230 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 4\excepcion.h
+	<string>
+	<stdexcept>
+
+1776244222 c:\users\airam\desktop\uhu_code\2do curso\ed2 - estructura de datos 2\practica 4\excep_grafo.h
+	"excepcion.h"
+

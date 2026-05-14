@@ -58,13 +58,87 @@ template <typename T, typename U>
 bool caminoEntreDos(const Grafo<T, U>& G, const T& vo, const T& vd)
 {
 
+    queue<T> cola;
+    Conjunto<Vertice<T>> visitados;
+    cola.push(vo);
+
+    while(!cola.empty())
+    {
+        T actual=cola.front();
+        cola.pop();
+
+        if(actual==vd) return true;
+
+        else
+        {
+            typename Grafo<T,U>::ConjVertices adyacentes=G.adyacentes(actual);
+            while(!adyacentes.esVacio())
+            {
+                Vertice<T> w=adyacentes.quitar();
+                if(!visitados.pertenece(w))
+                {
+                    visitados.anadir(w);
+                    cola.push(w.getObj());
+                }
+            }
+
+        }
+    }
+    return false;
 }
 
 
 //Ejercicio 4
+
+template <typename T>
+void caminosAcotados(const Grafo<T,float>& G, const T& u, float maxCoste, float costeAcum, stringstream& ss)
+{
+
+    ss << u << " " ;
+
+    typename Grafo<T,float>::ConjVertices ady=G.adyacentes(u);
+
+    if(ady.esVacio())
+    {
+
+        cout << ss.str() << endl;
+    }
+
+    else
+    {
+        while(!ady.esVacio())
+        {
+            Vertice<T> w=ady.quitar();
+            float costeArista=0;
+            typename Grafo<T,float>::ConjAristas copiaA=G.aristas();
+            while(!copiaA.esVacio())
+            {
+                Arista<T,float> a=copiaA.quitar();
+                if(a.getOrigen() == u && a.getDestino() == w.getObj())
+                {
+                    costeArista=a.getEtiqueta();
+                }
+            }
+
+            if(costeAcum+costeArista <=maxCoste)
+            {
+                stringstream nuevo;
+                nuevo << ss.str();
+                caminosAcotados(G,w.getObj(),maxCoste,costeAcum+costeArista,nuevo);
+            }
+        }
+    }
+
+
+
+}
+
 template <typename T>
 void caminosAcotados(const Grafo<T, float>& G, const T& u, float maxCoste)
 {
+    //Utilizar stringstream para poder guardar cualquier tipo de objeto
+    stringstream ss;
+    caminosAcotados(G,u,maxCoste,0,ss);
 
 }
 
@@ -122,22 +196,22 @@ int main()
 
     cout << endl << " Vertices inaccesibles en G: ";
     inaccesibles(G);
+
+    cout << endl << " Camino entre Dos en H de Lepe a Almonte: ";
+    cout << (caminoEntreDos(H, string("Lepe"), string("Almonte")) ? " SI " : " NO ") << endl;
+    cout << endl << " Camino entre Dos en H de Aljaraque a Lepe: ";
+    cout << (caminoEntreDos(H, string("Aljaraque"), string("Lepe")) ? " SI " : " NO ") << endl;
+
+    cout << endl << " Caminos acotados en G a coste 9 desde el vertice 2:" << endl;
+    caminosAcotados(G, 2, 9);
     /*
-            cout << endl << " Camino entre Dos en H de Lepe a Almonte: ";
-            cout << (caminoEntreDos(H, string("Lepe"), string("Almonte")) ? " SI " : " NO ") << endl;
-            cout << endl << " Camino entre Dos en H de Aljaraque a Lepe: ";
-            cout << (caminoEntreDos(H, string("Aljaraque"), string("Lepe")) ? " SI " : " NO ") << endl;
+                    cout << endl << endl << " Vertice outConectado en G: " << outConectado(G);
+                    cout << endl << " Vertice outConectado en H: " << outConectado(H);
 
-            cout << endl << " Caminos acotados en G a coste 9 desde el vertice 2:" << endl;
-            caminosAcotados(G, 2, 9);
-
-            cout << endl << endl << " Vertice outConectado en G: " << outConectado(G);
-            cout << endl << " Vertice outConectado en H: " << outConectado(H);
-
-            cout << endl << endl << " Recorrido en profundidad de H desde el vertice Huelva:  ";
-            recorrido_profundidad(H, string("Huelva"));
-            cout << endl << endl;
-        */
+                    cout << endl << endl << " Recorrido en profundidad de H desde el vertice Huelva:  ";
+                    recorrido_profundidad(H, string("Huelva"));
+                    cout << endl << endl;
+                */
 
     system("PAUSE");
     return EXIT_SUCCESS;
