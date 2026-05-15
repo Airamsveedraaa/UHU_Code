@@ -1,0 +1,8 @@
+DEF RUTINA
+MULT .3 [(.2) 10]
+RET
+BZ [5] {Z0}
+LD .3 [(.4++) 10]
+CALL 12 {RUTINA}
+CLZ
+END.
