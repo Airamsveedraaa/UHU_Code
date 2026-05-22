@@ -147,14 +147,58 @@ void caminosAcotados(const Grafo<T, float>& G, const T& u, float maxCoste)
 template <typename T, typename U>
 T outConectado(const Grafo<T, U>& G)
 {
+    typename Grafo<T,U>::ConjVertices v=G.vertices();
+
+    while(!v.esVacio())
+    {
+        Vertice<T> vert=v.quitar().getObj();
+        typename Grafo<T,U>::ConjVertices ady = G.adyacentes(vert.getObj());
+        typename Grafo<T,U>::ConjVertices ant = G.antecesores(vert.getObj());
+
+        int salida= ady.cardinalidad();
+        int entrada=ant.cardinalidad();
+
+        if(salida > entrada) return vert.getObj();
+    }
 
 }
 
 
 //Ejercicio 6
+
+template <typename T, typename U>
+void recorrido_profundidad(const Grafo<T,U>& G, const T& v, map<T,bool>& visitados)
+{
+
+    visitados[v]=true;
+
+    cout << v << endl;
+
+    typename Grafo<T,U>::ConjVertices ady=G.adyacentes(v);
+    while(!ady.esVacio())
+    {
+        T vert=ady.quitar().getObj();
+        if(!visitados[vert])
+        {
+            recorrido_profundidad(G,vert,visitados);
+        }
+    }
+
+}
+
+
 template <typename T, typename U>
 void recorrido_profundidad(const Grafo<T, U>& G, const T& v)
 {
+    map<T,bool> visitados;
+    typename Grafo<T,U>::ConjVertices vertices=G.vertices();
+    while(!vertices.esVacio())
+    {
+        T v = vertices.quitar().getObj();
+        visitados[v]=false;
+    }
+
+    recorrido_profundidad(G,v,visitados);
 
 }
 
@@ -204,14 +248,14 @@ int main()
 
     cout << endl << " Caminos acotados en G a coste 9 desde el vertice 2:" << endl;
     caminosAcotados(G, 2, 9);
-    /*
+
                     cout << endl << endl << " Vertice outConectado en G: " << outConectado(G);
                     cout << endl << " Vertice outConectado en H: " << outConectado(H);
 
                     cout << endl << endl << " Recorrido en profundidad de H desde el vertice Huelva:  ";
                     recorrido_profundidad(H, string("Huelva"));
                     cout << endl << endl;
-                */
+
 
     system("PAUSE");
     return EXIT_SUCCESS;
