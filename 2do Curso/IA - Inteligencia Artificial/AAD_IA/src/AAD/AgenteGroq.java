@@ -17,7 +17,7 @@ import java.time.Duration;
  */
 class AgenteGroq {
     // ¡PON TU CLAVE DE GROQ AQUÍ! (https://console.groq.com/keys)
-    private static final String API_KEY = "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";
+    private static final String API_KEY = "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";
     // Usamos Llama 3.1 8B porque es ultra rápido y muy capaz para esto
     private static final String MODEL_NAME = "llama-3.3-70b-versatile";
     private static final String URL = "https://api.groq.com/openai/v1/chat/completions";
