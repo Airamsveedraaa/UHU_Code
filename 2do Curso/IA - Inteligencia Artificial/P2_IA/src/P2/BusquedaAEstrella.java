@@ -58,36 +58,56 @@ public class BusquedaAEstrella extends Busqueda {
 		return sucesores;
 	}
 
-	private Queue<Nodo> quitarRepetidos(Queue<Nodo> sucesores, List<Nodo> Cerrados) {
+	private Queue<Nodo> quitarRepetidos(Queue<Nodo> sucesores, List<Nodo> Cerrados, Queue<Nodo> Abiertos) {
 
 		Queue<Nodo> noRepetidos = new PriorityQueue<>();
 		List<Nodo> temp = new LinkedList<>(sucesores); // para extrar un nodo de forma temporal para comparaciones
 		List<Nodo> repetidos = new LinkedList<>();
 		for (int i = 0; i < temp.size(); i++) {
 			Nodo s = temp.get(i);
-			if (!Cerrados.contains(s)) {
-				// si no está en la cola de cerrados quiere decir que no es repetido, se añade
+
+			// Buscar si está en Abiertos
+			boolean mejorEnAbiertos = false;
+			Nodo enAbiertos = null;
+			int j = 0;
+			List<Nodo> tempAbiertos = new LinkedList<>(Abiertos); // Abiertos temporal solo para recorrer
+			while (enAbiertos == null && j < tempAbiertos.size()) {
+				// Mientras el nodo sea nulo y no hayamos acabado el array
+				Nodo a = tempAbiertos.get(j);
+				if (a.equals(s))
+					enAbiertos = a; // si hay coincidencia se pone
+				j++;
+			}
+
+			Nodo enCerrados = null;
+			j = 0;
+			while (enCerrados == null && j < Cerrados.size()) {
+				// Mientras el nodo sea nulo y no hayamos acabado el array
+				Nodo c = Cerrados.get(j);
+				if (c.equals(s))
+					enCerrados = c; // si hay coincidencia se pone
+				j++;
+			}
+
+			if (enAbiertos == null && enCerrados == null) {
+				// Nodo nuevo, se añade
+				noRepetidos.add(s);
+			}
+
+			else if (enAbiertos != null && s.g < enAbiertos.g) {
+				// En abiertos con peor G, sustituir
+				Abiertos.remove(enAbiertos);
+				noRepetidos.add(s);
+			}
+
+			else if (enCerrados != null && s.g < enCerrados.g) {
+				// En cerrados con peor G, reAbrir
 				noRepetidos.add(s);
 			} else {
-
-				// comprobar si hay una mejoría de g para ese nodo
-				boolean mejorG = false;
-				int j = 0;
-				while (!mejorG && j < Cerrados.size()) {
-
-					Nodo c = Cerrados.get(j); // temporal para comparaciones
-					if (c.equals(s) && s.g < c.g) {
-						// si la g actual ( la de s) es menor que la de c , hay mejoría y hay que
-						// añadirlo
-						Cerrados.remove(j);
-						noRepetidos.add(s);
-						mejorG = true;
-					}
-					j++;
-				}
-				if (!mejorG) // si no ha habido mejoria, lo añado a repetidos
-					repetidos.add(s);
+				// Es un repetido
+				repetidos.add(s);
 			}
+
 		}
 		if (!repetidos.isEmpty())
 			System.out.println("Sucesores Repetidos descartados: " + "(" + repetidos + ")");
@@ -129,7 +149,7 @@ public class BusquedaAEstrella extends Busqueda {
 				// a repetir el proceso
 				sucesores = getSucesores(Actual, mapa);
 				System.out.println("Generados hijos: (" + sucesores + ")");
-				sucesores = quitarRepetidos(sucesores, Cerrados);
+				sucesores = quitarRepetidos(sucesores, Cerrados, Abiertos);
 				System.out.println("Hijos válidos a insertar: " + "(" + sucesores + ")");
 				Abiertos.addAll(sucesores);
 			}
