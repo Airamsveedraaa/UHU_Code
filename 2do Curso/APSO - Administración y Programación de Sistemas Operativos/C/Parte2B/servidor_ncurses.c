@@ -260,6 +260,9 @@ void quita(struct alumno *laventana, int maximo, int elpid)
     {
       laventana[j].elpid = laventana[j + 1].elpid;
       laventana[j].cualidad = laventana[j + 1].cualidad;
+      laventana[j].ncabeza = laventana[j + 1].ncabeza;
+      laventana[j].ncuerpo = laventana[j + 1].ncuerpo;
+
     }
     laventana[j].elpid = 0;
     laventana[j].cualidad = 0;

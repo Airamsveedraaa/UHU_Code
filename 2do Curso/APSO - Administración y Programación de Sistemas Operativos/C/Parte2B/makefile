@@ -1,13 +1,22 @@
-all: servidor_ncurses revision ateoria atodo 
+all: revision servidor_ncurses atodo ateoria profeteoria profetodo
 
-servidor_ncurses: servidor_ncurses.c comun.h comun.c
-	cc servidor_ncurses.c -o servidor_ncurses -lncursesw
-
-revision: revision.c comun.h comun.c
+revision: revision.c comun.c comun.h
 	cc revision.c comun.c -o revision
 
-ateoria: ateoria.c comun.h  comun.c comunestudiante.h comunestudiante.c
-	cc ateoria.c comun.c comunestudiante.c -o ateoria
+servidor_ncurses: servidor_ncurses.c comun.h
+	cc servidor_ncurses.c -o servidor_ncurses -lncursesw
 
-atodo: atodo.c comun.h comun.c comunestudiante.h comunestudiante.c
-	cc atodo.c comunestudiante.c comun.c -o atodo 
+atodo: atodo.c comun.h comun.c comunestudiante.c comunestudiante.h
+	cc atodo.c comunestudiante.c comun.c -o atodo
+
+ateoria: ateoria.c comun.h comun.c comunestudiante.c comunestudiante.h
+	cc ateoria.c comunestudiante.c comun.c -o ateoria
+
+profeteoria: profeteoria.c comun.h comun.c
+	cc profeteoria.c comun.c -o profeteoria
+
+profetodo: profetodo.c comun.h comun.c
+	cc profetodo.c comun.c -o profetodo
+
+clean:
+	rm revision ateoria atodo profeteoria profetodo servidor_ncurses 

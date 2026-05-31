@@ -1,7 +1,3 @@
-#include <sys/types.h>
-#include <sys/ipc.h>
-
-
 // Definiciones de ventanas
 #define VCOLALLEGAR 0
 #define VFINREV 1
@@ -21,6 +17,13 @@
 #define MAXCABEZAS 6
 #define MAXCUERPOS 5
 
+// Paranetros que se pasan a los estudiantes
+struct Parametros{
+	int revmin;  // Intervalo de tiempo en revisar MIN
+	int revmax;  // Intervalo de tiempo en revisar MAX
+	int mevoymin; // Intervalo de tiempo en esperar para irse MIN
+	int mevoymax; // Intervalo de tiempo en esperar para irse MAX
+};
 
 
 // Información que se envia al servidor gráfico
@@ -34,6 +37,15 @@ struct tipo_elemento{
  int cuerpo; //Aspecto del cuerpo, número entre 0 y MAXCUERPOS-1
 };
  
-int creacola(key_t clave);
 
+//Información que se escribe en la cola de llegada de estudiantes
+struct tipo_espera{
+ long tipo; //Puede ser: TIPOTEORIA o TIPOTODO
+ int pid;	//pid del proceso
+};
+
+//Cabecera de la función de crear cola 
+int crea_cola(key_t clave);
+
+void R12(int signal);
 
